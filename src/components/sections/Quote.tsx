@@ -1,7 +1,8 @@
+
 export const Quote = () => {
   return (
-    <section className="w-full max-w-[1190px] max-md:max-w-full">
-      <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
+    <section className="w-full max-w-[1190px] flex justify-end mb-10 max-md:max-w-full">
+      <div className="gap-5 flex max-w-[800px] max-md:flex-col max-md:items-stretch">
         <div className="w-[22%] max-md:w-full max-md:ml-0">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/ad5bbae593c2463dac7a2da4d170e8bc/9c65d963d3c55c33193858d566004e96b8d8a857?placeholderIfAbsent=true"
