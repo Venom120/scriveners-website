@@ -20,19 +20,6 @@ export const Hero = () => {
               alt="Hero illustration"
               className="aspect-[1] object-contain w-fit grow shrink-0 basis-0 max-md:max-w-full"
             />
-            <div className="flex flex-col items-stretch mt-56 max-md:hidden max-md:mt-10">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/ad5bbae593c2463dac7a2da4d170e8bc/14131369cb7bee2c3ca0f89bdee53fa6085d16ac?placeholderIfAbsent=true"
-                alt="Decoration 1"
-                className="aspect-[1] object-contain w-8"
-              />
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/ad5bbae593c2463dac7a2da4d170e8bc/04a87b50a1d38e9a6d867bc7fffafdd7be2ba34c?placeholderIfAbsent=true"
-                alt="Decoration 2"
-                className="aspect-[1] object-contain w-8 mt-10"
-              />
-              <div className="self-center w-0.5 shrink-0 h-[201px] mt-10 border-[rgba(26,50,55,1)] border-solid border-2" />
-            </div>
           </div>
         </div>
       </div>

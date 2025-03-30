@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import { ArrowDown } from "lucide-react";
 
 const Leaderboard = () => {
@@ -16,20 +16,25 @@ const Leaderboard = () => {
     <div className="w-full min-h-screen bg-white">
       <div className="flex flex-col">
         {/* Header section */}
-        <div className="flex items-center justify-between px-[90px] py-[38px] max-md:px-[40px] max-sm:px-[20px]">
+        <div className="flex items-center justify-between px-[90px] py-[10px] max-md:px-[40px] max-sm:px-[20px]">
           <div className="text-[#1D0D0D] text-2xl font-bold font-[Poppins]">
             Excluded Soldiers Of Hitler
           </div>
           
           {/* Mobile menu buttons - hidden on desktop */}
           <div className="hidden items-center gap-8 md:flex">
-            <div className="flex items-center gap-20 text-[#142F38] text-lg font-semibold font-[Open Sans]">
-              <div>Home</div>
+            <div className="flex items-center gap-10 text-[#142F38] text-lg font-semibold font-[Open Sans]">
+              <Link
+                to="/"
+                className="underline self-stretch basis-auto my-auto hover:text-primary"
+              >
+                Home
+              </Link>
               <div>Poems</div>
               <div>Contact Us</div>
             </div>
             
-            <div className="flex items-center gap-6 bg-[#142E38] px-6 py-10 rounded-[54px]">
+            <div className="flex items-center gap-6 bg-[#142E38] px-6 py-5 rounded-[54px]">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.6665 2.6665C21.2905 2.6665 26.6665 8.0425 26.6665 14.6665C26.6665 21.2905 21.2905 26.6665 14.6665 26.6665C8.0425 26.6665 2.6665 21.2905 2.6665 14.6665C2.6665 8.0425 8.0425 2.6665 14.6665 2.6665ZM14.6665 23.9998C19.8225 23.9998 23.9998 19.8225 23.9998 14.6665C23.9998 9.50917 19.8225 5.33317 14.6665 5.33317C9.50917 5.33317 5.33317 9.50917 5.33317 14.6665C5.33317 19.8225 9.50917 23.9998 14.6665 23.9998ZM25.9798 24.0945L29.7518 27.8652L27.8652 29.7518L24.0945 25.9798L25.9798 24.0945Z" fill="white"/>
               </svg>
@@ -72,9 +77,9 @@ const Leaderboard = () => {
         
         {/* Leaderboard content */}
         <div className="px-[90px] py-10 max-md:px-[40px] max-sm:px-[20px]">
-          <div className="flex flex-col gap-[72px] text-white font-['M_PLUS_1'] text-2xl">
+          <div className="flex flex-col gap-[72px] text-black font-['M_PLUS_1'] text-2xl">
             {leaderboardEntries.map((entry) => (
-              <div key={entry.rank} className="flex items-center gap-[51px]">
+              <div key={entry.rank} className="flex items-center gap-[70px]">
                 <div>{entry.rank}</div>
                 <div>{entry.username}</div>
                 <div>{entry.score}</div>

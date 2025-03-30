@@ -1,6 +1,8 @@
 
 import { Link } from "react-router-dom";
-import { Instagram, MessageCircle, Twitter } from "lucide-react";
+import { Instagram, MessageCircle, Twitter} from "lucide-react";
+import { AiOutlineDiscord } from "react-icons/ai";
+
 
 export const Header = () => {
   return (
@@ -9,6 +11,9 @@ export const Header = () => {
         <div className="text-[rgba(67,81,81,1)] text-2xl font-bold self-stretch">
           Excluded Soldiers Of Hitler
         </div>
+        <Link to="/" className="self-stretch my-auto hover:text-primary">
+          Home
+        </Link>
         <Link to="/story" className="self-stretch my-auto hover:text-primary">
           Story
         </Link>
@@ -38,8 +43,10 @@ export const Header = () => {
           rel="noopener noreferrer"
           className="text-[rgba(20,47,56,1)] hover:text-primary"
         >
-          <MessageCircle size={24} />
+          {/* https://react-icons.github.io/react-icons/ */}
+          <AiOutlineDiscord size={29} />
         </a>
+
         <a 
           href="#" 
           target="_blank" 
