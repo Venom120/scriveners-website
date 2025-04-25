@@ -1,16 +1,25 @@
 import { Link } from "react-router-dom";
 import { ArrowDown } from "lucide-react";
+import React from "react";
 
 const Leaderboard = () => {
-  const leaderboardEntries = [
-    { rank: 1, username: "username", score: 1 },
-    { rank: 2, username: "username", score: 2 },
-    { rank: 3, username: "username", score: 3 },
-    { rank: 4, username: "username", score: 4 },
-    { rank: 5, username: "username", score: 5 },
-    { rank: 6, username: "username", score: 6 },
-    { rank: 7, username: "username", score: 7 },
-  ];
+  const [leaderboardEntries, setLeaderboardEntries] = React.useState<
+    { rank: number; username: string; score: number }[]
+  >([]);
+
+  React.useEffect(() => {
+    const fetchLeaderboardData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/leaderboard");
+        const data = await response.json();
+        setLeaderboardEntries(data.leaderboard);
+      } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+      }
+    };
+
+    fetchLeaderboardData();
+  }, []);
 
   return (
     <div className="w-full min-h-screen bg-white">
