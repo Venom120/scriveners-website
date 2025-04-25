@@ -10,7 +10,7 @@ const Leaderboard = () => {
   React.useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/leaderboard");
+        const response = await fetch("http://localhost:8100/api/leaderboard");
         const data = await response.json();
         setLeaderboardEntries(data.leaderboard);
       } catch (error) {
