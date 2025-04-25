@@ -1,3 +1,4 @@
 source .venv/bin/activate
 uvicorn backend.main:app --reload
+npm i --legacy-peer-deps
 npm run dev
