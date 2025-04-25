@@ -1,4 +1,4 @@
 source .venv/bin/activate
-uvicorn backend.main:app --reload
+uvicorn backend.main:app --port=8100 --reload
 npm i --legacy-peer-deps
 npm run dev
