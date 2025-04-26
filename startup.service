@@ -1,0 +1,15 @@
+[Unit]
+Description=Scriveners Startup Script
+After=network.target
+
+[Service]
+Type=simple
+User=yatharth
+WorkingDirectory=~/scriveners
+
+ExecStart=/bin/bash -c "source .venv/bin/activate && npm run dev:backend"
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

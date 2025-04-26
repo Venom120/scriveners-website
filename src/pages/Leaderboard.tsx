@@ -93,8 +93,8 @@ const Leaderboard = () => {
               </svg>
 
               {/* This is the admin login button */}
-              <div 
-                onClick={() => setLoginDialogOpen(true)} 
+              <div
+                onClick={() => setLoginDialogOpen(true)}
                 className="cursor-pointer"
               >
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,17 +134,6 @@ const Leaderboard = () => {
           </div>
         </div>
 
-        {/* Admin controls */}
-        {isAdmin && (
-          <div className="px-[90px] py-4 max-md:px-[40px] max-sm:px-[20px] bg-gray-100">
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-bold text-[#142F38]">Admin Controls</h2>
-              <Button onClick={handleLogout} variant="outline">Logout</Button>
-            </div>
-            <AddUserForm onUserAdded={fetchLeaderboardData} />
-          </div>
-        )}
-
         {/* Leaderboard content */}
         <div className="px-[90px] py-10 max-md:px-[20px] max-sm:px-[20px]">
           <table className="w-full text-black font-['M_PLUS_1'] text-2xl border-collapse">
@@ -164,9 +153,9 @@ const Leaderboard = () => {
                   <td className="py-2 px-10">{entry.score}</td>
                   {isAdmin && (
                     <td className="py-2 px-2">
-                      <AdminPointsControls 
-                        username={entry.username} 
-                        onPointsUpdated={fetchLeaderboardData} 
+                      <AdminPointsControls
+                        username={entry.username}
+                        onPointsUpdated={fetchLeaderboardData}
                       />
                     </td>
                   )}
@@ -176,9 +165,20 @@ const Leaderboard = () => {
           </table>
         </div>
       </div>
-      
+
+      {/* Admin controls */}
+      {isAdmin && (
+        <div className="px-[90px] py-4 max-md:px-[40px] max-sm:px-[20px] bg-gray-100">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl font-bold text-[#142F38]">Admin Controls</h2>
+            <Button onClick={handleLogout} variant="outline">Logout</Button>
+          </div>
+          <AddUserForm onUserAdded={fetchLeaderboardData} />
+        </div>
+      )}
+
       {/* Admin login dialog */}
-      <AdminLoginDialog 
+      <AdminLoginDialog
         open={loginDialogOpen}
         onOpenChange={setLoginDialogOpen}
         onLoginSuccess={() => {
