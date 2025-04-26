@@ -32,4 +32,4 @@ load_mongodb_uri()
 @app.get("/api/poem")
 async def get_poem() -> Dict:
     collection = db["poems"]
-    return {"poem": Dict(collection.find())}
+    return {"poem": list(collection.find({}, {"_id": 0}))}  # Exclude the MongoDB ObjectId from the response
