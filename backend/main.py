@@ -32,4 +32,4 @@ load_mongodb_uri()
 @app.get("/api/poem")
 async def get_poem() -> Dict:
     collection = db["poems"]
-    return {"poem": list(collection.find())}
+    return {"poem": Dict(collection.find())}
