@@ -10,11 +10,11 @@ const Leaderboard = () => {
   React.useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
-        const response = await fetch("https://scriveners.pythonabc.org/api/leaderboard");
+        const response = await fetch("https://scriveners.pythonabc.org/api/poem");
         const data = await response.json();
-        setLeaderboardEntries(data.leaderboard);
+        setLeaderboardEntries(data.poem);
       } catch (error) {
-        console.error("Error fetching leaderboard data:", error);
+        console.error("Error fetching poem data:", error);
       }
     };
 
@@ -85,13 +85,13 @@ const Leaderboard = () => {
         </div>
 
         {/* Leaderboard content */}
-        <div className="px-[90px] py-10 max-md:px-[20px] max-sm:px-[20px]">
+        <div className="px-[90px] py-10 max-md:px-[20px] max-sm:px-[20px] px-2-[padding-left:50px]">
           <table className="w-full text-black font-['M_PLUS_1'] text-2xl border-collapse">
             <thead>
               <tr className="border-b-2">
                 <th className="text-left py-2 px-2">Rank</th>
                 <th className="text-left py-2 px-2">Username</th>
-                <th className="text-left py-2 px-2">Score</th>
+                <th className="text-left py-2 px-10">Score</th>
               </tr>
             </thead>
             <tbody>
@@ -99,7 +99,7 @@ const Leaderboard = () => {
                 <tr key={entry.rank}>
                   <td className="py-2 px-2">{entry.rank}</td>
                   <td className="py-2 px-2">{entry.username}</td>
-                  <td className="py-2 px-2">{entry.score}</td>
+                  <td className="py-2 px-10">{entry.score}</td>
                 </tr>
               ))}
             </tbody>
