@@ -9,7 +9,7 @@ export const Header = () => {
     <nav className="flex items-center justify-between gap-[40px_54px] self-stretch text-lg text-[rgba(20,47,56,1)] font-semibold text-center w-full">
       <div className="flex items-center gap-[40px_54px]">
         <div className="text-[rgba(67,81,81,1)] text-2xl font-bold self-stretch">
-          Excluded Soldiers Of Hitler
+          Scriveners
         </div>
         <Link to="/" className="self-stretch my-auto hover:text-primary">
           Home

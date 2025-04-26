@@ -27,7 +27,7 @@ const Leaderboard = () => {
         {/* Header section */}
         <div className="flex items-center justify-between px-[90px] py-[10px] max-md:px-[40px] max-sm:px-[20px]">
           <div className="text-[#1D0D0D] text-2xl font-bold font-[Poppins]">
-            Excluded Soldiers Of Hitler
+            Scriveners
           </div>
 
           {/* Mobile menu buttons - hidden on desktop */}

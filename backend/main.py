@@ -25,7 +25,7 @@ def load_mongodb_uri():
     mongodb_uri = secrets.get("MONGODB_URI")
     client = pymongo.MongoClient(mongodb_uri)
     global db
-    db= client["scriveners"]
+    db = client["scriveners"]
 
 
 load_mongodb_uri()

@@ -1,5 +1,9 @@
+sudo apt install firewalld
+
+sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=8080/udp
+sudo firewall-cmd --reload
+
 source .venv/bin/activate
-uvicorn backend.main:app --port=8100 --reload
 npm i --legacy-peer-deps
-npm run build
-sudo cp -r dist/* /var/www/scriveners.pythonabc.org/html/
+npm run dev
