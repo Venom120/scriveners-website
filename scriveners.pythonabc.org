@@ -3,7 +3,7 @@ server {
 
     # Serve the frontend from the Vite development server
     location / {
-        proxy_pass http://localhost:8080/; # Vite's default dev server port
+        proxy_pass http://localhost:8080/;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Upgrade $http_upgrade;

@@ -17,7 +17,7 @@ const Leaderboard = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
-  const fetchLeaderboardData = async () => {
+  const fetchLeaderboardData = React.useCallback(async () => {
     try {
       const response = await fetch("https://scriveners.pythonabc.org/api/poem");
       const data = await response.json();
@@ -30,9 +30,9 @@ const Leaderboard = () => {
         variant: "destructive",
       });
     }
-  };
+  }, [setLeaderboardEntries, toast]);
 
-  const checkAuthStatus = async () => {
+  const checkAuthStatus = React.useCallback(async () => {
     try {
       const response = await fetch("https://scriveners.pythonabc.org/api/check-auth", {
         credentials: "include", // Important for cookies
@@ -43,7 +43,7 @@ const Leaderboard = () => {
       console.error("Error checking auth status:", error);
       setIsAdmin(false);
     }
-  };
+  }, [setIsAdmin]);
 
   const handleLogout = async () => {
     try {
@@ -63,7 +63,7 @@ const Leaderboard = () => {
   useEffect(() => {
     fetchLeaderboardData();
     checkAuthStatus();
-  }, []);
+  }, [fetchLeaderboardData, checkAuthStatus]);
 
   return (
     <div className="w-full min-h-screen bg-white">
