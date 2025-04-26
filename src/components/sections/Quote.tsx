@@ -19,7 +19,7 @@ export const Quote = () => {
         {/* Quote Block */}
         <div className="w-[70%] flex items-stretch">
           <blockquote 
-            className="bg-[rgba(20,46,56,1)] grow text-lg text-white font-normal leading-6 w-full px-8 py-6 rounded-[0px_20px_20px_0px]"
+            className="bg-[rgba(20,46,56,1)] grow text-lg text-white font-normal leading-6 w-full px-8 py-6 rounded-[0px_20px_20px_0px] md:text-right md:text-base"
           >
             You know you've read a good book when you turn the last page and
             feel a little as if you have lost a friend.
