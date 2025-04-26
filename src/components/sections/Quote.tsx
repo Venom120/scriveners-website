@@ -1,4 +1,11 @@
+
+import { useIsMobile } from "@/hooks/use-mobile";
+
 export const Quote = () => {
+  const isMobile = useIsMobile();
+  
+  if (isMobile) return null;
+  
   return (
     <section className="w-full max-w-[700px] flex justify-end mb-4 fixed bottom-4 right-5 z-5 max-md:max-w-full">
       <div className="flex items-stretch max-w-[800px] max-md:flex-col max-md:items-stretch">
