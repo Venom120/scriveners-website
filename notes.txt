@@ -1,4 +1,5 @@
 source .venv/bin/activate
 uvicorn backend.main:app --port=8100 --reload
 npm i --legacy-peer-deps
-npm run dev
+npm run build
+sudo cp -r dist/* /var/www/scriveners.pythonabc.org/html/

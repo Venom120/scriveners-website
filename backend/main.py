@@ -16,17 +16,23 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-@app.get("/api/leaderboard")
-async def get_leaderboard() -> Dict:
-
+# Load MongoDB URI from secrets file
+collection = None
+def load_mongodb_uri():
     with open(secrets_path, "r") as secrets_file:
         secrets = json.load(secrets_file)
 
     mongodb_uri = secrets.get("MONGODB_URI")
     client = pymongo.MongoClient(mongodb_uri)
     db= client["scriveners"]
+    global collection
     collection = db["poems"]
+
+
+load_mongodb_uri()
+@app.get("/api/leaderboard")
+async def get_leaderboard() -> Dict:
+
     leaderboard_data = list(collection.find())
 
     return {"leaderboard": leaderboard_data}
