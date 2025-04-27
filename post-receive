@@ -1,0 +1,10 @@
+#!/bin/bash
+TARGET=~/scriveners  # Path to your working directory
+GIT_DIR=~/scriveners.git  # Path to your bare repository
+
+echo "Deploying latest changes..."
+cd $TARGET || exit
+unset GIT_DIR
+git fetch origin main
+git reset --hard origin/main
+echo "Deployment complete."
