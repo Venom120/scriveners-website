@@ -49,15 +49,6 @@ export const Header = () => {
           >
             <AiOutlineDiscord size={29} />
           </a>
-
-          <a 
-            href="#" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[rgba(20,47,56,1)] hover:text-primary"
-          >
-            <Twitter size={24} />
-          </a>
         </div>
       </nav>
 
