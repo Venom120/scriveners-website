@@ -9,9 +9,14 @@ from pydantic import BaseModel
 import secrets
 
 # Secret token for admin authentication
+secrets_path = "secrets.json" # Path to your secrets file
+
 ADMIN_PASSWORD = "1234"
 
-secrets_path = "secrets.json" # Path to your secrets file
+with open(secrets_path, "r") as secrets_file:
+        secrets = json.load(secrets_file)
+        ADMIN_PASSWORD = secrets["ADMIN_PASS"]
+
 
 app = FastAPI()
 origins = ["*"]  # Allow all origins
