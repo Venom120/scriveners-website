@@ -12,7 +12,7 @@ import { toast } from "sonner";
 const formSchema = z.object({
   email: z.string()
     .email("Please enter a valid college email address")
-    .regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+\.ggits\.net$/, { message: "Please use your college email (@ggits.net)" }),
+    .regex(/^[a-zA-Z]\.[a-zA-Z]\.[a-zA-Z][0-9]{2}@ggits\.net$/, { message: "Please use your college email (@ggits.net)" }),
   phone: z.string()
     .regex(/^[6-9]\d{9}$/, { message: "Please enter a valid 10-digit phone number" }),
   semester: z.string({
