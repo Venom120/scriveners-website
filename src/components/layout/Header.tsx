@@ -26,9 +26,15 @@ export const Header = () => {
           </Link>
           <Link
             to="/leaderboard"
-            className="underline self-stretch basis-auto my-auto hover:text-primary"
+            className="self-stretch basis-auto my-auto hover:text-primary"
           >
             LeaderBoard
+          </Link>
+          <Link
+            to="/litfest25"
+            className="self-stretch basis-auto my-auto hover:text-primary"
+          >
+            LitFest25
           </Link>
         </div>
         
@@ -79,8 +85,11 @@ export const Header = () => {
               <Link to="/poems" className="text-[rgba(20,47,56,1)] text-lg font-semibold hover:text-primary">
                 Poems
               </Link>
-              <Link to="/leaderboard" className="text-[rgba(20,47,56,1)] text-lg font-semibold underline hover:text-primary">
+              <Link to="/leaderboard" className="text-[rgba(20,47,56,1)] text-lg font-semibold hover:text-primary">
                 LeaderBoard
+              </Link>
+              <Link to="/litfest25" className="text-[rgba(20,47,56,1)] text-lg font-semibold hover:text-primary">
+                LitFest25
               </Link>
 
               <div className="flex items-center gap-6 mt-2">
