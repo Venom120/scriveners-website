@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, List, Optional
 import pymongo
 import json
-from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 import secrets
 
@@ -35,7 +34,7 @@ def load_mongodb_uri():
     with open(secrets_path, "r") as secrets_file:
         secrets = json.load(secrets_file)
 
-    mongodb_uri = secrets.get("MONGODB_URI")
+    mongodb_uri = secrets.get("SCRIVENERS_URI")
     client = pymongo.MongoClient(mongodb_uri)
     global db
     db = client["scriveners"]
@@ -62,7 +61,7 @@ def get_admin_token(request: Request) -> Optional[str]:
 
 @app.get("/api/poem")
 async def get_poem() -> Dict:
-    collection = db["poems"]
+    collection = db["poem_points"]
     return {"poem": list(collection.find({}, {"_id": 0}))}  # Exclude the MongoDB ObjectId from the response
 
 @app.post("/api/login")
@@ -118,7 +117,7 @@ async def update_points(
         )
     
     try:
-        collection = db["poems"]
+        collection = db["poem_points"]
         result = collection.update_one(
             {"username": data.username},
             {"$inc": {"score": data.points}}
@@ -151,7 +150,7 @@ async def add_user(
         )
     
     try:
-        collection = db["poems"]
+        collection = db["poem_points"]
         # Check if user already exists
         existing_user = collection.find_one({"username": data.username})
         if existing_user:
