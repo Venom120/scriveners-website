@@ -13,8 +13,8 @@ secrets_path = "secrets.json" # Path to your secrets file
 ADMIN_PASSWORD = "1234"
 
 with open(secrets_path, "r") as secrets_file:
-        secrets = json.load(secrets_file)
-        ADMIN_PASSWORD = secrets["ADMIN_PASS"]
+        secret = json.load(secrets_file)
+        ADMIN_PASSWORD = secret["ADMIN_PASS"]
 
 
 app = FastAPI()
@@ -61,7 +61,7 @@ def get_admin_token(request: Request) -> Optional[str]:
 
 @app.get("/api/poem")
 async def get_poem() -> Dict:
-    collection = db["poems"]
+    collection = db["poem_points"]
     return {"poem": list(collection.find({}, {"_id": 0}))}  # Exclude the MongoDB ObjectId from the response
 
 @app.post("/api/login")
@@ -117,7 +117,7 @@ async def update_points(
         )
     
     try:
-        collection = db["poems"]
+        collection = db["poem_points"]
         result = collection.update_one(
             {"username": data.username},
             {"$inc": {"score": data.points}}
@@ -150,7 +150,7 @@ async def add_user(
         )
     
     try:
-        collection = db["poems"]
+        collection = db["poem_points"]
         # Check if user already exists
         existing_user = collection.find_one({"username": data.username})
         if existing_user:
