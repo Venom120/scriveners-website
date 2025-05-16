@@ -30,12 +30,12 @@ export const Header = () => {
           >
             LeaderBoard
           </Link>
-          <Link
+          {/* <Link
             to="/litfest25"
             className="self-stretch basis-auto my-auto hover:text-primary"
           >
             LitFest25
-          </Link>
+          </Link> */}
         </div>
         
         <div className="flex items-center gap-4 mr-6">
