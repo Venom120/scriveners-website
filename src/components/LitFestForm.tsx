@@ -11,23 +11,26 @@ import { toast } from "sonner";
 // Define form schema
 const formSchema = z.object({
   email: z.string()
+    .min(1, { message: "Email is required" })
     .email("Please enter a valid college email address")
-    .regex(/^[a-zA-Z]\.[a-zA-Z]\.[a-zA-Z][0-9]{2}@ggits\.net$/, { message: "Please use your college email (@ggits.net)" }),
+    .regex(/^[a-zA-Z]+\.[a-zA-Z]+\.[a-zA-Z]+[0-9]{2}@ggits\.net$/, {
+      message: "Please use your college email (@ggits.net)"
+    }),
   phone: z.string()
-    .regex(/^[6-9]\d{9}$/, { message: "Please enter a valid 10-digit phone number" }),
-  semester: z.string({
-    required_error: "Please select your current semester",
-  }),
-  branch: z.string({
-    required_error: "Please select your branch",
-  }),
-  eventsToAttend: z.string({
-    required_error: "Please select at least one event to attend",
-  }),
-  eventsToParticipate: z.string({
-    required_error: "Please select at least one event to participate in",
-  }),
+    .min(1, { message: "Phone number is required" })
+    .regex(/^[6-9]\d{9}$/, {
+      message: "Please enter a valid 10-digit phone number"
+    }),
+  semester: z.string()
+    .min(1, { message: "Please select your current semester" }),
+  branch: z.string()
+    .min(1, { message: "Please select your branch" }),
+  eventsToAttend: z.array(z.string())
+    .min(1, { message: "Please select at least one event to attend" }),
+  eventsToParticipate: z.array(z.string())
+    .min(1, { message: "Please select at least one event to participate in" }),
 });
+
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -42,8 +45,8 @@ const LitFestForm = () => {
       phone: "",
       semester: "",
       branch: "",
-      eventsToAttend: "",
-      eventsToParticipate: "",
+      eventsToAttend: [],
+      eventsToParticipate: [],
     },
   });
 
@@ -169,49 +172,66 @@ const LitFestForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Events You Want to Attend</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select events to attend" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {eventsOptions.map((event) => (
-                      <SelectItem key={`attend-${event}`} value={event}>
+                <div className="flex flex-col gap-2">
+                  {eventsOptions.map((event) => (
+                    <FormControl key={`attend-${event}`}>
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          value={event}
+                          checked={field.value?.includes(event)}
+                          onChange={(e) => {
+                            const isChecked = e.target.checked;
+                            if (isChecked) {
+                              field.onChange([...field.value, event]);
+                            } else {
+                              field.onChange(field.value.filter((v: string) => v !== event));
+                            }
+                          }}
+                        />
                         {event}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                      </label>
+                    </FormControl>
+                  ))}
+                </div>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
+
           <FormField
             control={form.control}
             name="eventsToParticipate"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Events You Want to Participate In</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select events to participate in" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {eventsOptions.map((event) => (
-                      <SelectItem key={`participate-${event}`} value={event}>
+                <div className="flex flex-col gap-2">
+                  {eventsOptions.map((event) => (
+                    <FormControl key={`participate-${event}`}>
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          value={event}
+                          checked={field.value?.includes(event)}
+                          onChange={(e) => {
+                            const isChecked = e.target.checked;
+                            if (isChecked) {
+                              field.onChange([...field.value, event]);
+                            } else {
+                              field.onChange(field.value.filter((v: string) => v !== event));
+                            }
+                          }}
+                        />
                         {event}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                      </label>
+                    </FormControl>
+                  ))}
+                </div>
                 <FormMessage />
               </FormItem>
             )}
           />
+
           
           <Button 
             type="submit" 
