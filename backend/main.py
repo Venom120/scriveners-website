@@ -61,7 +61,7 @@ def get_admin_token(request: Request) -> Optional[str]:
 
 @app.get("/api/poem")
 async def get_poem() -> Dict:
-    collection = db["poem_points"]
+    collection = db["poems"]
     return {"poem": list(collection.find({}, {"_id": 0}))}  # Exclude the MongoDB ObjectId from the response
 
 @app.post("/api/login")
@@ -117,7 +117,7 @@ async def update_points(
         )
     
     try:
-        collection = db["poem_points"]
+        collection = db["poems"]
         result = collection.update_one(
             {"username": data.username},
             {"$inc": {"score": data.points}}
@@ -150,7 +150,7 @@ async def add_user(
         )
     
     try:
-        collection = db["poem_points"]
+        collection = db["poems"]
         # Check if user already exists
         existing_user = collection.find_one({"username": data.username})
         if existing_user:
