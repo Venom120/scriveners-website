@@ -92,7 +92,7 @@ const LitFestForm = () => {
               <FormItem>
                 <FormLabel>College Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="name.surname@ggits.net" {...field} />
+                  <Input placeholder="name.surname.branch-year@ggits.net" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
