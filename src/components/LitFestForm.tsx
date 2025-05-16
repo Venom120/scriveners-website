@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -13,7 +12,9 @@ import { toast } from "sonner";
 const formSchema = z.object({
   email: z.string()
     .email("Please enter a valid college email address")
-    .endsWith(".edu", { message: "Please use your college email (.edu)" }),
+    .regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.ggits\.net$/, { message: "Please use your college email (@ggits.net)" }),
+  phone: z.string()
+    .regex(/^[6-9]\d{9}$/, { message: "Please enter a valid 10-digit phone number" }),
   semester: z.string({
     required_error: "Please select your current semester",
   }),
@@ -38,6 +39,7 @@ const LitFestForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      phone: "",
       semester: "",
       branch: "",
       eventsToAttend: "",
@@ -68,17 +70,13 @@ const LitFestForm = () => {
   };
 
   // Lists for dropdowns
-  const semesterOptions = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
-  const branchOptions = ["Computer Science", "Information Technology", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering", "Electronics & Communication", "Other"];
+  const semesterOptions = ["2nd","4th","6th","8th"];
+  const branchOptions = ["CSE", "AIML", "CSBS", "CSD", "CSDS", "AIR", "IOT", "EE", "EX", "EC", "CIVIL", "Other"];
   const eventsOptions = [
-    "Poetry Slam", 
-    "Short Story Competition", 
-    "Literary Quiz", 
-    "Creative Writing Workshop", 
-    "Book Reading Session", 
-    "Author Meet & Greet", 
-    "Publishing Panel Discussion",
-    "Literary Debate"
+    "Paliamentary Debate", 
+    "Treasure Hunt on Books", 
+    "Spell Bee", 
+    "Open Mic"
   ];
 
   return (
@@ -94,7 +92,21 @@ const LitFestForm = () => {
               <FormItem>
                 <FormLabel>College Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="your.name@college.edu" {...field} />
+                  <Input placeholder="name.surname@ggits.net" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                  <Input placeholder="10-digit mobile number" maxLength={10} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -116,7 +128,7 @@ const LitFestForm = () => {
                   <SelectContent>
                     {semesterOptions.map((semester) => (
                       <SelectItem key={semester} value={semester}>
-                        {semester} Semester
+                        {semester}
                       </SelectItem>
                     ))}
                   </SelectContent>

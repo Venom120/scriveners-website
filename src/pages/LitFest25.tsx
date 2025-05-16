@@ -44,10 +44,6 @@ const LitFest25 = () => {
           <LitFestForm />
         </div>
       </div>
-      
-      <div className="mt-auto">
-        <Quote />
-      </div>
     </div>
   );
 };
