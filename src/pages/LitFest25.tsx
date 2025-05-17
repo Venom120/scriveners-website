@@ -2,15 +2,11 @@
 import { Header } from "@/components/layout/Header";
 import LitFestBanner from "@/components/sections/LitFestBanner";
 import LitFestForm from "@/components/LitFestForm";
-import { Quote } from "@/components/sections/Quote";
 
 const LitFest25 = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="container mx-auto px-4">
-        <Header />
-      </div>
-      
+      <Header/>
       <LitFestBanner />
       
       <div className="container mx-auto px-4 py-8">
