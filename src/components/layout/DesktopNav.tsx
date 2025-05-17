@@ -23,8 +23,8 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
   };
 
   return (
-    <nav className="hidden md:flex items-center justify-between px-16 py-6 text-xl font-bold text-sky-400/95 font-['Open Sans'] bg-[#142E38]">
-      <div className="text-sky-400 text-3xl font-bold font-['Poppins']">
+    <nav className="hidden md:flex items-center justify-between px-16 py-6 text-xl font-bold text-white font-['Inter'] bg-[#1E1E1E]">
+      <div className="text-[#5DD1E3] text-3xl font-bold">
         <Link to="/">SCRIVENERS</Link>
       </div>
       
@@ -38,10 +38,10 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
       
       <div className="flex items-center space-x-4">
         <button
-          className="text-sky-400 hover:text-sky-300"
+          className="text-white hover:text-gray-300"
           title="Search"
         >
-          <Search size={32} />
+          <Search size={28} />
         </button>
         
         {isAdmin ? (
@@ -49,10 +49,10 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
             onLogout={handleLogout}
             trigger={
               <button
-                className="text-sky-400 hover:text-sky-300 flex items-center gap-1"
+                className="text-white hover:text-gray-300 flex items-center gap-1"
                 title="Logout"
               >
-                <User size={32} />
+                <User size={28} />
                 <span className="sr-only">Admin</span>
               </button>
             }
@@ -60,18 +60,18 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
         ) : (
           <button
             onClick={onLoginClick}
-            className="text-sky-400 hover:text-sky-300"
+            className="text-white hover:text-gray-300"
             title="Admin Login"
           >
-            <User size={32} />
+            <User size={28} />
           </button>
         )}
         
         <button
-          className="text-sky-400 hover:text-sky-300"
+          className="text-white hover:text-gray-300"
           title="Menu"
         >
-          <Menu size={32} />
+          <Menu size={28} />
         </button>
       </div>
     </nav>
