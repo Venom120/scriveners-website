@@ -10,6 +10,8 @@ import { toast } from "sonner";
 
 // Define form schema
 const formSchema = z.object({
+  name: z.string()
+    .min(1, { message: "Name is required" }),
   email: z.string()
     .min(1, { message: "Email is required" })
     .email("Please enter a valid college email address")
@@ -41,6 +43,7 @@ const LitFestForm = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
       email: "",
       phone: "",
       semester: "",
@@ -88,6 +91,20 @@ const LitFestForm = () => {
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Your Name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="email"
