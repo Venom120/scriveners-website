@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 import { ArrowDown, User, Search, Menu } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import AdminLoginDialog from "@/components/AdminLoginDialog";
 import AdminPointsControls from "@/components/AdminPointsControls";
 import AddUserForm from "@/components/AddUserForm";
 import { useToast } from "@/hooks/use-toast";
@@ -14,7 +13,6 @@ const Leaderboard = () => {
     { rank: number; username: string; score: number }[]
   >([]);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
@@ -45,21 +43,6 @@ const Leaderboard = () => {
       setIsAdmin(false);
     }
   }, [setIsAdmin]);
-
-  const handleLogout = async () => {
-    try {
-      await fetch("https://scriveners.pythonabc.org/api/logout", {
-        credentials: "include", // Important for cookies
-      });
-      setIsAdmin(false);
-      toast({
-        title: "Logged out",
-        description: "You have been logged out successfully",
-      });
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  };
 
   useEffect(() => {
     fetchLeaderboardData();
@@ -125,21 +108,10 @@ const Leaderboard = () => {
         <div className="px-5 py-4 md:px-[90px] bg-gray-100">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-[#142F38]">Admin Controls</h2>
-            <Button onClick={handleLogout} variant="outline">Logout</Button>
           </div>
           <AddUserForm onUserAdded={fetchLeaderboardData} />
         </div>
       )}
-
-      {/* Admin login dialog */}
-      <AdminLoginDialog
-        open={loginDialogOpen}
-        onOpenChange={setLoginDialogOpen}
-        onLoginSuccess={() => {
-          setIsAdmin(true);
-          fetchLeaderboardData();
-        }}
-      />
     </div>
   );
 };

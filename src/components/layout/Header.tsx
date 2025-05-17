@@ -1,16 +1,67 @@
 
 import { Link } from "react-router-dom";
-import { Instagram, MessageCircle, Twitter, Menu } from "lucide-react";
+import { Instagram, MessageCircle, Twitter, Menu, User, Search } from "lucide-react";
 import { AiOutlineDiscord } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AdminLoginDialog from "@/components/AdminLoginDialog";
+import { useToast } from "@/hooks/use-toast";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const { toast } = useToast();
+
+  // Check authentication status on component mount
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
+  // Function to check if user is authenticated
+  const checkAuthStatus = async () => {
+    try {
+      const response = await fetch("https://scriveners.pythonabc.org/api/check-auth", {
+        credentials: "include", // Important for cookies
+      });
+      const data = await response.json();
+      setIsAdmin(data.authenticated);
+    } catch (error) {
+      console.error("Error checking auth status:", error);
+      setIsAdmin(false);
+    }
+  };
+
+  // Handle successful login
+  const handleLoginSuccess = () => {
+    setIsAdmin(true);
+    toast({
+      title: "Login successful",
+      description: "You are now logged in as admin",
+    });
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      await fetch("https://scriveners.pythonabc.org/api/logout", {
+        credentials: "include", // Important for cookies
+      });
+      setIsAdmin(false);
+      toast({
+        title: "Logged out",
+        description: "You have been logged out successfully",
+      });
+    } catch (error) {
+      console.error("Error during logout:", error);
+      toast({
+        title: "Error",
+        description: "Failed to logout",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
-    
-
-
     <div className="bg-[rgba(255,255,255,0.25)] border flex flex-col overflow-hidden rounded-[20px] border-white border-solid">
       <div className="flex max-md:flex-col max-md:items-stretch">
         <div className="w-[90%] max-md:w-full max-md:ml-0.5 ml-20 mt-3">
@@ -35,12 +86,12 @@ export const Header = () => {
               >
                 LeaderBoard
               </Link>
-              {/* <Link
+              <Link
                 to="/litfest25"
                 className="self-stretch basis-auto my-auto hover:text-primary"
               >
                 LitFest25
-              </Link> */}
+              </Link>
             </div>
             
             <div className="flex items-center gap-4 mr-6">
@@ -60,6 +111,26 @@ export const Header = () => {
               >
                 <AiOutlineDiscord size={29} />
               </a>
+              
+              {/* Admin Login/Logout */}
+              {isAdmin ? (
+                <button
+                  onClick={handleLogout}
+                  className="text-[rgba(20,47,56,1)] hover:text-primary flex items-center gap-1"
+                  title="Logout"
+                >
+                  <User size={24} />
+                  <span className="text-sm">Admin</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => setLoginDialogOpen(true)}
+                  className="text-[rgba(20,47,56,1)] hover:text-primary"
+                  title="Admin Login"
+                >
+                  <User size={24} />
+                </button>
+              )}
             </div>
           </nav>
 
@@ -69,12 +140,33 @@ export const Header = () => {
               <div className="text-[rgba(67,81,81,1)] text-2xl font-bold">
                 Scriveners
               </div>
-              <button 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-[rgba(20,47,56,1)] p-2"
-              >
-                <Menu size={24} />
-              </button>
+              <div className="flex items-center gap-3">
+                {/* Admin Login/Logout for Mobile */}
+                {isAdmin ? (
+                  <button
+                    onClick={handleLogout}
+                    className="text-[rgba(20,47,56,1)] hover:text-primary"
+                    title="Logout"
+                  >
+                    <User size={20} />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setLoginDialogOpen(true)}
+                    className="text-[rgba(20,47,56,1)] hover:text-primary"
+                    title="Admin Login"
+                  >
+                    <User size={20} />
+                  </button>
+                )}
+                
+                <button 
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="text-[rgba(20,47,56,1)] p-2"
+                >
+                  <Menu size={24} />
+                </button>
+              </div>
             </div>
 
             {/* Mobile Menu */}
@@ -93,9 +185,9 @@ export const Header = () => {
                   <Link to="/leaderboard" className="text-[rgba(20,47,56,1)] text-lg font-semibold hover:text-primary">
                     LeaderBoard
                   </Link>
-                  {/* <Link to="/litfest25" className="text-[rgba(20,47,56,1)] text-lg font-semibold hover:text-primary">
+                  <Link to="/litfest25" className="text-[rgba(20,47,56,1)] text-lg font-semibold hover:text-primary">
                     LitFest25
-                  </Link> */}
+                  </Link>
 
                   <div className="flex items-center gap-6 mt-2">
                     <a 
@@ -130,6 +222,13 @@ export const Header = () => {
           </div>
         </div>
       </div>
+      
+      {/* Admin Login Dialog */}
+      <AdminLoginDialog
+        open={loginDialogOpen}
+        onOpenChange={setLoginDialogOpen}
+        onLoginSuccess={handleLoginSuccess}
+      />
     </div>
   );
 };
