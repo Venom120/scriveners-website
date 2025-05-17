@@ -63,7 +63,7 @@ const Index = () => {
                 {/* Image */}
                 <div className="w-[300px] h-[300px] md:w-[562px] md:h-[563px] rounded-full overflow-hidden shadow-md border border-black/10 z-10">
                   <img 
-                    src="https://cdn.builder.io/api/v1/image/assets/ad5bbae593c2463dac7a2da4d170e8bc/40374c2f807a26f9b787f374c6caf686aff303b5?placeholderIfAbsent=true" 
+                    src="/src/components/images/logo.png" 
                     alt="Scriveners Club" 
                     className="w-full h-full object-cover"
                   />
@@ -98,7 +98,7 @@ const Index = () => {
           <div className="w-full flex mt-8 md:mt-16 relative z-10">
             <div className="hidden md:block w-64 h-32 bg-stone-400 relative">
               <img 
-                src="https://cdn.builder.io/api/v1/image/assets/ad5bbae593c2463dac7a2da4d170e8bc/9c65d963d3c55c33193858d566004e96b8d8a857?placeholderIfAbsent=true" 
+                src="/src/components/images/Image 1.png" 
                 alt="Book" 
                 className="w-48 h-32 absolute left-4 top-0 object-cover"
               />
