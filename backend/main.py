@@ -197,19 +197,16 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         gc = gspread.service_account(filename="LitFestSubmition.json")
         sh = gc.open_by_key("1zzbf1kc25vC-nbO6kcehu9rR1lXoH96ozOlioCrbuEA")
         worksheet = sh.sheet1  # Or specify a sheet name
+        # print("Worksheet:", dict(worksheet)) # For debugging, remove in production
 
-        # Check if the sheet is empty
-        if worksheet.row_count == 0:
-            worksheet.append_row(["name", "email", "phone", "semester", "branch", "eventsToAttend", "eventsToParticipate"])
-        # Check if the sheet has headers
-        if worksheet.row_count == 1:
-            headers = worksheet.row_values(1)
-            if headers != ["name", "email", "phone", "semester", "branch", "EventsToAttend", "eventsToParticipate"]:
-                raise HTTPException(status_code=500, detail="Sheet headers do not match expected format")
+        # Get all records
+        all_records = worksheet.get_all_records()
+        
         # Prepare data for Google Sheets
         data = [
             form_data.name,
             form_data.email,
+            "", # Empty column
             form_data.phone,
             form_data.semester,
             form_data.branch,
@@ -217,11 +214,21 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             ";".join(form_data.eventsToParticipate.split(",")), # Assuming comma separated values
         ]
 
-        # Append data to the sheet - Replace with your actual sheet writing logic
-        worksheet.append_row(data)
+        # Check if the email already exists
+        existing_row_index = -1
+        for index, row in enumerate(all_records):
+            if row.get('email') == form_data.email:
+                existing_row_index = index + 2 # +2 because of header row and 0-based indexing
+                break
 
-        print("Form data:", data) # For debugging, remove in production
-        return {"message": "Form submitted successfully (Data not actually saved)"}
+        if existing_row_index != -1:
+            # Update existing row
+            worksheet.update(f'A{existing_row_index}:H{existing_row_index}', [data])
+            return {"message": "Form submitted successfully (Data updated)"}
+        else:
+            # Append data to the sheet
+            worksheet.append_row(data)
+            return {"message": "Form submitted successfully (Data appended)"}
     except Exception as e:
         print(f"Error submitting form: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to submit form: {str(e)}")

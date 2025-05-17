@@ -69,6 +69,7 @@ const LitFestForm = () => {
         },
         body: JSON.stringify(dataToSend),
       });
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to submit form");
@@ -151,7 +152,7 @@ const LitFestForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Current Semester</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} defaultValue="">
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select your semester" />
@@ -176,7 +177,7 @@ const LitFestForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Branch / Department</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} defaultValue="">
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select your branch" />
@@ -195,39 +196,6 @@ const LitFestForm = () => {
             )}
           />
           
-          <FormField
-            control={form.control}
-            name="eventsToParticipate"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Events You Want to Participate In</FormLabel>
-                <div className="flex flex-col gap-2">
-                  {eventsOptions.map((event) => (
-                    <FormControl key={`participate-${event}`}>
-                      <label className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          value={event}
-                          checked={field.value?.includes(event)}
-                          onChange={(e) => {
-                            const isChecked = e.target.checked;
-                            if (isChecked) {
-                              field.onChange([...field.value, event]);
-                            } else {
-                              field.onChange(field.value.filter((v: string) => v !== event));
-                            }
-                          }}
-                        />
-                        {event}
-                      </label>
-                    </FormControl>
-                  ))}
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
           <FormField
             control={form.control}
             name="eventsToAttend"
@@ -261,7 +229,38 @@ const LitFestForm = () => {
             )}
           />
 
-          
+          <FormField
+            control={form.control}
+            name="eventsToParticipate"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Events You Want to Participate In</FormLabel>
+                <div className="flex flex-col gap-2">
+                  {eventsOptions.map((event) => (
+                    <FormControl key={`participate-${event}`}>
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          value={event}
+                          checked={field.value?.includes(event)}
+                          onChange={(e) => {
+                            const isChecked = e.target.checked;
+                            if (isChecked) {
+                              field.onChange([...field.value, event]);
+                            } else {
+                              field.onChange(field.value.filter((v: string) => v !== event));
+                            }
+                          }}
+                        />
+                        {event}
+                      </label>
+                    </FormControl>
+                  ))}
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           
           <Button 
@@ -274,7 +273,7 @@ const LitFestForm = () => {
         </form>
       </Form>
     </div>
-  );
-};
+      );
+    };
 
-export default LitFestForm;
+    export default LitFestForm;
