@@ -56,7 +56,7 @@ const HeaderContent = () => {
   };
 
   return (
-    <div className="bg-[rgba(255,255,255,0.25)] border ml-16 mr-8 flex flex-col overflow-hidden rounded-[20px] border-white border-solid">
+    <div className="w-full bg-slate-800 rounded-tr-[19px] rounded-bl-[19px] overflow-hidden">
       {/* Desktop Navigation */}
       <DesktopNav 
         onLoginClick={openLoginDialog} 
@@ -65,8 +65,8 @@ const HeaderContent = () => {
       {/* Mobile Navigation */}
       <nav className="flex md:hidden flex-col w-full">
         <div className="flex items-center justify-between p-4">
-          <div className="text-[rgba(67,81,81,1)] text-2xl font-bold">
-            <Link to="/">Scriveners</Link>
+          <div className="text-sky-400 text-2xl font-bold">
+            <Link to="/">SCRIVENERS</Link>
           </div>
           <div className="flex items-center gap-3">
             {isAdmin ? (
@@ -74,7 +74,7 @@ const HeaderContent = () => {
                 onLogout={handleLogout}
                 trigger={
                   <button
-                    className="text-[rgba(20,47,56,1)] hover:text-primary flex items-center gap-1"
+                    className="text-sky-400 hover:text-primary flex items-center gap-1"
                     title="Logout"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -85,7 +85,7 @@ const HeaderContent = () => {
             ) : (
               <button
                 onClick={() => setLoginDialogOpen(true)}
-                className="text-[rgba(20,47,56,1)] hover:text-primary"
+                className="text-sky-400 hover:text-primary"
                 title="Admin Login"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
