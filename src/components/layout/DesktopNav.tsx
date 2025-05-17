@@ -28,7 +28,9 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
         <Link to="/">SCRIVENERS</Link>
       </div>
       
-      <div className="flex items-center space-x-12 -ml-32">
+      <div className="flex items-center space-x-12">
+        <Link to="/story" className="hover:text-sky-300">STORY</Link>
+        <Link to="/poems" className="hover:text-sky-300">POEMS</Link>
         <Link to="/leaderboard" className="hover:text-sky-300">LEADERBOARD</Link>
         <Link to="/litfest25" className="hover:text-sky-300">LITFEST</Link>
         <Link to="https://forms.gle/pwREpTgTVkmgUjVo7" className="hover:text-sky-300">JOIN NOW</Link>
@@ -58,6 +60,13 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
             <User size={28} />
           </button>
         )}
+        
+        <button
+          className="text-sky-400 hover:text-sky-300"
+          title="Menu"
+        >
+          <Menu size={32} />
+        </button>
       </div>
     </nav>
   );
