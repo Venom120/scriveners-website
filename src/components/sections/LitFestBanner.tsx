@@ -11,7 +11,7 @@ const LitFestBanner = () => {
         </p>
         <div className="flex justify-center mt-8">
           <div className="inline-block px-6 py-3 bg-white text-purple-700 font-bold rounded-full shadow-lg transform transition hover:scale-105">
-            May 15-18, 2025
+            May 31<sup>st</sup>, 2025
           </div>
         </div>
       </div>

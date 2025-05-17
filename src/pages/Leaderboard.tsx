@@ -7,6 +7,7 @@ import AdminPointsControls from "@/components/AdminPointsControls";
 import AddUserForm from "@/components/AddUserForm";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { Header } from "@/components/layout/Header";
 
 const Leaderboard = () => {
   const [leaderboardEntries, setLeaderboardEntries] = React.useState<
@@ -68,72 +69,8 @@ const Leaderboard = () => {
   return (
     <div className="w-full min-h-screen bg-white">
       <div className="flex flex-col">
-        {/* Header section */}
-        <div className="flex items-center justify-between px-5 py-4 md:px-[90px] md:py-[10px]">
-          <div className="text-[#1D0D0D] text-2xl font-bold font-[Poppins]">
-            <Link to="/">Scriveners</Link>
-          </div>
-
-          {/* Mobile menu button - visible only on mobile */}
-          <div className="md:hidden">
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2"
-            >
-              <Menu size={24} />
-            </button>
-          </div>
-
-          {/* Mobile menu - visible only when open on mobile */}
-          {mobileMenuOpen && (
-            <div className="fixed top-16 left-0 right-0 bg-white shadow-md z-50 md:hidden">
-              <div className="flex flex-col items-center py-4">
-                <Link to="/" className="py-2 text-[#142F38] text-lg font-semibold">
-                  Home
-                </Link>
-                <div className="py-2 text-[#142F38] text-lg font-semibold">Poems</div>
-                <div className="py-2 text-[#142F38] text-lg font-semibold">Contact Us</div>
-                <div 
-                  className="py-2 cursor-pointer"
-                  onClick={() => {
-                    setLoginDialogOpen(true);
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  <User size={24} />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Desktop navigation - hidden on mobile */}
-          <div className="hidden md:flex items-center gap-8">
-            <div className="flex items-center gap-10 text-[#142F38] text-lg font-semibold font-[Open Sans]">
-              <Link
-                to="/"
-                className="underline self-stretch basis-auto my-auto hover:text-primary"
-              >
-                Home
-              </Link>
-              <div>Poems</div>
-              <div>Contact Us</div>
-            </div>
-
-            <div className="flex items-center gap-6 bg-[#142E38] px-6 py-5 rounded-[54px]">
-              <Search className="text-white" />
-
-              {/* This is the admin login button */}
-              <div
-                onClick={() => setLoginDialogOpen(true)}
-                className="cursor-pointer"
-              >
-                <User className="text-white" />
-              </div>
-
-              <Menu className="text-white" />
-            </div>
-          </div>
-        </div>
+        {/* Header */}
+        <Header />
 
         {/* Leaderboard header */}
         <div className="w-full bg-[#142F38] flex items-center justify-between px-5 py-4 md:px-[90px] md:h-[102px]">
