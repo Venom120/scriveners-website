@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useAdmin } from "@/components/layout/Header";
 
 interface AdminLoginDialogProps {
   open: boolean;
@@ -16,6 +17,7 @@ const AdminLoginDialog = ({ open, onOpenChange, onLoginSuccess }: AdminLoginDial
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { setIsAdmin } = useAdmin(); // Get the setIsAdmin function from context
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,11 +32,12 @@ const AdminLoginDialog = ({ open, onOpenChange, onLoginSuccess }: AdminLoginDial
         body: JSON.stringify({ password }),
         credentials: "include", // Important for cookies
       });
-      console.log("Submitting password:", password); // Debugging line
 
       const data = await response.json();
 
       if (response.ok) {
+        // Update the admin state in context
+        setIsAdmin(true); 
         toast({
           title: "Login successful",
           description: "You are now logged in as admin",

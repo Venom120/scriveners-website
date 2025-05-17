@@ -6,13 +6,13 @@ import AdminPointsControls from "@/components/AdminPointsControls";
 import AddUserForm from "@/components/AddUserForm";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Header } from "@/components/layout/Header";
+import { Header, useAdmin } from "@/components/layout/Header";
 
 const Leaderboard = () => {
   const [leaderboardEntries, setLeaderboardEntries] = React.useState<
     { rank: number; username: string; score: number }[]
   >([]);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { isAdmin, checkAuthStatus } = useAdmin();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
@@ -31,21 +31,9 @@ const Leaderboard = () => {
     }
   }, [setLeaderboardEntries, toast]);
 
-  const checkAuthStatus = React.useCallback(async () => {
-    try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/check-auth", {
-        credentials: "include", // Important for cookies
-      });
-      const data = await response.json();
-      setIsAdmin(data.authenticated);
-    } catch (error) {
-      console.error("Error checking auth status:", error);
-      setIsAdmin(false);
-    }
-  }, [setIsAdmin]);
-
   useEffect(() => {
     fetchLeaderboardData();
+    // We'll use the context's checkAuthStatus instead of a local function
     checkAuthStatus();
   }, [fetchLeaderboardData, checkAuthStatus]);
 
