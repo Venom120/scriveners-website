@@ -64,13 +64,6 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
             <User size={28} />
           </button>
         )}
-        
-        <button
-          className="text-white hover:text-gray-300"
-          title="Menu"
-        >
-          <Menu size={28} />
-        </button>
       </div>
     </nav>
   );
