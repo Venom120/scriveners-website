@@ -30,11 +30,11 @@ const Leaderboard = () => {
         variant: "destructive",
       });
     }
-  }, [setLeaderboardEntries, toast]);
+  }, [toast]);
 
   useEffect(() => {
     fetchLeaderboardData();
-    // We'll use the context's checkAuthStatus instead of a local function
+    // We'll check auth status when the component mounts to ensure admin state is current
     checkAuthStatus();
   }, [fetchLeaderboardData, checkAuthStatus]);
 

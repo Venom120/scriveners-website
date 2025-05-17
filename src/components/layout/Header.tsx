@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import AdminLoginDialog from "@/components/AdminLoginDialog";
-import { AdminProvider, useAdmin } from "@/contexts/AdminContext";
+import { useAdmin } from "@/contexts/AdminContext";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import LogoutConfirmDialog from "./LogoutConfirmDialog";
@@ -109,9 +109,7 @@ const HeaderContent = () => {
 
 export const Header = () => {
   return (
-    <AdminProvider>
-      <HeaderContent />
-    </AdminProvider>
+    <HeaderContent />
   );
 };
 

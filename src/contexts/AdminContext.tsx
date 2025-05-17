@@ -1,5 +1,5 @@
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
 interface AdminContextType {
   isAdmin: boolean;
@@ -16,7 +16,7 @@ export const AdminContext = createContext<AdminContextType>({
 export const AdminProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const checkAuthStatus = async () => {
+  const checkAuthStatus = useCallback(async () => {
     try {
       const response = await fetch("https://scriveners.pythonabc.org/api/check-auth", {
         credentials: "include", // Important for cookies
@@ -29,7 +29,7 @@ export const AdminProvider = ({ children }: { children: React.ReactNode }) => {
       setIsAdmin(false);
       return false;
     }
-  };
+  }, []);
 
   return (
     <AdminContext.Provider value={{ isAdmin, setIsAdmin, checkAuthStatus }}>

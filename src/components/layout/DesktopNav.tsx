@@ -3,13 +3,25 @@ import { Link } from "react-router-dom";
 import { Instagram, Search, User, Menu } from "lucide-react";
 import { AiOutlineDiscord } from "react-icons/ai";
 import { useAdmin } from "@/contexts/AdminContext";
+import LogoutConfirmDialog from "./LogoutConfirmDialog";
 
 interface DesktopNavProps {
   onLoginClick: () => void;
 }
 
 const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
-  const { isAdmin } = useAdmin();
+  const { isAdmin, setIsAdmin } = useAdmin();
+
+  const handleLogout = async () => {
+    try {
+      await fetch("https://scriveners.pythonabc.org/api/logout", {
+        credentials: "include",
+      });
+      setIsAdmin(false);
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
 
   return (
     <nav className="hidden md:flex items-center justify-between gap-[4px_5px] self-stretch text-lg text-[rgba(20,47,56,1)] font-semibold text-center w-full">
@@ -58,14 +70,28 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
           <AiOutlineDiscord size={29} />
         </a>
         
-        <button
-          onClick={onLoginClick}
-          className="text-[rgba(20,47,56,1)] hover:text-primary flex items-center gap-1"
-          title={isAdmin ? "Admin" : "Admin Login"}
-        >
-          <User size={24} />
-          {isAdmin && <span className="text-sm">Admin</span>}
-        </button>
+        {isAdmin ? (
+          <LogoutConfirmDialog
+            onLogout={handleLogout}
+            trigger={
+              <button
+                className="text-[rgba(20,47,56,1)] hover:text-primary flex items-center gap-1"
+                title="Logout"
+              >
+                <User size={24} />
+                <span className="text-sm">Admin</span>
+              </button>
+            }
+          />
+        ) : (
+          <button
+            onClick={onLoginClick}
+            className="text-[rgba(20,47,56,1)] hover:text-primary"
+            title="Admin Login"
+          >
+            <User size={24} />
+          </button>
+        )}
       </div>
     </nav>
   );
