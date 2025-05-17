@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 secrets.json
+LitFestSubmition.json
 
 # Editor directories and files
 .vscode/*

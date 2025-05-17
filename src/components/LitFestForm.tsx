@@ -57,18 +57,26 @@ const LitFestForm = () => {
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      console.log("Form values:", values);
+      const response = await fetch("/api/litfest/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to submit form");
+      }
       
       // Show success message
       toast.success("Registration successful! We'll see you at LitFest25.");
       
       // Reset form
       form.reset();
-    } catch (error) {
-      toast.error("Registration failed. Please try again later.");
+    } catch (error: unknown) {
+      toast.error((error as Error).message || "Registration failed. Please try again later.");
       console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
