@@ -1,5 +1,17 @@
 @tailwind base;
 @tailwind components;
+@layer base {
+  :root {
+    --primary-gradient-start: #142E38; /* Example color */
+    --primary-gradient-end: #48C9FA; /* Example color */
+  }
+}
+
+@layer utilities {
+  .bg-gradient-primary {
+    background-image: linear-gradient(to right, var(--primary-gradient-start), var(--primary-gradient-end));
+  }
+}
 @tailwind utilities;
 
 @layer base {
