@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import AdminLoginDialog from "@/components/AdminLoginDialog";
-import { useAdmin } from "@/contexts/AdminContext";
+import { useAdmin } from "./HeaderUtils";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import LogoutConfirmDialog from "./LogoutConfirmDialog";
@@ -11,11 +11,11 @@ const HeaderContent = () => {
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   const { isAdmin, checkAuthStatus, setIsAdmin } = useAdmin();
   const { toast } = useToast();
-  
+
   useEffect(() => {
     checkAuthStatus();
   }, [checkAuthStatus]);
-  
+
   const handleLoginSuccess = async () => {
     const authenticated = await checkAuthStatus();
     if (authenticated) {
@@ -25,7 +25,7 @@ const HeaderContent = () => {
       });
     }
   };
-  
+
   const handleLogout = async () => {
     try {
       await fetch("https://scriveners.pythonabc.org/api/logout", {
@@ -45,7 +45,7 @@ const HeaderContent = () => {
       });
     }
   };
-  
+
   const openLoginDialog = () => {
     if (isAdmin) {
       // The logout button is wrapped in LogoutConfirmDialog in the UI
@@ -53,7 +53,7 @@ const HeaderContent = () => {
     }
     setLoginDialogOpen(true);
   };
-  
+
   return (
     <div className="w-full bg-slate-800 rounded-tr-[19px] rounded-bl-[19px] overflow-hidden z-50">
       {/* Desktop Navigation */}
@@ -111,6 +111,3 @@ export const Header = () => {
     <HeaderContent />
   );
 };
-
-// Export context hook for easy access
-export { useAdmin } from "@/contexts/AdminContext";
