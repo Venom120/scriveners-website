@@ -74,7 +74,7 @@ const LitFestForm = () => {
 
   // Lists for dropdowns
   const semesterOptions = ["2nd","4th","6th","8th"];
-  const branchOptions = ["CSE", "AIML", "CSBS", "CSD", "CSDS", "AIR", "IOT", "EE", "EX", "EC", "CIVIL", "Other"];
+  const branchOptions = ["CSE", "AIML", "CSBS", "CSD", "CSDS", "AIR", "IOT", "AIDS", "EE", "EX", "EC", "CIVIL", "MECHANICAL", "Other"];
   const eventsOptions = [
     "Paliamentary Debate", 
     "Treasure Hunt on Books", 
