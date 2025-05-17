@@ -57,14 +57,18 @@ const LitFestForm = () => {
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
+      const dataToSend = {
+        ...values,
+        eventsToAttend: values.eventsToAttend.join(","),
+        eventsToParticipate: values.eventsToParticipate.join(","),
+      };
       const response = await fetch("/api/litfest/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(dataToSend),
       });
-
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to submit form");
@@ -193,6 +197,39 @@ const LitFestForm = () => {
           
           <FormField
             control={form.control}
+            name="eventsToParticipate"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Events You Want to Participate In</FormLabel>
+                <div className="flex flex-col gap-2">
+                  {eventsOptions.map((event) => (
+                    <FormControl key={`participate-${event}`}>
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          value={event}
+                          checked={field.value?.includes(event)}
+                          onChange={(e) => {
+                            const isChecked = e.target.checked;
+                            if (isChecked) {
+                              field.onChange([...field.value, event]);
+                            } else {
+                              field.onChange(field.value.filter((v: string) => v !== event));
+                            }
+                          }}
+                        />
+                        {event}
+                      </label>
+                    </FormControl>
+                  ))}
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="eventsToAttend"
             render={({ field }) => (
               <FormItem>
@@ -224,38 +261,7 @@ const LitFestForm = () => {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="eventsToParticipate"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Events You Want to Participate In</FormLabel>
-                <div className="flex flex-col gap-2">
-                  {eventsOptions.map((event) => (
-                    <FormControl key={`participate-${event}`}>
-                      <label className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          value={event}
-                          checked={field.value?.includes(event)}
-                          onChange={(e) => {
-                            const isChecked = e.target.checked;
-                            if (isChecked) {
-                              field.onChange([...field.value, event]);
-                            } else {
-                              field.onChange(field.value.filter((v: string) => v !== event));
-                            }
-                          }}
-                        />
-                        {event}
-                      </label>
-                    </FormControl>
-                  ))}
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          
 
           
           <Button 

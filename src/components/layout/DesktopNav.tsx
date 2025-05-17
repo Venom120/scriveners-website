@@ -41,7 +41,7 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
             onLogout={handleLogout}
             trigger={
               <button
-                className="text-white hover:text-gray-300 flex items-center gap-1"
+                className="text-white hover:text-sky-300 flex items-center gap-1"
                 title="Logout"
               >
                 <User size={28} />
@@ -52,7 +52,7 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
         ) : (
           <button
             onClick={onLoginClick}
-            className="text-white hover:text-gray-300"
+            className="text-white hover:text-sky-300"
             title="Admin Login"
           >
             <User size={28} />
