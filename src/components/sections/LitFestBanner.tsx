@@ -12,7 +12,7 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
   
   return (
     <div className="w-full relative overflow-hidden">
-      <AspectRatio ratio={isMobile ? 4/3 : 16/5} className="bg-zinc-200 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+      <AspectRatio ratio={isMobile ? 3/1 : 16/4.5} className="bg-zinc-200 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
         {/* Background blur effect */}
         <div className="absolute left-[30%] top-[-12px] w-72 h-72 bg-emerald-300/25 rounded-full shadow-[10px_14px_104px_0px_rgba(0,0,0,0.12)] blur-[100px] z-0"></div>
         
