@@ -7,6 +7,8 @@ const LitFest25 = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-900 relative overflow-hidden">
+      {/* Use the existing Header component */}
+      <Header />
       {/* Add K2D and Poppins fonts */}
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;700&display=swap" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
@@ -15,8 +17,6 @@ const LitFest25 = () => {
       <div className="w-full h-full absolute bg-neutral-600 rounded-[54px] -left-[10%] -top-[5%]"></div>
       <div className="size-96 right-0 bottom-0 absolute bg-white/25 rounded-full shadow-[10px_14px_104px_0px_rgba(0,0,0,0.12)] blur-[100px]"></div>
       
-      {/* Use the existing Header component */}
-      <Header />
       
       <main className="relative z-10">
         {/* LitFest banner section */}

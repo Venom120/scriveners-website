@@ -11,11 +11,11 @@ const HeaderContent = () => {
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   const { isAdmin, checkAuthStatus, setIsAdmin } = useAdmin();
   const { toast } = useToast();
-
+  
   useEffect(() => {
     checkAuthStatus();
   }, [checkAuthStatus]);
-
+  
   const handleLoginSuccess = async () => {
     const authenticated = await checkAuthStatus();
     if (authenticated) {
@@ -25,7 +25,7 @@ const HeaderContent = () => {
       });
     }
   };
-
+  
   const handleLogout = async () => {
     try {
       await fetch("https://scriveners.pythonabc.org/api/logout", {
@@ -45,7 +45,7 @@ const HeaderContent = () => {
       });
     }
   };
-
+  
   const openLoginDialog = () => {
     if (isAdmin) {
       // The logout button is wrapped in LogoutConfirmDialog in the UI
@@ -53,13 +53,13 @@ const HeaderContent = () => {
     }
     setLoginDialogOpen(true);
   };
-
+  
   return (
     <div className="w-full bg-slate-800 rounded-tr-[19px] rounded-bl-[19px] overflow-hidden z-50">
       {/* Desktop Navigation */}
       <DesktopNav 
         onLoginClick={openLoginDialog} 
-      />
+        />
 
       {/* Mobile Navigation */}
       <nav className="flex md:hidden flex-col w-full">
@@ -70,23 +70,23 @@ const HeaderContent = () => {
           <div className="flex items-center gap-3">
             {isAdmin ? (
               <LogoutConfirmDialog
-                onLogout={handleLogout}
-                trigger={
-                  <button
-                    className="text-white hover:text-primary hover:text-sky-300 flex items-center gap-1"
-                    title="Logout"
-                  >
+              onLogout={handleLogout}
+              trigger={
+                <button
+                className="text-white hover:text-primary hover:text-sky-300 flex items-center gap-1"
+                title="Logout"
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     <span className="text-sm">Admin</span>
                   </button>
                 }
-              />
-            ) : (
-              <button
+                />
+              ) : (
+                <button
                 onClick={() => setLoginDialogOpen(true)}
                 className="text-white hover:text-primary hover:text-sky-300"
                 title="Admin Login"
-              >
+                >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </button>
             )}
@@ -101,7 +101,7 @@ const HeaderContent = () => {
         open={loginDialogOpen}
         onOpenChange={setLoginDialogOpen}
         onLoginSuccess={handleLoginSuccess}
-      />
+        />
     </div>
   );
 };
