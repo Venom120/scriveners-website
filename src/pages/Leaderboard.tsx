@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import AdminPointsControls from "@/components/AdminPointsControls";
 import AddUserForm from "@/components/AddUserForm";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
 import { Header } from "@/components/layout/Header";
 import { useAdmin } from "@/contexts/AdminContext";
 

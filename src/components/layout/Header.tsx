@@ -56,7 +56,7 @@ const HeaderContent = () => {
   };
 
   return (
-    <div className="w-full bg-slate-800 rounded-tr-[19px] rounded-bl-[19px] overflow-hidden">
+    <div className="w-full bg-slate-800 rounded-tr-[19px] rounded-bl-[19px] overflow-hidden z-50">
       {/* Desktop Navigation */}
       <DesktopNav 
         onLoginClick={openLoginDialog} 
