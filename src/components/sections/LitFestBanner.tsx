@@ -35,7 +35,7 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
         </div>
         
         {/* Content overlay */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-8 z-10">
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-8 z-10 bg-slate-50/60 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-800 font-['K2D'] text-center mb-2">
             LITFEST 2025
           </h1>
