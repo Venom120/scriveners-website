@@ -20,7 +20,7 @@ const AdminLoginDialog = ({ open, onOpenChange, onLoginSuccess }: AdminLoginDial
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
+    
     try {
       const response = await fetch("https://scriveners.pythonabc.org/api/login", {
         method: "POST",
@@ -30,6 +30,7 @@ const AdminLoginDialog = ({ open, onOpenChange, onLoginSuccess }: AdminLoginDial
         body: JSON.stringify({ password }),
         credentials: "include", // Important for cookies
       });
+      console.log("Submitting password:", password); // Debugging line
 
       const data = await response.json();
 

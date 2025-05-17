@@ -8,7 +8,7 @@ from pydantic import BaseModel
 import secrets
 
 # Secret token for admin authentication
-secrets_path = "secrets.json" # Path to your secrets file
+secrets_path = "../secrets.json" # Path to your secrets file
 
 ADMIN_PASSWORD = "1234"
 
@@ -66,6 +66,7 @@ async def get_poem() -> Dict:
 
 @app.post("/api/login")
 async def login(login_data: LoginRequest, response: Response):
+    print("Login attempt with password:", login_data.password)  # Debugging line
     if login_data.password == ADMIN_PASSWORD:
         # Generate session token
         session_token = secrets.token_hex(16)
