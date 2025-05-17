@@ -196,7 +196,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         creds = Credentials.from_service_account_file("LitFestSubmition.json", scopes=["https://www.googleapis.com/auth/spreadsheets"])
         gc = gspread.service_account(filename="LitFestSubmition.json")
         sh = gc.open_by_key("1zzbf1kc25vC-nbO6kcehu9rR1lXoH96ozOlioCrbuEA")
-        worksheet = sh.Sheet1  # Or specify a sheet name
+        worksheet = sh.sheet1  # Or specify a sheet name
         print("Worksheet:", dict(worksheet)) # For debugging, remove in production
 
         # Check if the sheet is empty
