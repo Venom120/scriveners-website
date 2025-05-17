@@ -62,10 +62,10 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
         )}
         
         <button
-          className="text-sky-400 hover:text-sky-300"
+          className="text-white hover:text-gray-300"
           title="Menu"
         >
-          <Menu size={32} />
+          <Menu size={28} />
         </button>
       </div>
     </nav>
