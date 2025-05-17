@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import LitFestForm from "@/components/LitFestForm";
@@ -22,7 +20,7 @@ const LitFest25 = () => {
       
       <main className="relative z-10">
         {/* LitFest banner section */}
-        <div className="w-full h-64 bg-zinc-200 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] relative">
+        <div className="w-full md:h-96 h-64 bg-zinc-200 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] relative">
           <div className="size-72 left-[30%] top-[-12px] absolute bg-emerald-300/25 rounded-full shadow-[10px_14px_104px_0px_rgba(0,0,0,0.12)] blur-[100px]"></div>
           
           <div className="container mx-auto px-4 py-8 text-center relative">

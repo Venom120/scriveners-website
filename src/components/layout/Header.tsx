@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -64,8 +63,8 @@ const HeaderContent = () => {
 
       {/* Mobile Navigation */}
       <nav className="flex md:hidden flex-col w-full">
-        <div className="flex items-center justify-between p-4">
-          <div className="text-sky-400 text-2xl font-bold">
+        <div className="flex items-center justify-between p-4 font-['Inter'] bg-[#1E1E1E]">
+          <div className="text-[#5DD1E3] text-3xl font-bold ">
             <Link to="/">SCRIVENERS</Link>
           </div>
           <div className="flex items-center gap-3">
@@ -74,7 +73,7 @@ const HeaderContent = () => {
                 onLogout={handleLogout}
                 trigger={
                   <button
-                    className="text-sky-400 hover:text-primary flex items-center gap-1"
+                    className="text-white hover:text-primary hover:text-sky-300 flex items-center gap-1"
                     title="Logout"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -85,18 +84,18 @@ const HeaderContent = () => {
             ) : (
               <button
                 onClick={() => setLoginDialogOpen(true)}
-                className="text-sky-400 hover:text-primary"
+                className="text-white hover:text-primary hover:text-sky-300"
                 title="Admin Login"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </button>
             )}
-
-            <MobileNav onLoginClick={openLoginDialog} />
+            <MobileNav 
+              onLoginClick={openLoginDialog} 
+            />
           </div>
         </div>
       </nav>
-      
       {/* Admin Login Dialog */}
       <AdminLoginDialog
         open={loginDialogOpen}
