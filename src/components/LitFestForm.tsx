@@ -99,7 +99,7 @@ const LitFestForm = () => {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg">
+    <div className="bg-white m-36 p-20 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">Register for LitFest25</h2>
       
       <Form {...form}>

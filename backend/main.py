@@ -206,7 +206,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         data = [
             form_data.name,
             form_data.email,
-            "", # Empty column
             form_data.phone,
             form_data.semester,
             form_data.branch,

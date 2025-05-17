@@ -14,7 +14,7 @@ const LitFest25 = () => {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
       
       {/* Background elements */}
-      <div className="w-full h-full absolute bg-neutral-600 rounded-[54px] -left-[10%] -top-[5%]"></div>
+      <div className="w-full h-full absolute bg-neutral-600 rounded-[54px]"></div>
       <div className="size-96 right-0 bottom-0 absolute bg-white/25 rounded-full shadow-[10px_14px_104px_0px_rgba(0,0,0,0.12)] blur-[100px]"></div>
       
       
