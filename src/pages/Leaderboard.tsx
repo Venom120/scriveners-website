@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import AddUserForm from "@/components/AddUserForm";
+import AddUserForm from "@/components/leaderboard/AddUserForm";
 import { useToast } from "@/hooks/use-toast";
 import { Header } from "@/components/layout/Header";
 import { useAdmin } from "@/contexts/AdminContext";

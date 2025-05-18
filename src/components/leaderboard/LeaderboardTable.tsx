@@ -1,6 +1,6 @@
 
 import React from "react";
-import AdminPointsControls from "@/components/AdminPointsControls";
+import AdminPointsControls from "@/components/leaderboard/AdminPointsControls";
 import { useAdmin } from "@/contexts/AdminContext";
 
 interface LeaderboardEntry {

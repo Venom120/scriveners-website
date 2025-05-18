@@ -1,7 +1,8 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import AdminLoginDialog from "@/components/AdminLoginDialog";
+import AdminLoginDialog from "@/components/layout/AdminLoginDialog";
 import { useAdmin } from "./HeaderUtils";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";

@@ -17,7 +17,7 @@ const AdminLoginDialog = ({ open, onOpenChange, onLoginSuccess }: AdminLoginDial
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const { setIsAdmin } = useAdmin(); // Get the setIsAdmin function from context
+  const { setIsAdmin } = useAdmin();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
