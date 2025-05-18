@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=yatharth
+User=ubuntu
 WorkingDirectory=~/scriveners
 
 ExecStart=/bin/bash -c "source .venv/bin/activate && npm run dev:backend"
