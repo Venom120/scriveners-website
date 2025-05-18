@@ -87,21 +87,23 @@ export const usePoemData = () => {
   }, []);
 
   const handleAuthorClick = (authorName: string) => {
-    setSelectedAuthor(authorName);
-    setCurrentImageIndex(0); // Reset to first image when changing author
+    if (selectedAuthor !== authorName) {
+      setSelectedAuthor(authorName);
+      setCurrentImageIndex(0); // Reset to first image when changing author
+    }
   };
 
   const handleNextImage = () => {
     if (!selectedAuthor) return;
     const authorData = authors.find(a => a.name === selectedAuthor);
     if (authorData && currentImageIndex < authorData.images.length - 1) {
-      setCurrentImageIndex(currentImageIndex + 1);
+      setCurrentImageIndex(prev => prev + 1);
     }
   };
 
   const handlePrevImage = () => {
     if (currentImageIndex > 0) {
-      setCurrentImageIndex(currentImageIndex - 1);
+      setCurrentImageIndex(prev => prev - 1);
     }
   };
 
