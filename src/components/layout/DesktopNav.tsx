@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { User, Search, Menu } from "lucide-react";
+import { User } from "lucide-react";
 import { useAdmin } from "@/contexts/AdminContext";
 import LogoutConfirmDialog from "./LogoutConfirmDialog";
 
@@ -36,7 +36,6 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
       </div>
       
       <div className="flex items-center space-x-4">
-        
         {isAdmin ? (
           <LogoutConfirmDialog
             onLogout={handleLogout}

@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Leaderboard from "./pages/Leaderboard";
 import LitFest25 from "./pages/LitFest25";
+import Poems from "./pages/Poems";
 import { useState } from "react";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/litfest25" element={<LitFest25 />} />
+              <Route path="/poems" element={<Poems />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
