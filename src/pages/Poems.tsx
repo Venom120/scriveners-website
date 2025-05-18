@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import {
@@ -20,12 +19,8 @@ const Poems = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    // This function simulates fetching poem data from the image directory
+    // This function fetches poem data from the static list of image paths
     const fetchPoemData = () => {
-      // This is a workaround for importing image files dynamically
-      // In a real app, we'd use an API call or more robust file handling
-      const importAll = (r: __WebpackModuleApi.RequireContext) => r.keys().map(r);
-      
       try {
         // Extract author names and poem counts from filenames
         const poemAuthors: Record<string, string[]> = {};
@@ -69,6 +64,7 @@ const Poems = () => {
             poemAuthors[name] = [];
           }
           
+          // Create path to image
           poemAuthors[name].push(`/src/components/images/poems/${file}`);
         });
         
