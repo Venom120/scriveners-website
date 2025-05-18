@@ -46,6 +46,9 @@ const MobileNav = ({ onLoginClick }: MobileNavProps) => {
             <Link to="/leaderboard" onClick={() => setIsMobileMenuOpen(false)} className="py-2 text-white text-lg font-semibold hover:text-sky-300">
               LEADERBOARD
             </Link>
+            <Link to="/poems" onClick={() => setIsMobileMenuOpen(false)} className="py-2 text-white text-lg font-semibold hover:text-sky-300">
+              POEMS
+            </Link>
             <Link to="/litfest25" onClick={() => setIsMobileMenuOpen(false)} className="py-2 text-white text-lg font-semibold hover:text-sky-300">
               LITFEST
             </Link>
