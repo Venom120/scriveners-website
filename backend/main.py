@@ -203,16 +203,11 @@ OPEN_MIC_SHEET_NAME = "openmic"
 @app.post("/api/litfest/submit")
 async def submit_litfest_form(form_data: LitFestFormRequest):
     try:
-        creds = Credentials.from_service_account_file("LitFestSubmition.json", scopes=["https://www.googleapis.com/auth/spreadsheets"])
         gc = gspread.service_account(filename="LitFestSubmition.json")
         sh = gc.open_by_key("1zzbf1kc25vC-nbO6kcehu9rR1lXoH96ozOlioCrbuEA")
 
         # Access sheets
         main_sheet = sh.worksheet(MAIN_SHEET_NAME)
-        debate_sheet = sh.worksheet(DEBATE_SHEET_NAME)
-        treasure_hunt_sheet = sh.worksheet(TREASURE_HUNT_SHEET_NAME)
-        spell_bee_sheet = sh.worksheet(SPELL_BEE_SHEET_NAME)
-        open_mic_sheet = sh.worksheet(OPEN_MIC_SHEET_NAME)
 
         # Prepare data
         data = [
@@ -267,14 +262,28 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                     pass # Sheet doesn't exist, ignore
         else:
             # Append data to the main sheet
-            main_sheet.append_row(data)
+            main_sheet.append_row([
+                        form_data.name,
+                        form_data.email,
+                        form_data.phone,
+                        form_data.semester,
+                        form_data.branch,
+                        ";".join(form_data.eventsToParticipate.split(",")),
+                    ])
 
         # Append to event-specific sheets
         for event in event_categories:
             sheet_name = event.value.replace(" ", "_").lower()
             try:
                 sheet = sh.worksheet(sheet_name)
-                sheet.append_row(data)
+                sheet.append_row([
+                        form_data.name,
+                        form_data.email,
+                        form_data.phone,
+                        form_data.semester,
+                        form_data.branch,
+                        ";".join(form_data.eventsToParticipate.split(",")),
+                    ])
             except gspread.exceptions.WorksheetNotFound:
                 # If the sheet doesn't exist, it means it's the first time someone is participating in this event.
                 # In this case, we can skip appending to the sheet.
