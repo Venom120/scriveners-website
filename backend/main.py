@@ -188,10 +188,10 @@ async def add_user(
         )
 
 class Event(str, Enum):
-    DEBATE = "Debate"
-    TREASURE_HUNT = "Treasure Hunt"
-    SPELL_BEE = "Spell Bee"
-    OPEN_MIC = "Open Mic"
+    DEBATE = "debate"
+    TREASURE_HUNT = "treasurehunt"
+    SPELL_BEE = "spellbee"
+    OPEN_MIC = "openmic"
 
 MAIN_SHEET_NAME = "main"
 DEBATE_SHEET_NAME = "debate"
@@ -253,7 +253,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 if event.value in [e.value for e in event_categories]:
                     continue  # Don't delete from sheets the user is still participating in
                 try:
-                    sheet_name = event.value.replace(" ", "_").lower()
+                    sheet_name = event.value
                     sheet = sh.worksheet(sheet_name)
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
@@ -276,9 +276,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
 
         # Append to event-specific sheets
         for event in event_categories:
-            sheet_name = event.value.replace(" ", "_").lower()
-            print(sheet_name)
-            sheet = []
+            sheet_name = event.value
             if sheet_name == DEBATE_SHEET_NAME:
                 sheet = debate_sheet
             elif sheet_name == TREASURE_HUNT_SHEET_NAME:
