@@ -251,8 +251,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
 
             # Delete from other sheets
             for event in Event:
-                if event.value in [e.value for e in event_categories]:
-                    continue  # Don't delete from sheets the user is still participating in
                 try:
                     sheet_name = event.value.replace(" ", "").lower()
                     sheet = sh.worksheet(sheet_name)
@@ -276,6 +274,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             ])
 
         # Append to event-specific sheets
+        print(event_categories)
         for event in event_categories:
             sheet_name = event.value.replace(" ", "").lower()
             if sheet_name == DEBATE_SHEET_NAME:
