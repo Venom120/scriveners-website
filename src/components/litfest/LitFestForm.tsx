@@ -93,7 +93,7 @@ const LitFestForm = () => {
   const semesterOptions = ["2nd","4th","6th","8th"];
   const branchOptions = ["CSE", "AIML", "CSBS", "CSD", "CSDS", "AIR", "IOT", "AIDS", "EE", "EX", "EC", "CIVIL", "MECHANICAL", "Other"];
   const eventsOptions = [
-    "Paliamentary Debate", 
+    "Parliamentary Debate", 
     "Treasure Hunt on Books", 
     "Spell Bee", 
     "Open Mic"
