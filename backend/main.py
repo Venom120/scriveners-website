@@ -277,6 +277,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         print(event_categories)
         for event in event_categories:
             sheet_name = event.value.replace(" ", "").lower()
+            print(sheet_name)
             if sheet_name == DEBATE_SHEET_NAME:
                 sheet = debate_sheet
             elif sheet_name == TREASURE_HUNT_SHEET_NAME:
