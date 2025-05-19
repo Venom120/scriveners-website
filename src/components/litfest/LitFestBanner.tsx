@@ -14,29 +14,29 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
     <div className="w-full relative overflow-hidden">
       <AspectRatio ratio={isMobile ? 3/1 : 16/4.5} className="bg-zinc-200 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
         {/* Left side image */}
-        <div className="absolute left-0 top-0 h-full z-0 w-1/3 flex items-center justify-start">
+        <div className="absolute left-0 top-0 h-full z-0 w-1/3 overflow-hidden">
           <img 
             src="/src/components/images/litfest24left.svg"
             alt="LitFest2k24"
-            className="h-full object-contain"
+            className="h-full w-full object-cover"
           />
         </div>
         
         {/* Center image */}
-        <div className="absolute left-1/3 top-0 h-full z-0 w-1/3 flex items-center justify-center">
+        <div className="absolute left-1/3 top-0 h-full z-0 w-1/3 overflow-hidden">
           <img 
             src="/src/components/images/litfest24centre.svg"
             alt="LitFest2k24"
-            className="h-full object-contain"
+            className="h-full w-full object-cover"
           />
         </div>
         
         {/* Right side image */}
-        <div className="absolute right-0 top-0 h-full z-0 w-1/3 flex items-center justify-end">
+        <div className="absolute right-0 top-0 h-full z-0 w-1/3 overflow-hidden">
           <img 
             src="/src/components/images/litfest24right.svg"
             alt="LitFest2k24"
-            className="h-full object-contain"
+            className="h-full w-full object-cover"
           />
         </div>
         
