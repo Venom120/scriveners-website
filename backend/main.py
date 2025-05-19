@@ -188,8 +188,8 @@ async def add_user(
         )
 
 class Event(str, Enum):
-    DEBATE = "Debate"
-    TREASURE_HUNT = "Treasure Hunt"
+    DEBATE = "Parliamentary Debate"
+    TREASURE_HUNT = "Treasure Hunt On Books"
     SPELL_BEE = "Spell Bee"
     OPEN_MIC = "Open Mic"
 
