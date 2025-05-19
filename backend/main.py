@@ -226,8 +226,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         # Determine event categories
         events_participating = form_data.eventsToParticipate.split(",")
         event_categories = []
-        print(events_participating)
-        print(Event.DEBATE.value,Event.TREASURE_HUNT.value,Event.SPELL_BEE.value,Event.OPEN_MIC.value)
         if Event.DEBATE.value in events_participating:
             event_categories.append(Event.DEBATE)
         if Event.TREASURE_HUNT.value in events_participating:
@@ -236,7 +234,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             event_categories.append(Event.SPELL_BEE)
         if Event.OPEN_MIC.value in events_participating:
             event_categories.append(Event.OPEN_MIC)
-        print(event_categories)
         # Get all records from the main sheet
         main_records = main_sheet.get_all_records()
 
@@ -264,7 +261,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                             sheet.delete_rows(index + 1)  # +1 for header and 0-based indexing and starting from 0
                             break
                 except gspread.exceptions.WorksheetNotFound:
-                    print(f"Sheet {sheet_name} does not exist, skipping deletion.")
                     pass  # Sheet doesn't exist, ignore
         else:
             # Append data to the main sheet
@@ -281,6 +277,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         # Append to event-specific sheets
         for event in event_categories:
             sheet_name = event.value.replace(" ", "_").lower()
+            sheet = None
             if sheet_name == DEBATE_SHEET_NAME:
                 sheet = debate_sheet
             elif sheet_name == TREASURE_HUNT_SHEET_NAME:
