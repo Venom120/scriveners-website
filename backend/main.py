@@ -252,7 +252,15 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             # Delete from other sheets
             for event in Event:
                 try:
-                    sheet_name = event.value.replace(" ", "").lower()
+                    sheet_name = None
+                    if event == Event.DEBATE:
+                        sheet_name = debate_sheet
+                    elif event == Event.TREASURE_HUNT:
+                        sheet_name = treasure_hunt_sheet
+                    elif event == Event.SPELL_BEE:
+                        sheet_name = spell_bee_sheet
+                    elif event == Event.OPEN_MIC:
+                        sheet_name = open_mic_sheet
                     sheet = sh.worksheet(sheet_name)
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
@@ -275,6 +283,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
 
         # Append to event-specific sheets
         for event in event_categories:
+            sheet_name = None
             if event == Event.DEBATE:
                 sheet = debate_sheet
             elif event == Event.TREASURE_HUNT:
