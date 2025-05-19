@@ -188,10 +188,10 @@ async def add_user(
         )
 
 class Event(str, Enum):
-    DEBATE = "debate"
-    TREASURE_HUNT = "treasurehunt"
-    SPELL_BEE = "spellbee"
-    OPEN_MIC = "openmic"
+    DEBATE = "Debate"
+    TREASURE_HUNT = "Treasure Hunt"
+    SPELL_BEE = "Spell Bee"
+    OPEN_MIC = "Open Mic"
 
 MAIN_SHEET_NAME = "main"
 DEBATE_SHEET_NAME = "debate"
@@ -234,6 +234,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             event_categories.append(Event.SPELL_BEE)
         if Event.OPEN_MIC.value in events_participating:
             event_categories.append(Event.OPEN_MIC)
+
         # Get all records from the main sheet
         main_records = main_sheet.get_all_records()
 
@@ -241,7 +242,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         existing_row_index = -1
         for index, row in enumerate(main_records):
             if row.get('email') == form_data.email:
-                existing_row_index = index + 2  # +2 because of header row and 0-based indexing and starting from -1
+                existing_row_index = index + 2  # +2 because of header row and 0-based indexing
                 break
 
         if existing_row_index != -1:
@@ -253,12 +254,12 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 if event.value in [e.value for e in event_categories]:
                     continue  # Don't delete from sheets the user is still participating in
                 try:
-                    sheet_name = event.value
+                    sheet_name = event.value.replace(" ", "_").lower()
                     sheet = sh.worksheet(sheet_name)
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
                         if row.get('email') == form_data.email:
-                            sheet.delete_rows(index + 1)  # +1 for header and 0-based indexing and starting from 0
+                            sheet.delete_rows(index + 2)  # +2 for header and 0-based indexing
                             break
                 except gspread.exceptions.WorksheetNotFound:
                     pass  # Sheet doesn't exist, ignore
@@ -270,13 +271,12 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 form_data.phone,
                 form_data.semester,
                 form_data.branch,
-                ";".join(form_data.eventsToAttend.split(",")),
                 ";".join(form_data.eventsToParticipate.split(",")),
             ])
 
         # Append to event-specific sheets
         for event in event_categories:
-            sheet_name = event.value
+            sheet_name = event.value.replace(" ", "_").lower()
             if sheet_name == DEBATE_SHEET_NAME:
                 sheet = debate_sheet
             elif sheet_name == TREASURE_HUNT_SHEET_NAME:
@@ -285,14 +285,14 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 sheet = spell_bee_sheet
             elif sheet_name == OPEN_MIC_SHEET_NAME:
                 sheet = open_mic_sheet
-            print(sheet_name, event.value, sheet.title)
+            print(f"Appending to sheet: {sheet_name}")
             sheet.append_row([
                 form_data.name,
                 form_data.email,
                 form_data.phone,
                 form_data.semester,
                 form_data.branch,
-                ";".join(form_data.eventsToParticipate.split(","))
+                ";".join(form_data.eventsToParticipate.split(",")),
             ])
 
         return {"message": "Form submitted successfully"}
