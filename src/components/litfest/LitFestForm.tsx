@@ -81,6 +81,9 @@ const LitFestForm = () => {
       
       // Reset form
       form.reset();
+      // Explicitly set semester and branch to null
+      form.setValue("semester", null);
+      form.setValue("branch", null);
     } catch (error: unknown) {
       toast.error((error as Error).message || "Registration failed. Please try again later.");
       console.error("Form submission error:", error);
@@ -156,7 +159,8 @@ const LitFestForm = () => {
                 <Select onValueChange={field.onChange} defaultValue={undefined}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select your semester" />
+                      {field.value ? field.value : "Select your semester"}
+                      <SelectValue  />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -181,7 +185,8 @@ const LitFestForm = () => {
                 <Select onValueChange={field.onChange} defaultValue={undefined}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select your branch" />
+                      {field.value ? field.value : "Select your branch"}
+                      <SelectValue  />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>

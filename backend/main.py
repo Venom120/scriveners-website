@@ -252,16 +252,14 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             # Delete from other sheets
             for event in Event:
                 try:
-                    sheet_name = None
                     if event == Event.DEBATE:
-                        sheet_name = debate_sheet
+                        sheet = debate_sheet
                     elif event == Event.TREASURE_HUNT:
-                        sheet_name = treasure_hunt_sheet
+                        sheet = treasure_hunt_sheet
                     elif event == Event.SPELL_BEE:
-                        sheet_name = spell_bee_sheet
+                        sheet = spell_bee_sheet
                     elif event == Event.OPEN_MIC:
-                        sheet_name = open_mic_sheet
-                    sheet = sh.worksheet(sheet_name)
+                        sheet = open_mic_sheet
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
                         if row.get('email') == form_data.email:
@@ -277,13 +275,11 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 form_data.phone,
                 form_data.semester,
                 form_data.branch,
-                ";".join(form_data.eventsToAttend.split(",")),
                 ";".join(form_data.eventsToParticipate.split(",")),
             ])
 
         # Append to event-specific sheets
         for event in event_categories:
-            sheet_name = None
             if event == Event.DEBATE:
                 sheet = debate_sheet
             elif event == Event.TREASURE_HUNT:
@@ -292,7 +288,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 sheet = spell_bee_sheet
             elif event == Event.OPEN_MIC:
                 sheet = open_mic_sheet
-            print(f"Appending to sheet: {event.value}")
             sheet.append_row([
                 form_data.name,
                 form_data.email,
@@ -300,7 +295,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 form_data.semester,
                 form_data.branch
             ])
-
         return {"message": "Form submitted successfully"}
 
     except Exception as e:
