@@ -285,6 +285,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 sheet = spell_bee_sheet
             elif sheet_name == OPEN_MIC_SHEET_NAME:
                 sheet = open_mic_sheet
+            print(sheet_name, event.value, sheet.title)
             sheet.append_row([
                 form_data.name,
                 form_data.email,
