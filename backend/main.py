@@ -187,9 +187,6 @@ async def add_user(
             detail=f"Error adding user: {str(e)}"
         )
 
-from typing import List
-from enum import Enum
-
 class Event(str, Enum):
     DEBATE = "Debate"
     TREASURE_HUNT = "Treasure Hunt"
@@ -229,6 +226,8 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         # Determine event categories
         events_participating = form_data.eventsToParticipate.split(",")
         event_categories = []
+        print(events_participating)
+        print(Event.DEBATE.value,Event.TREASURE_HUNT.value,Event.SPELL_BEE.value,Event.OPEN_MIC.value)
         if Event.DEBATE.value in events_participating:
             event_categories.append(Event.DEBATE)
         if Event.TREASURE_HUNT.value in events_participating:
@@ -237,7 +236,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             event_categories.append(Event.SPELL_BEE)
         if Event.OPEN_MIC.value in events_participating:
             event_categories.append(Event.OPEN_MIC)
-
+        print(event_categories)
         # Get all records from the main sheet
         main_records = main_sheet.get_all_records()
 
@@ -245,7 +244,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         existing_row_index = -1
         for index, row in enumerate(main_records):
             if row.get('email') == form_data.email:
-                existing_row_index = index + 2  # +2 because of header row and 0-based indexing
+                existing_row_index = index + 2  # +2 because of header row and 0-based indexing and starting from -1
                 break
 
         if existing_row_index != -1:
@@ -262,9 +261,10 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
                         if row.get('email') == form_data.email:
-                            sheet.delete_rows(index + 2)  # +2 for header and 0-based indexing
+                            sheet.delete_rows(index + 1)  # +1 for header and 0-based indexing and starting from 0
                             break
                 except gspread.exceptions.WorksheetNotFound:
+                    print(f"Sheet {sheet_name} does not exist, skipping deletion.")
                     pass  # Sheet doesn't exist, ignore
         else:
             # Append data to the main sheet
@@ -274,6 +274,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 form_data.phone,
                 form_data.semester,
                 form_data.branch,
+                ";".join(form_data.eventsToAttend.split(",")),
                 ";".join(form_data.eventsToParticipate.split(",")),
             ])
 
