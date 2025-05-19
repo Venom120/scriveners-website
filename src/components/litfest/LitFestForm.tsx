@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,6 +39,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const LitFestForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formKey, setFormKey] = useState(0); // Add a key to force re-render
 
   // Initialize the form
   const form = useForm<FormValues>({
@@ -79,10 +80,9 @@ const LitFestForm = () => {
       // Show success message
       toast.success("Registration successful! We'll see you at LitFest25.");
       
-      // Reset form
+      // Reset form and force re-render
       form.reset();
-      form.setValue("semester", undefined);
-      form.setValue("branch", undefined);
+      setFormKey(prevKey => prevKey + 1); // Increment key to force re-render
     } catch (error: unknown) {
       toast.error((error as Error).message || "Registration failed. Please try again later.");
       console.error("Form submission error:", error);
@@ -106,7 +106,7 @@ const LitFestForm = () => {
       <h2 className="text-2xl font-bold mb-6 text-center">Register for LitFest25</h2>
       
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form key={formKey} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
             name="name"
@@ -155,10 +155,10 @@ const LitFestForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Current Semester</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={undefined}>
+                <Select onValueChange={field.onChange} value={field.value || ""}>
                   <FormControl>
                     <SelectTrigger>
-                      {field.value || "Select your semester"}
+                      <SelectValue placeholder="Select your semester" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -180,10 +180,10 @@ const LitFestForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Branch / Department</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={undefined}>
+                <Select onValueChange={field.onChange} value={field.value || ""}>
                   <FormControl>
                     <SelectTrigger>
-                      {field.value || "Select your branch"}
+                      <SelectValue placeholder="Select your branch" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
