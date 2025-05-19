@@ -12,7 +12,7 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
   
   return (
     <div className="w-full relative overflow-hidden">
-      <AspectRatio ratio={isMobile ? 2.75/1 : 16/4.5} className="bg-zinc-200 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+      <AspectRatio ratio={isMobile ? 2.65/1 : 16/4.5} className="bg-zinc-200 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
         {/* Left side image */}
         <div className="absolute left-0 top-0 h-full z-0 w-1/3 overflow-hidden">
           <img 
