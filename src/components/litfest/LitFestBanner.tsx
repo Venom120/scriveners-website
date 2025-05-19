@@ -51,7 +51,7 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
           
           <button 
             onClick={onRegisterClick}
-            className="bg-sky-400/60 text-neutral-900 text-base md:text-xl font-normal font-['Inter'] px-3 py-2 md:py-4 rounded-[51px] w-32 md:w-44 h-10 md:h-14 inline-flex justify-center items-center mt-1 md:mt-4 hover:bg-sky-400/80 transition-colors"
+            className="bg-sky-400/80 text-neutral-900 text-base md:text-xl font-normal font-['Inter'] px-3 py-2 md:py-4 rounded-[51px] w-32 md:w-44 h-10 md:h-14 inline-flex justify-center items-center mt-1 md:mt-4 hover:bg-sky-400/80 transition-colors"
           >
             Register now
           </button>

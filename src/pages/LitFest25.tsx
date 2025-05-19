@@ -33,14 +33,14 @@ const LitFest25 = () => {
           </div>
         )}
         
-        {/* About section */}
-        <LitFestAboutSection />
-        
-        {/* Key Highlights section */}
-        <LitFestHighlights />
-        
-        {/* Footer */}
-        <div className="w-full h-20 bg-zinc-300 mt-16"></div>
+        {/* Poster section */}
+        <div className="px-4 md:px-96 py-8 md:py-12">
+          <img
+            src="/src/components/images/LitFest25Poster.jpg"
+            alt="LitFest25 Poster"
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
       </main>
     </div>
   );
