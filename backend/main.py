@@ -274,18 +274,16 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             ])
 
         # Append to event-specific sheets
-        print(event_categories)
         for event in event_categories:
-            sheet_name = event.value.replace(" ", "").lower()
-            print(sheet_name)
-            if sheet_name == DEBATE_SHEET_NAME:
+            if event == Event.DEBATE:
                 sheet = debate_sheet
-            elif sheet_name == TREASURE_HUNT_SHEET_NAME:
+            elif event == Event.TREASURE_HUNT:
                 sheet = treasure_hunt_sheet
-            elif sheet_name == SPELL_BEE_SHEET_NAME:
+            elif event == Event.SPELL_BEE:
                 sheet = spell_bee_sheet
-            elif sheet_name == OPEN_MIC_SHEET_NAME:
+            elif event == Event.OPEN_MIC:
                 sheet = open_mic_sheet
+            print(f"Appending to sheet: {event.value}")
             sheet.append_row([
                 form_data.name,
                 form_data.email,
