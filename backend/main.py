@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI, Depends, HTTPException, Request, status, Response
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, List, Optional
@@ -188,6 +187,9 @@ async def add_user(
             detail=f"Error adding user: {str(e)}"
         )
 
+from typing import List
+from enum import Enum
+
 class Event(str, Enum):
     DEBATE = "Debate"
     TREASURE_HUNT = "Treasure Hunt"
@@ -208,6 +210,10 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
 
         # Access sheets
         main_sheet = sh.worksheet(MAIN_SHEET_NAME)
+        debate_sheet = sh.worksheet(DEBATE_SHEET_NAME)
+        treasure_hunt_sheet = sh.worksheet(TREASURE_HUNT_SHEET_NAME)
+        spell_bee_sheet = sh.worksheet(SPELL_BEE_SHEET_NAME)
+        open_mic_sheet = sh.worksheet(OPEN_MIC_SHEET_NAME)
 
         # Prepare data
         data = [
@@ -249,45 +255,47 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             # Delete from other sheets
             for event in Event:
                 if event.value in [e.value for e in event_categories]:
-                    continue # Don't delete from sheets the user is still participating in
+                    continue  # Don't delete from sheets the user is still participating in
                 try:
                     sheet_name = event.value.replace(" ", "_").lower()
                     sheet = sh.worksheet(sheet_name)
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
                         if row.get('email') == form_data.email:
-                            sheet.delete_rows(index + 2) # +2 for header and 0-based indexing
+                            sheet.delete_rows(index + 2)  # +2 for header and 0-based indexing
                             break
                 except gspread.exceptions.WorksheetNotFound:
-                    pass # Sheet doesn't exist, ignore
+                    pass  # Sheet doesn't exist, ignore
         else:
             # Append data to the main sheet
             main_sheet.append_row([
-                        form_data.name,
-                        form_data.email,
-                        form_data.phone,
-                        form_data.semester,
-                        form_data.branch,
-                        ";".join(form_data.eventsToParticipate.split(",")),
-                    ])
+                form_data.name,
+                form_data.email,
+                form_data.phone,
+                form_data.semester,
+                form_data.branch,
+                ";".join(form_data.eventsToParticipate.split(",")),
+            ])
 
         # Append to event-specific sheets
         for event in event_categories:
             sheet_name = event.value.replace(" ", "_").lower()
-            try:
-                sheet = sh.worksheet(sheet_name)
-                sheet.append_row([
-                        form_data.name,
-                        form_data.email,
-                        form_data.phone,
-                        form_data.semester,
-                        form_data.branch,
-                        ";".join(form_data.eventsToParticipate.split(",")),
-                    ])
-            except gspread.exceptions.WorksheetNotFound:
-                # If the sheet doesn't exist, it means it's the first time someone is participating in this event.
-                # In this case, we can skip appending to the sheet.
-                pass
+            if sheet_name == DEBATE_SHEET_NAME:
+                sheet = debate_sheet
+            elif sheet_name == TREASURE_HUNT_SHEET_NAME:
+                sheet = treasure_hunt_sheet
+            elif sheet_name == SPELL_BEE_SHEET_NAME:
+                sheet = spell_bee_sheet
+            elif sheet_name == OPEN_MIC_SHEET_NAME:
+                sheet = open_mic_sheet
+            sheet.append_row([
+                form_data.name,
+                form_data.email,
+                form_data.phone,
+                form_data.semester,
+                form_data.branch,
+                ";".join(form_data.eventsToParticipate.split(",")),
+            ])
 
         return {"message": "Form submitted successfully"}
 
