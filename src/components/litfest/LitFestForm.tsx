@@ -153,7 +153,7 @@ const LitFestForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Current Semester</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue="">
+                <Select onValueChange={field.onChange} defaultValue={undefined}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select your semester" />
@@ -178,7 +178,7 @@ const LitFestForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Branch / Department</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue="">
+                <Select onValueChange={field.onChange} defaultValue={undefined}>
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select your branch" />
