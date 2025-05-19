@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import LitFestForm from "@/components/litfest/LitFestForm";
 import LitFestBanner from "@/components/litfest/LitFestBanner";
-import LitFestAboutSection from "@/components/litfest/LitFestAboutSection";
-import LitFestHighlights from "@/components/litfest/LitFestHighlights";
 
 const LitFest25 = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
