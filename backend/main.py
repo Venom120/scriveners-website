@@ -275,6 +275,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 form_data.phone,
                 form_data.semester,
                 form_data.branch,
+                ";".join(form_data.eventsToAttend.split(",")),
                 ";".join(form_data.eventsToParticipate.split(",")),
             ])
 
