@@ -18,8 +18,9 @@ const LitFest25 = () => {
       {/* Use the existing Header component */}
       <Header />
       
-      {/* Background elements */}
-      <div className="w-full h-full absolute bg-neutral-600 rounded-[54px]"></div>
+      {/* Background color */}
+      <div className="w-full h-full absolute bg-neutral-600"></div>
+      {/* Background Blur */}
       <div className="size-96 right-0 bottom-0 absolute bg-white/25 rounded-full shadow-[10px_14px_104px_0px_rgba(0,0,0,0.12)] blur-[100px]"></div>
       
       <main className="relative z-10">
