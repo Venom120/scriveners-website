@@ -278,7 +278,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         # Append to event-specific sheets
         for event in event_categories:
             sheet_name = event.value.replace(" ", "").lower()
-            print(sheet_name, event.value)
             if sheet_name == DEBATE_SHEET_NAME:
                 sheet = debate_sheet
             elif sheet_name == TREASURE_HUNT_SHEET_NAME:
@@ -287,14 +286,12 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 sheet = spell_bee_sheet
             elif sheet_name == OPEN_MIC_SHEET_NAME:
                 sheet = open_mic_sheet
-            print(f"Appending to sheet: {sheet_name}")
             sheet.append_row([
                 form_data.name,
                 form_data.email,
                 form_data.phone,
                 form_data.semester,
-                form_data.branch,
-                ";".join(form_data.eventsToParticipate.split(",")),
+                form_data.branch
             ])
 
         return {"message": "Form submitted successfully"}
