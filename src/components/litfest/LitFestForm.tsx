@@ -81,9 +81,8 @@ const LitFestForm = () => {
       
       // Reset form
       form.reset();
-      // Explicitly set semester and branch to null
-      form.setValue("semester", null);
-      form.setValue("branch", null);
+      form.setValue("semester", undefined);
+      form.setValue("branch", undefined);
     } catch (error: unknown) {
       toast.error((error as Error).message || "Registration failed. Please try again later.");
       console.error("Form submission error:", error);
