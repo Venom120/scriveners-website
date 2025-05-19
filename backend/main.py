@@ -6,7 +6,7 @@ import pymongo
 import json
 from pydantic import BaseModel
 import secrets
-import os
+from enum import Enum
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -188,46 +188,100 @@ async def add_user(
             detail=f"Error adding user: {str(e)}"
         )
 
+class Event(str, Enum):
+    DEBATE = "Debate"
+    TREASURE_HUNT = "Treasure Hunt"
+    SPELL_BEE = "Spell Bee"
+    OPEN_MIC = "Open Mic"
+
+MAIN_SHEET_NAME = "main"
+DEBATE_SHEET_NAME = "debate"
+TREASURE_HUNT_SHEET_NAME = "treasurehunt"
+SPELL_BEE_SHEET_NAME = "spellbee"
+OPEN_MIC_SHEET_NAME = "openmic"
+
 @app.post("/api/litfest/submit")
 async def submit_litfest_form(form_data: LitFestFormRequest):
-    # Replace with your actual Google Sheets setup
     try:
-        # Load credentials - Replace with your actual credentials loading
         creds = Credentials.from_service_account_file("LitFestSubmition.json", scopes=["https://www.googleapis.com/auth/spreadsheets"])
         gc = gspread.service_account(filename="LitFestSubmition.json")
         sh = gc.open_by_key("1zzbf1kc25vC-nbO6kcehu9rR1lXoH96ozOlioCrbuEA")
-        worksheet = sh.sheet1  # Or specify a sheet name
-        # print("Worksheet:", dict(worksheet)) # For debugging, remove in production
 
-        # Get all records
-        all_records = worksheet.get_all_records()
-        
-        # Prepare data for Google Sheets
+        # Access sheets
+        main_sheet = sh.worksheet(MAIN_SHEET_NAME)
+        debate_sheet = sh.worksheet(DEBATE_SHEET_NAME)
+        treasure_hunt_sheet = sh.worksheet(TREASURE_HUNT_SHEET_NAME)
+        spell_bee_sheet = sh.worksheet(SPELL_BEE_SHEET_NAME)
+        open_mic_sheet = sh.worksheet(OPEN_MIC_SHEET_NAME)
+
+        # Prepare data
         data = [
             form_data.name,
             form_data.email,
             form_data.phone,
             form_data.semester,
             form_data.branch,
-            ";".join(form_data.eventsToAttend.split(",")), # Assuming comma separated values
-            ";".join(form_data.eventsToParticipate.split(",")), # Assuming comma separated values
+            ";".join(form_data.eventsToAttend.split(",")),
+            ";".join(form_data.eventsToParticipate.split(",")),
         ]
 
-        # Check if the email already exists
+        # Determine event categories
+        events_participating = form_data.eventsToParticipate.split(",")
+        event_categories = []
+        if Event.DEBATE.value in events_participating:
+            event_categories.append(Event.DEBATE)
+        if Event.TREASURE_HUNT.value in events_participating:
+            event_categories.append(Event.TREASURE_HUNT)
+        if Event.SPELL_BEE.value in events_participating:
+            event_categories.append(Event.SPELL_BEE)
+        if Event.OPEN_MIC.value in events_participating:
+            event_categories.append(Event.OPEN_MIC)
+
+        # Get all records from the main sheet
+        main_records = main_sheet.get_all_records()
+
+        # Check if the email already exists in the main sheet
         existing_row_index = -1
-        for index, row in enumerate(all_records):
+        for index, row in enumerate(main_records):
             if row.get('email') == form_data.email:
-                existing_row_index = index + 2 # +2 because of header row and 0-based indexing
+                existing_row_index = index + 2  # +2 because of header row and 0-based indexing
                 break
 
         if existing_row_index != -1:
-            # Update existing row
-            worksheet.update(f'A{existing_row_index}:H{existing_row_index}', [data])
-            return {"message": "Form submitted successfully (Data updated)"}
+            # Update existing row in the main sheet
+            main_sheet.update(f'A{existing_row_index}:H{existing_row_index}', [data])
+
+            # Delete from other sheets
+            for event in Event:
+                if event.value in [e.value for e in event_categories]:
+                    continue # Don't delete from sheets the user is still participating in
+                try:
+                    sheet_name = event.value.replace(" ", "_").lower()
+                    sheet = sh.worksheet(sheet_name)
+                    records = sheet.get_all_records()
+                    for index, row in enumerate(records):
+                        if row.get('email') == form_data.email:
+                            sheet.delete_rows(index + 2) # +2 for header and 0-based indexing
+                            break
+                except gspread.exceptions.WorksheetNotFound:
+                    pass # Sheet doesn't exist, ignore
         else:
-            # Append data to the sheet
-            worksheet.append_row(data)
-            return {"message": "Form submitted successfully (Data appended)"}
+            # Append data to the main sheet
+            main_sheet.append_row(data)
+
+        # Append to event-specific sheets
+        for event in event_categories:
+            sheet_name = event.value.replace(" ", "_").lower()
+            try:
+                sheet = sh.worksheet(sheet_name)
+                sheet.append_row(data)
+            except gspread.exceptions.WorksheetNotFound:
+                # If the sheet doesn't exist, it means it's the first time someone is participating in this event.
+                # In this case, we can skip appending to the sheet.
+                pass
+
+        return {"message": "Form submitted successfully"}
+
     except Exception as e:
         print(f"Error submitting form: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to submit form: {str(e)}")
