@@ -159,8 +159,7 @@ const LitFestForm = () => {
                 <Select onValueChange={field.onChange} defaultValue={undefined}>
                   <FormControl>
                     <SelectTrigger>
-                      {field.value ? field.value : "Select your semester"}
-                      <SelectValue  />
+                      {field.value || "Select your semester"}
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -185,8 +184,7 @@ const LitFestForm = () => {
                 <Select onValueChange={field.onChange} defaultValue={undefined}>
                   <FormControl>
                     <SelectTrigger>
-                      {field.value ? field.value : "Select your branch"}
-                      <SelectValue  />
+                      {field.value || "Select your branch"}
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
