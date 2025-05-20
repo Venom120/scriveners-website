@@ -36,7 +36,8 @@ Here's what's waiting for you:
 
 So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨💬
 
-📞 Contact us at: Vedant Talankar (8839198566)
+📞 Contact us at: 
+📞 Vedant Talankar (8839198566)
 `;
 
   return (
@@ -86,12 +87,6 @@ So bring your passion, your team spirit, and your literary flair — and let's m
           >
             SEND TO WHATSAPP
           </Button>
-        </div>
-
-        <div className="mt-2 text-center">
-          <p className="text-sm text-[#8B4513]/70">
-            *Event poster will be attached to the shared message
-          </p>
         </div>
       </CardContent>
     </Card>

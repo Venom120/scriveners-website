@@ -13,8 +13,8 @@ const Index = () => {
   };
 
   const handleShare = () => {
-    // Prepare message for WhatsApp sharing with proper emoji encoding
-    const message = encodeURIComponent(`📚✨ You're Invited to LitFest 2025! ✨📚
+    // Updated message content with proper formatting
+    const messageText = `📚✨ You're Invited to LitFest 2025! ✨📚
 
 Hey everyone! 🎉
 Get ready for a thrilling day of words, wit, and wonder at our annual Literature Day – LitFest 2025! 🖋️🎭
@@ -29,28 +29,28 @@ Here's what's waiting for you:
 
 So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨💬
 
-📞 Contact us at: Vedant Talankar (8839198566)
+📞 Contact us at: 
+📞 Vedant Talankar (8839198566)`;
 
-Check out the attached poster for more details!`);
-
-    // Get poster URL - using the full path for the image
-    const posterUrl = "https://scriveners.pythonabc.org/src/components/images/LitFest25Poster.jpg";
-
+    // Fix for emoji encoding - don't use encodeURIComponent for the initial text
+    // Instead, use it only when constructing the final URL
+    
     // Try to use Web Share API first for native share functionality
     if (navigator.share) {
       navigator.share({
         title: 'LitFest2025 Invitation',
-        text: decodeURIComponent(message),
+        text: messageText,
         url: 'https://scriveners.pythonabc.org/litfest25',
-        // Note: Web Share API doesn't support direct file sharing in all browsers
       }).catch(err => {
         console.log('Error sharing:', err);
-        // Fallback to WhatsApp URL scheme with poster link
-        window.open(`https://wa.me/?text=${message}%0A%0A${encodeURIComponent(posterUrl)}`);
+        // Fallback to WhatsApp URL scheme with proper encoding for the URL
+        const encodedMessage = encodeURIComponent(messageText);
+        window.open(`https://wa.me/?text=${encodedMessage}`);
       });
     } else {
-      // Fallback to WhatsApp URL scheme with poster link
-      window.open(`https://wa.me/?text=${message}%0A%0A${encodeURIComponent(posterUrl)}`);
+      // Fallback to WhatsApp URL scheme with proper encoding for the URL
+      const encodedMessage = encodeURIComponent(messageText);
+      window.open(`https://wa.me/?text=${encodedMessage}`);
     }
 
     toast({
