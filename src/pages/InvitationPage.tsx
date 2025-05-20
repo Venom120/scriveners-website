@@ -16,7 +16,6 @@ const Index = () => {
 
 Hey everyone! 🎉
 Get ready for a thrilling day of words, wit, and wonder at our annual Literature Day – LitFest 2025! 🖋️🎭
-Visit: https://scriveners.pythonabc.org/litfest25
 
 Here's what's waiting for you:
 • Parliamentary Debate – Speak your mind, defend your stance! 🗣️
@@ -26,6 +25,8 @@ Here's what's waiting for you:
 
 Tons of fun, creativity, and exciting prizes await! 🏆🎁
 So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨
+
+Register Link: https://scriveners.pythonabc.org/litfest25
 
 Contact us at: 
 Vedant Talankar (8839198566) 📞`;
@@ -46,10 +47,10 @@ Tons of fun, creativity, and exciting prizes await!
 
 So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember!
 
+Register Link: https://scriveners.pythonabc.org/litfest25
+
 Contact us at: 
-Vedant Talankar (8839198566)
-OR
-Visit: https://scriveners.pythonabc.org/litfest25`;
+Vedant Talankar (8839198566)`;
 
     // Copy to clipboard first (always original message with emojis)
     navigator.clipboard.writeText(messageText)
