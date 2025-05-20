@@ -21,24 +21,23 @@ const InvitationCard: React.FC<InvitationCardProps> = ({ onRegisterClick, onShar
     return () => clearTimeout(timer);
   }, []);
 
-  const invitationText = `📚✨ You're Invited to LitFest 2025! ✨📚
+  const invitationText = `You're Invited to LitFest 2025! ✨📚
 
 Hey everyone! 🎉
 Get ready for a thrilling day of words, wit, and wonder at our annual Literature Day – LitFest 2025! 🖋️🎭
 
 Here's what's waiting for you:
-🗣️ Parliamentary Debate – Speak your mind, defend your stance!
-🧭 Treasure Hunt – Solve clues, race time, and claim glory!
-🅰️ Spell Bee – Show off your spelling skills, one letter at a time!
-🎙️ Open Mic – Poems, stories, or songs – the stage is all yours!
+• Parliamentary Debate – Speak your mind, defend your stance!
+• Treasure Hunt – Solve clues, race time, and claim glory!
+• Spell Bee – Show off your spelling skills, one letter at a time!
+• Open Mic – Poems, stories, or songs – the stage is all yours!
 
-🌟 Tons of fun, creativity, and exciting prizes await! 🏆🎁
+Tons of fun, creativity, and exciting prizes await! 🏆🎁
 
-So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨💬
+So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨
 
-📞 Contact us at: 
-📞 Vedant Talankar (8839198566)
-`;
+Contact us at: 
+Vedant Talankar (8839198566)`;
 
   return (
     <Card className={`parchment w-full max-w-2xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>

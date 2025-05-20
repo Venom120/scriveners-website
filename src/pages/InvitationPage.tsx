@@ -13,29 +13,26 @@ const Index = () => {
   };
 
   const handleShare = () => {
-    // Updated message content with proper formatting
-    const messageText = `📚✨ You're Invited to LitFest 2025! ✨📚
+    // Create text message content with Unicode emojis
+    const messageText = `You're Invited to LitFest 2025! ✨📚
 
 Hey everyone! 🎉
 Get ready for a thrilling day of words, wit, and wonder at our annual Literature Day – LitFest 2025! 🖋️🎭
 
 Here's what's waiting for you:
-🗣️ Parliamentary Debate – Speak your mind, defend your stance!
-🧭 Treasure Hunt – Solve clues, race time, and claim glory!
-🅰️ Spell Bee – Show off your spelling skills, one letter at a time!
-🎙️ Open Mic – Poems, stories, or songs – the stage is all yours!
+• Parliamentary Debate – Speak your mind, defend your stance!
+• Treasure Hunt – Solve clues, race time, and claim glory!
+• Spell Bee – Show off your spelling skills, one letter at a time!
+• Open Mic – Poems, stories, or songs – the stage is all yours!
 
-🌟 Tons of fun, creativity, and exciting prizes await! 🏆🎁
+Tons of fun, creativity, and exciting prizes await! 🏆🎁
 
-So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨💬
+So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨
 
-📞 Contact us at: 
-📞 Vedant Talankar (8839198566)`;
+Contact us at: 
+Vedant Talankar (8839198566)`;
 
-    // Fix for emoji encoding - don't use encodeURIComponent for the initial text
-    // Instead, use it only when constructing the final URL
-    
-    // Try to use Web Share API first for native share functionality
+    // Use Web Share API if available - this preserves emoji formatting
     if (navigator.share) {
       navigator.share({
         title: 'LitFest2025 Invitation',
@@ -43,12 +40,14 @@ So bring your passion, your team spirit, and your literary flair — and let's m
         url: 'https://scriveners.pythonabc.org/litfest25',
       }).catch(err => {
         console.log('Error sharing:', err);
-        // Fallback to WhatsApp URL scheme with proper encoding for the URL
-        window.open(`https://wa.me/?text=${messageText}`);
+        // Fallback to properly encoded WhatsApp URL
+        const encodedMessage = encodeURIComponent(messageText);
+        window.open(`https://wa.me/?text=${encodedMessage}`);
       });
     } else {
-      // Fallback to WhatsApp URL scheme with proper encoding for the URL
-      window.open(`https://wa.me/?text=${messageText}`);
+      // Properly encode the message for WhatsApp URL
+      const encodedMessage = encodeURIComponent(messageText);
+      window.open(`https://wa.me/?text=${encodedMessage}`);
     }
 
     toast({
