@@ -11,8 +11,7 @@ const LitFestAbout = () => {
         </p>
         <p>
           This year's theme explores the intersection of tradition and innovation in literature. 
-          Participate in our signature events like poetry slams, short story competitions, and 
-          literary quizzes designed to challenge and inspire writers of all levels.
+          Participate in our signature events like Parliamentary Debate, Spell Bee, Treasure Hunt on Books... designed to challenge and inspire writers of all levels.
         </p>
       </div>
     </div>
