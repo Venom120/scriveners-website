@@ -1,19 +1,32 @@
-
-import React from 'react';
+import { useState, useEffect } from 'react';
 import InvitationCard from '@/invitation/InvitationCard';
 import BackgroundAnimation from '@/invitation/BackgroundAnimation';
 import { useToast } from "@/components/ui/use-toast";
 
-const Index = () => {
+const InvitationPage = () => {
   const { toast } = useToast();
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    const fetchImageAsFile = async () => {
+      try {
+        const response = await fetch("https://scriveners.pythonabc.org/src/components/images/LitFest25Poster.jpg");
+        const blob = await response.blob();
+        const file = new File([blob], "LitFest25Poster.jpg", { type: blob.type });
+        setSelectedImage(file);
+      } catch (err) {
+        console.error("Failed to fetch poster image:", err);
+      }
+    };
+
+    fetchImageAsFile();
+  }, []);
 
   const handleRegister = () => {
-    // Redirect to registration page
     window.location.href = "https://scriveners.pythonabc.org/litfest25";
   };
 
   const handleShare = () => {
-    // Create text message content with Unicode emojis (directly embedded)
     const messageText = `You're Invited to LitFest 2025! ✨📚
 
 Hey everyone! 🎉
@@ -32,7 +45,6 @@ So bring your passion, your team spirit, and your literary flair — and let's m
 Contact us at: 
 Vedant Talankar (8839198566) 📞`;
 
-    // Copy to clipboard first
     navigator.clipboard.writeText(messageText)
       .then(() => {
         toast({
@@ -49,42 +61,40 @@ Vedant Talankar (8839198566) 📞`;
         });
       });
 
-    // Check if running on Android
     const isAndroid = /Android/i.test(navigator.userAgent);
     const encodedMessage = encodeURIComponent(messageText);
 
-    // Use intent URL for Android
     if (isAndroid) {
-      // Android intent URL for WhatsApp
       window.location.href = `intent://send?text=${encodedMessage}#Intent;package=com.whatsapp;scheme=whatsapp;end`;
-    } 
-    // Use Web Share API if available - this preserves emoji formatting
-    else if (navigator.share) {
+    } else if (navigator.canShare && selectedImage && navigator.canShare({ files: [selectedImage] })) {
       navigator.share({
-        title: 'LitFest2025 Invitation',
+        title: 'LitFest 2025',
         text: messageText,
-        url: 'https://scriveners.pythonabc.org/litfest25',
-      }).catch(err => {
-        console.log('Error sharing:', err);
-        // Fallback to properly encoded WhatsApp URL
-        window.open(`https://wa.me/?text=${encodedMessage}`);
+        files: [selectedImage],
+      }).then(() => {
+        toast({ title: "Shared successfully!" });
+      }).catch((err) => {
+        console.error("Share failed", err);
+        toast({
+          title: "Share failed",
+          description: "Please try again or share manually.",
+          variant: "destructive",
+        });
       });
-    } 
-    // Fallback to universal WhatsApp URL
-    else {
-      window.open(`https://wa.me/?text=${encodedMessage}`);
+    } else {
+      toast({
+        title: "Sharing not supported",
+        description: "Try updating your browser or OS.",
+        variant: "destructive",
+      });
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      {/* Background with texture and animations */}
       <div className="fixed inset-0 bg-[#F5F5DC] bg-opacity-80"></div>
-      
-      {/* Animated background elements */}
       <BackgroundAnimation />
 
-      {/* Main content */}
       <main className="flex-1 flex items-center justify-center p-6 z-10">
         <div className="w-full max-w-lg">
           <InvitationCard
@@ -94,7 +104,6 @@ Vedant Talankar (8839198566) 📞`;
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="text-center py-4 text-sm text-[#8B4513]/70 z-10">
         <p>© 2025 LitFest - English Department, GGITS & Scriveners Club</p>
       </footer>
@@ -102,4 +111,4 @@ Vedant Talankar (8839198566) 📞`;
   );
 };
 
-export default Index;
+export default InvitationPage;
