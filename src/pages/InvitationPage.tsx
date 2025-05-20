@@ -44,13 +44,11 @@ So bring your passion, your team spirit, and your literary flair — and let's m
       }).catch(err => {
         console.log('Error sharing:', err);
         // Fallback to WhatsApp URL scheme with proper encoding for the URL
-        const encodedMessage = encodeURIComponent(messageText);
-        window.open(`https://wa.me/?text=${encodedMessage}`);
+        window.open(`https://wa.me/?text=${messageText}`);
       });
     } else {
       // Fallback to WhatsApp URL scheme with proper encoding for the URL
-      const encodedMessage = encodeURIComponent(messageText);
-      window.open(`https://wa.me/?text=${encodedMessage}`);
+      window.open(`https://wa.me/?text=${messageText}`);
     }
 
     toast({
