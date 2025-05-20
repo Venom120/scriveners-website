@@ -1,4 +1,3 @@
-
 import React from 'react';
 import InvitationCard from '@/invitation/InvitationCard';
 import BackgroundAnimation from '@/invitation/BackgroundAnimation';
@@ -13,7 +12,7 @@ const Index = () => {
   };
 
   const handleShare = () => {
-    // Create text message content with Unicode emojis
+    // Create text message content with Unicode emojis (directly embedded)
     const messageText = `You're Invited to LitFest 2025! ✨📚
 
 Hey everyone! 🎉
@@ -48,11 +47,6 @@ Vedant Talankar (8839198566) 📞`;
       // Properly encode the message for WhatsApp URL
       window.open(`https://wa.me/?text=${encodedMessage}`);
     }
-
-    toast({
-      title: "Sharing invitation!",
-      description: "Opening share dialog for you to send the invitation.",
-    });
   };
 
   return (
