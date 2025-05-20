@@ -26,7 +26,7 @@ const InvitationCard: React.FC<InvitationCardProps> = ({ onRegisterClick, onShar
 Hey everyone! 🎉
 Get ready for a thrilling day of words, wit, and wonder at our annual Literature Day – LitFest 2025! 🖋️🎭
 
-Here’s what’s waiting for you:
+Here's what's waiting for you:
 🗣️ Parliamentary Debate – Speak your mind, defend your stance!
 🧭 Treasure Hunt – Solve clues, race time, and claim glory!
 🅰️ Spell Bee – Show off your spelling skills, one letter at a time!
@@ -34,13 +34,13 @@ Here’s what’s waiting for you:
 
 🌟 Tons of fun, creativity, and exciting prizes await! 🏆🎁
 
-So bring your passion, your team spirit, and your literary flair — and let’s make LitFest 2025 a celebration to remember! ✨💬
+So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨💬
 
 📞 Contact us at: Vedant Talankar (8839198566)
 `;
 
   return (
-    <Card className={`parchment w-full max-w-md mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+    <Card className={`parchment w-full max-w-2xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
       <CardContent className="p-6 flex flex-col gap-6">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold text-[#8B4513] animate-glow">LitFest2025</h1>
@@ -86,6 +86,12 @@ So bring your passion, your team spirit, and your literary flair — and let’s
           >
             SEND TO WHATSAPP
           </Button>
+        </div>
+
+        <div className="mt-2 text-center">
+          <p className="text-sm text-[#8B4513]/70">
+            *Event poster will be attached to the shared message
+          </p>
         </div>
       </CardContent>
     </Card>

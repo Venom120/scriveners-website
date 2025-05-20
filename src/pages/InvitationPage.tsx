@@ -13,13 +13,13 @@ const Index = () => {
   };
 
   const handleShare = () => {
-    // Prepare message for WhatsApp sharing
+    // Prepare message for WhatsApp sharing with proper emoji encoding
     const message = encodeURIComponent(`📚✨ You're Invited to LitFest 2025! ✨📚
 
 Hey everyone! 🎉
 Get ready for a thrilling day of words, wit, and wonder at our annual Literature Day – LitFest 2025! 🖋️🎭
 
-Here’s what’s waiting for you:
+Here's what's waiting for you:
 🗣️ Parliamentary Debate – Speak your mind, defend your stance!
 🧭 Treasure Hunt – Solve clues, race time, and claim glory!
 🅰️ Spell Bee – Show off your spelling skills, one letter at a time!
@@ -27,9 +27,14 @@ Here’s what’s waiting for you:
 
 🌟 Tons of fun, creativity, and exciting prizes await! 🏆🎁
 
-So bring your passion, your team spirit, and your literary flair — and let’s make LitFest 2025 a celebration to remember! ✨💬
+So bring your passion, your team spirit, and your literary flair — and let's make LitFest 2025 a celebration to remember! ✨💬
 
-📞 Contact us at: Vedant Talankar (8839198566)`);
+📞 Contact us at: Vedant Talankar (8839198566)
+
+Check out the attached poster for more details!`);
+
+    // Get poster URL - using the full path for the image
+    const posterUrl = "https://scriveners.pythonabc.org/src/components/images/LitFest25Poster.jpg";
 
     // Try to use Web Share API first for native share functionality
     if (navigator.share) {
@@ -37,14 +42,15 @@ So bring your passion, your team spirit, and your literary flair — and let’s
         title: 'LitFest2025 Invitation',
         text: decodeURIComponent(message),
         url: 'https://scriveners.pythonabc.org/litfest25',
+        // Note: Web Share API doesn't support direct file sharing in all browsers
       }).catch(err => {
         console.log('Error sharing:', err);
-        // Fallback to WhatsApp URL scheme
-        window.open(`https://wa.me/?text=${message}`);
+        // Fallback to WhatsApp URL scheme with poster link
+        window.open(`https://wa.me/?text=${message}%0A%0A${encodeURIComponent(posterUrl)}`);
       });
     } else {
-      // Fallback to WhatsApp URL scheme
-      window.open(`https://wa.me/?text=${message}`);
+      // Fallback to WhatsApp URL scheme with poster link
+      window.open(`https://wa.me/?text=${message}%0A%0A${encodeURIComponent(posterUrl)}`);
     }
 
     toast({
@@ -63,7 +69,7 @@ So bring your passion, your team spirit, and your literary flair — and let’s
 
       {/* Main content */}
       <main className="flex-1 flex items-center justify-center p-6 z-10">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-lg">
           <InvitationCard
             onRegisterClick={handleRegister}
             onShareClick={handleShare}
