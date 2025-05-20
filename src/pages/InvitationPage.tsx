@@ -61,16 +61,16 @@ Vedant Talankar (8839198566) 📞`;
         });
       });
 
-    const isAndroid = /Android/i.test(navigator.userAgent);
     const encodedMessage = encodeURIComponent(messageText);
 
-    if (isAndroid) {
-      window.location.href = `intent://send?text=${encodedMessage}#Intent;package=com.whatsapp;scheme=whatsapp;end`;
-    } else if (navigator.canShare && selectedImage && navigator.canShare({ files: [selectedImage] })) {
+    if (navigator.share) {
+      // Use Web Share API if available (Android, iOS, desktop where supported)
       navigator.share({
         title: 'LitFest 2025',
         text: messageText,
-        files: [selectedImage],
+        files: (selectedImage && navigator.canShare && navigator.canShare({ files: [selectedImage] }))
+          ? [selectedImage]
+          : undefined,
       }).then(() => {
         toast({ title: "Shared successfully!" });
       }).catch((err) => {
@@ -82,6 +82,7 @@ Vedant Talankar (8839198566) 📞`;
         });
       });
     } else {
+      // Web Share API not supported
       toast({
         title: "Sharing not supported",
         description: "Try updating your browser or OS.",
