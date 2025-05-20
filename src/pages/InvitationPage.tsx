@@ -69,8 +69,6 @@ Vedant Talankar (8839198566) 📞`;
         // Fallback to properly encoded WhatsApp URL
         window.open(`https://wa.me/?text=${encodedMessage}`);
       });
-    } else {
-      // Properly encode the message for WhatsApp URL
     } 
     // Fallback to universal WhatsApp URL
     else {
