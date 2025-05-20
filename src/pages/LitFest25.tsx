@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import LitFestForm from "@/components/litfest/LitFestForm";
 import LitFestBanner from "@/components/litfest/LitFestBanner";
+import LitFestAbout from "@/components/litfest/LitFestAbout";
+import LitFestHighlights from "@/components/litfest/LitFestHighlights";
 
 const LitFest25 = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
@@ -40,6 +42,11 @@ const LitFest25 = () => {
             className="w-full h-auto rounded-lg shadow-lg"
           />
         </div>
+        {/* About section */}
+        <LitFestAbout />
+        
+        {/* Key Highlights section */}
+        <LitFestHighlights />
       </main>
     </div>
   );
