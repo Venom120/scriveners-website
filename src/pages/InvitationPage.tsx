@@ -1,3 +1,4 @@
+
 import React from 'react';
 import InvitationCard from '@/invitation/InvitationCard';
 import BackgroundAnimation from '@/invitation/BackgroundAnimation';
@@ -31,9 +32,34 @@ So bring your passion, your team spirit, and your literary flair — and let's m
 Contact us at: 
 Vedant Talankar (8839198566) 📞`;
 
-    const encodedMessage = "You're%20Invited%20to%20LitFest%202025!%20%E2%9C%A8%F0%9F%93%9A%0A%0AHey%20everyone!%20%F0%9F%8E%89%0AGet%20ready%20for%20a%20thrilling%20day%20of%20words%2C%20wit%2C%20and%20wonder%20at%20our%20annual%20Literature%20Day%20%E2%80%93%20LitFest%202025!%20%F0%9F%96%8B%EF%B8%8F%F0%9F%8E%AD%0A%0AHere%27s%20what%27s%20waiting%20for%20you%3A%0A%E2%80%A2%20Parliamentary%20Debate%20%E2%80%93%20Speak%20your%20mind%2C%20defend%20your%20stance!%20%F0%9F%97%A3%EF%B8%8F%0A%E2%80%A2%20Treasure%20Hunt%20%E2%80%93%20Solve%20clues%2C%20race%20time%2C%20and%20claim%20glory!%20%F0%9F%A7%AD%0A%E2%80%A2%20Spell%20Bee%20%E2%80%93%20Show%20off%20your%20spelling%20skills%2C%20one%20letter%20at%20a%20time!%20%F0%9F%94%A4%0A%E2%80%A2%20Open%20Mic%20%E2%80%93%20Poems%2C%20stories%2C%20or%20songs%20%E2%80%93%20the%20stage%20is%20all%20yours!%20%F0%9F%8E%99%EF%B8%8F%0A%0ATons%20of%20fun%2C%20creativity%2C%20and%20exciting%20prizes%20await!%20%F0%9F%8F%86%F0%9F%8E%81%0A%0ASo%20bring%20your%20passion%2C%20your%20team%20spirit%2C%20and%20your%20literary%20flair%20%E2%80%94%20and%20let%27s%20make%20LitFest%202025%20a%20celebration%20to%20remember!%20%E2%9C%A8%0A%0AContact%20us%20at%3A%0AVedant%20Talankar%20(8839198566)%20%F0%9F%93%9E";
+    // Copy to clipboard first
+    navigator.clipboard.writeText(messageText)
+      .then(() => {
+        toast({
+          title: "Copied to clipboard!",
+          description: "Invitation copied to clipboard and opening WhatsApp.",
+        });
+      })
+      .catch(err => {
+        console.error("Clipboard write failed: ", err);
+        toast({
+          title: "Could not copy to clipboard",
+          description: "Opening WhatsApp directly.",
+          variant: "destructive"
+        });
+      });
+
+    // Check if running on Android
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const encodedMessage = encodeURIComponent(messageText);
+
+    // Use intent URL for Android
+    if (isAndroid) {
+      // Android intent URL for WhatsApp
+      window.location.href = `intent://send?text=${encodedMessage}#Intent;package=com.whatsapp;scheme=whatsapp;end`;
+    } 
     // Use Web Share API if available - this preserves emoji formatting
-    if (navigator.share) {
+    else if (navigator.share) {
       navigator.share({
         title: 'LitFest2025 Invitation',
         text: messageText,
@@ -45,6 +71,9 @@ Vedant Talankar (8839198566) 📞`;
       });
     } else {
       // Properly encode the message for WhatsApp URL
+    } 
+    // Fallback to universal WhatsApp URL
+    else {
       window.open(`https://wa.me/?text=${encodedMessage}`);
     }
   };
