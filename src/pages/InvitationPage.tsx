@@ -45,44 +45,41 @@ So bring your passion, your team spirit, and your literary flair — and let's m
 Contact us at: 
 Vedant Talankar (8839198566) 📞`;
 
+    // Copy text to clipboard first
     navigator.clipboard.writeText(messageText)
       .then(() => {
         toast({
-          title: "Copied to clipboard!",
-          description: "Invitation copied to clipboard and opening WhatsApp.",
+          title: "Copied text to clipboard",
+          description: "Image will be shared now. Please paste the text in WhatsApp manually.",
         });
       })
-      .catch(err => {
-        console.error("Clipboard write failed: ", err);
+      .catch(() => {
         toast({
-          title: "Could not copy to clipboard",
-          description: "Opening WhatsApp directly.",
-          variant: "destructive"
-        });
-      });
-
-    const encodedMessage = encodeURIComponent(messageText);
-
-    if (navigator.share) {
-      // Use Web Share API if available (Android, iOS, desktop where supported)
-      navigator.share({
-        title: 'LitFest 2025',
-        text: messageText,
-        files: (selectedImage && navigator.canShare && navigator.canShare({ files: [selectedImage] }))
-          ? [selectedImage]
-          : undefined,
-      }).then(() => {
-        toast({ title: "Shared successfully!" });
-      }).catch((err) => {
-        console.error("Share failed", err);
-        toast({
-          title: "Share failed",
-          description: "Please try again or share manually.",
+          title: "Could not copy text",
+          description: "Share image and manually add text.",
           variant: "destructive",
         });
       });
+
+    if (navigator.share) {
+      const shareData = {
+        title: "LitFest 2025",
+        files: selectedImage ? [selectedImage] : undefined,
+      };
+
+      // Share image only (text will be copied to clipboard instead)
+      navigator.share(shareData)
+        .then(() => {
+          toast({ title: "Shared successfully!" });
+        })
+        .catch(err => {
+          toast({
+            title: "Sharing failed",
+            description: "Try again or share manually.",
+            variant: "destructive",
+          });
+        });
     } else {
-      // Web Share API not supported
       toast({
         title: "Sharing not supported",
         description: "Try updating your browser or OS.",
