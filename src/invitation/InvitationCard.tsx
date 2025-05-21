@@ -62,7 +62,7 @@ Vedant Talankar (8839198566) 📞`;
           
           <div className="flex items-center gap-3 animate-fade-in" style={{animationDelay: "0.6s"}}>
             <Clock className="h-5 w-5" />
-            <span className="font-medium">01:05 PM</span>
+            <span className="font-medium">10:30 AM</span>
           </div>
           
           <div className="flex items-center gap-3 animate-fade-in" style={{animationDelay: "0.9s"}}>
