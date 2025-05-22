@@ -23,7 +23,6 @@ export const litFestFormSchema = z.object({
   eventsToAttend: z.array(z.string())
     .min(1, { message: "Please select at least one event to attend" }),
   eventsToParticipate: z.array(z.string())
-    .min(1, { message: "Please select at least one event to participate in" }),
 });
 
 export type LitFestFormValues = z.infer<typeof litFestFormSchema>;
