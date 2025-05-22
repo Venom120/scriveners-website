@@ -1,69 +1,100 @@
-# Welcome to your Lovable project
+# Scriveners Website
 
-## Project info
+## Project Info
 
-**URL**: https://lovable.dev/projects/6fce37cb-c191-4de8-94ce-6f29f1253126
+**Live URL:** https://scriveners.pythonabc.org
+
+This is the official website for the Scriveners Club and LitFest events at GGITS, built to manage event registrations, leaderboards, and more.
+
+---
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
+You can work on this project using your preferred IDE (such as VS Code) or directly on GitHub.
 
-**Use Lovable**
+### **Clone and Run Locally**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6fce37cb-c191-4de8-94ce-6f29f1253126) and start prompting.
+**Requirements:**  
+- Node.js & npm (recommended to install with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- Python 3.8+ (for backend)
+- MongoDB (cloud or local instance)
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+**Steps:**
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 1. Clone the repository
+git clone https://github.com/Venom120/scriveners-website.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. Navigate to the project directory
+cd scriveners-website
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 3. Install frontend dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# 4. (Optional) Set up Python virtual environment for backend
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# 5. Start the frontend and backend in development mode (from project root)
+npm run dev         # For frontend (Vite/React)
+npm run dev:backend # For backend (FastAPI)
 ```
 
-**Edit a file directly in GitHub**
+Or, to run both together (from project root, after installing `concurrently`):
+```sh
+npm run dev:all
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- `/src` – Frontend (React, Vite, TypeScript, Tailwind CSS, shadcn-ui)
+- `/backend` – Backend (FastAPI, Python, MongoDB)
+- `/public` – Static assets
 
-## What technologies are used for this project?
+---
 
-This project is built with .
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Production deployment is handled on a VPS using:**
+- Nginx (reverse proxy for frontend and backend)
+- Git bare repo with post-receive hook for auto-deployment
+- Systemd for backend process management
 
-## How can I deploy this project?
+**To deploy:**
+1. Push to the VPS bare repo:
+   ```sh
+   git push vpc main
+   ```
+2. The post-receive hook will update the working directory and restart the backend.
 
-Simply open [Lovable](https://lovable.dev/projects/6fce37cb-c191-4de8-94ce-6f29f1253126) and click on Share -> Publish.
+---
 
-## I want to use a custom domain - is that possible?
+## Technologies Used
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+- **Frontend:** Vite, React, TypeScript, Tailwind CSS, shadcn-ui
+- **Backend:** FastAPI, Python, MongoDB
+- **DevOps:** Nginx, systemd, Git, SSH
+
+---
+
+## Custom Domain
+
+The project is live at [https://scriveners.pythonabc.org](https://scriveners.pythonabc.org) using a custom domain and SSL via Let's Encrypt.
+
+---
+
+## Contact
+
+For event or technical queries, contact:
+- Vedant Talankar (8839198566)
+- Yatharth Jain
+
+---
+
+## License
+
+This project is for educational and club use at GGITS.
