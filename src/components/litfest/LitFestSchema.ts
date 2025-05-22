@@ -7,9 +7,9 @@ export const litFestFormSchema = z.object({
     .min(1, { message: "Name is required" }),
   email: z.string()
     .min(1, { message: "Email is required" })
-    .email("Please enter a valid college email address")
-    .regex(/^[a-zA-Z]+\.[a-zA-Z]+\.[a-zA-Z]+[0-9]{2}@ggits\.net$/, {
-      message: "Please use your college email (@ggits.net)"
+    .email("Please enter a valid email address")
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, {
+      message: "Please use a Gmail address"
     }),
   phone: z.string()
     .min(1, { message: "Phone number is required" })
