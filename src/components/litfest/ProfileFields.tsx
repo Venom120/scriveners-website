@@ -32,7 +32,7 @@ export function ProfileFields({ form }: ProfileFieldsProps) {
           <FormItem>
             <FormLabel>College Email</FormLabel>
             <FormControl>
-              <Input placeholder="name.surname.branch-year@ggits.net" {...field} />
+              <Input placeholder="Your College Email" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>

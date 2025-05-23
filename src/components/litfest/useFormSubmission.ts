@@ -13,6 +13,7 @@ export function useFormSubmission(form: UseFormReturn<LitFestFormValues>) {
     try {
       const dataToSend = {
         ...values,
+        email: values.email.toLowerCase(),
         eventsToAttend: values.eventsToAttend.join(","),
         eventsToParticipate: values.eventsToParticipate.join(","),
       };
