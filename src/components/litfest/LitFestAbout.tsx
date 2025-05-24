@@ -7,11 +7,11 @@ const LitFestAbout = () => {
         <p>
           Welcome to Symphony of Minds, a literary festival celebrating creativity, 
           expression, and the art of writing. Join us for an immersive experience featuring 
-          workshops, competitions, and engaging discussions with renowned authors and poets.
+          workshops, discussions, and competitions that bring together writers, poets, and enthusiasts from all walks of life.
         </p>
         <p>
-          This year's theme explores the intersection of tradition and innovation in literature. 
-          Participate in our signature events like Parliamentary Debate, Spell Bee, Treasure Hunt on Books... designed to challenge and inspire writers of all levels.
+          This year's theme explores the intersection of literature and mind,
+          delving into how our thoughts shape our narratives and how stories can transform our understanding of the world.
         </p>
       </div>
     </div>
