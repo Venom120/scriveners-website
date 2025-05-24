@@ -20,9 +20,8 @@ export const litFestFormSchema = z.object({
     .min(1, { message: "Please select your current semester" }),
   branch: z.string()
     .min(1, { message: "Please select your branch" }),
-  eventsToAttend: z.array(z.string())
-    .min(1, { message: "Please select at least one event to attend" }),
   eventsToParticipate: z.array(z.string())
+    .min(1, { message: "Please select at least one event to participate in" })
 });
 
 export type LitFestFormValues = z.infer<typeof litFestFormSchema>;
@@ -37,5 +36,6 @@ export const eventsOptions = [
   "Parliamentary Debate", 
   "Treasure Hunt on Books", 
   "Spell Bee", 
-  "Open Mic"
+  "Open Mic",
+  "Poster Making"
 ];

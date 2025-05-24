@@ -43,10 +43,10 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
         {/* Content overlay */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-8 z-10 bg-slate-50/60 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
           <h1 className="text-3xl md:text-6xl font-bold text-gray-800 font-['K2D'] text-center mb-1 md:mb-2">
-            LITFEST 2025
+            Symphony of Minds
           </h1>
           <p className="text-lg md:text-4xl text-black font-normal font-['K2D'] text-center mb-2 md:mb-8 px-2">
-            Sorry for confusion, LitFest events dates might be changed and new events are been added.
+            Sorry for the change but, LitFest has been named as "Symphony of Minds" this year.
           </p>
           <p className="text-lg md:text-4xl text-black font-normal font-['K2D'] text-center mb-2 md:mb-8 px-2">
             Stay tuned for more updates and exciting events coming your way!

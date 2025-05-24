@@ -19,7 +19,6 @@ const LitFestForm = () => {
       phone: "",
       semester: "",
       branch: "",
-      eventsToAttend: [],
       eventsToParticipate: [],
     },
   });
@@ -29,7 +28,7 @@ const LitFestForm = () => {
 
   return (
     <div className="bg-white m-18 p-4 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">Register for LitFest25</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">Register for Symphony of Minds</h2>
       
       <Form {...form}>
         <form key={formKey} onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">

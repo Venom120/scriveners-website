@@ -192,12 +192,14 @@ class Event(str, Enum):
     TREASURE_HUNT = "Treasure Hunt on Books"
     SPELL_BEE = "Spell Bee"
     OPEN_MIC = "Open Mic"
+    POSTER_MAKING = "Poster Making"
 
 MAIN_SHEET_NAME = "main"
 DEBATE_SHEET_NAME = "debate"
 TREASURE_HUNT_SHEET_NAME = "treasurehunt"
 SPELL_BEE_SHEET_NAME = "spellbee"
 OPEN_MIC_SHEET_NAME = "openmic"
+POSTER_MAKING_SHEET_NAME = "postermaking"
 
 @app.post("/api/litfest/submit")
 async def submit_litfest_form(form_data: LitFestFormRequest):
@@ -211,6 +213,7 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         treasure_hunt_sheet = sh.worksheet(TREASURE_HUNT_SHEET_NAME)
         spell_bee_sheet = sh.worksheet(SPELL_BEE_SHEET_NAME)
         open_mic_sheet = sh.worksheet(OPEN_MIC_SHEET_NAME)
+        open_poster_sheet = sh.worksheet(POSTER_MAKING_SHEET_NAME)
 
         # Prepare data
         data = [
@@ -219,7 +222,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             form_data.phone,
             form_data.semester,
             form_data.branch,
-            ";".join(form_data.eventsToAttend.split(",")),
             ";".join(form_data.eventsToParticipate.split(",")),
         ]
 
@@ -234,6 +236,8 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             event_categories.append(Event.SPELL_BEE)
         if Event.OPEN_MIC.value in events_participating:
             event_categories.append(Event.OPEN_MIC)
+        if Event.POSTER_MAKING.value in events_participating:
+            event_categories.append(Event.POSTER_MAKING)
 
         # Get all records from the main sheet
         main_records = main_sheet.get_all_records()
@@ -260,6 +264,8 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                         sheet = spell_bee_sheet
                     elif event == Event.OPEN_MIC:
                         sheet = open_mic_sheet
+                    elif event == Event.POSTER_MAKING:
+                        sheet = open_poster_sheet
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
                         if row.get('email') == form_data.email:
@@ -275,7 +281,6 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 form_data.phone,
                 form_data.semester,
                 form_data.branch,
-                ";".join(form_data.eventsToAttend.split(",")),
                 ";".join(form_data.eventsToParticipate.split(",")),
             ])
 
@@ -289,6 +294,8 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
                 sheet = spell_bee_sheet
             elif event == Event.OPEN_MIC:
                 sheet = open_mic_sheet
+            elif event == Event.POSTER_MAKING:
+                sheet = open_poster_sheet
             sheet.append_row([
                 form_data.name,
                 form_data.email,

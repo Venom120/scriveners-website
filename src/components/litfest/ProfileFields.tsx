@@ -18,7 +18,7 @@ export function ProfileFields({ form }: ProfileFieldsProps) {
           <FormItem>
             <FormLabel>Name</FormLabel>
             <FormControl>
-              <Input placeholder="Your Name" {...field} />
+              <Input placeholder="Your Full Name" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -30,9 +30,9 @@ export function ProfileFields({ form }: ProfileFieldsProps) {
         name="email"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>College Email</FormLabel>
+            <FormLabel>College Email Id</FormLabel>
             <FormControl>
-              <Input placeholder="Your College Email" {...field} />
+              <Input placeholder="Your College Email Id" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
