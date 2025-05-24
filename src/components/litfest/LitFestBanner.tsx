@@ -45,8 +45,11 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
           <h1 className="text-3xl md:text-6xl font-bold text-gray-800 font-['K2D'] text-center mb-1 md:mb-2">
             LITFEST 2025
           </h1>
-          <p className="text-lg md:text-4xl text-gray-800 font-normal font-['K2D'] text-center mb-2 md:mb-8 px-2">
-            Join us for a celebration of literature, creativity, and expression
+          <p className="text-lg md:text-4xl text-black font-normal font-['K2D'] text-center mb-2 md:mb-8 px-2">
+            Sorry for confusion, LitFest events dates might be changed and new events are been added.
+          </p>
+          <p className="text-lg md:text-4xl text-black font-normal font-['K2D'] text-center mb-2 md:mb-8 px-2">
+            Stay tuned for more updates and exciting events coming your way!
           </p>
           
           <button 
