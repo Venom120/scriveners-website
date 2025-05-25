@@ -224,7 +224,8 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             form_data.branch,
             ";".join(form_data.eventsToParticipate.split(",")),
         ]
-
+        print(f"Data to be submitted: {data}")
+        print(f"Events to participate: {form_data.eventsToParticipate}")
         # Determine event categories
         events_participating = form_data.eventsToParticipate.split(",")
         event_categories = []
