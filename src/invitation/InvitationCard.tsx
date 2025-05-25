@@ -31,6 +31,7 @@ Join us for a celebration of words, wit, and wonder on *31st May from 10:30 AM o
 * Spelling Bee 🐝 
 * Bookish Treasure Hunt 🪙
 * Parliamentary Debate 💬 
+* Poster Making 🎨
 
 Show off your literary flair, challenge your mind, and enjoy a day filled with creativity and fun.
 *All students are welcome!*

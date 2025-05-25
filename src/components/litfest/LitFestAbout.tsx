@@ -11,7 +11,7 @@ const LitFestAbout = () => {
         </p>
         <p>
           This year's theme explores the intersection of literature and mind,
-          delving into how our thoughts shape our narratives and how stories can transform our understanding of the world.
+          diving into how our thoughts shape our narratives and how stories can transform our understanding of the world.
         </p>
       </div>
     </div>
