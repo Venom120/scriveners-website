@@ -11,7 +11,7 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
   
   return (
     <div className="w-full relative overflow-hidden">
-      <AspectRatio ratio={isMobile ? 1.7/1 : 16/4.5} className="bg-gradient-to-br from-amber-50 to-orange-100 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+      <AspectRatio ratio={isMobile ? 1.5/1 : 16/4.5} className="bg-gradient-to-br from-amber-50 to-orange-100 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
         {/* Animated background elements matching poster theme */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating pencils */}
