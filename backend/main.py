@@ -199,7 +199,7 @@ SPELL_BEE_SHEET_NAME = "spellbee"
 OPEN_MIC_SHEET_NAME = "openmic"
 POSTER_MAKING_SHEET_NAME = "postermaking"
 
-@app.post("/api/litfest/submit")
+@app.post("/api/symphony-of-minds/submit")
 async def submit_litfest_form(form_data: LitFestFormRequest):
     try:
         gc = gspread.service_account(filename="LitFestSubmition.json")

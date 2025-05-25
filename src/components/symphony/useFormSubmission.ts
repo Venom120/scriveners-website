@@ -14,7 +14,7 @@ export const useFormSubmission = (form: UseFormReturn<SymphonyOfMindsFormValues>
     console.log("Submitting Symphony of Minds registration:", values);
     
     try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/register-symphony-of-minds", {
+      const response = await fetch("https://scriveners.pythonabc.org/api/symphony-of-minds/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
