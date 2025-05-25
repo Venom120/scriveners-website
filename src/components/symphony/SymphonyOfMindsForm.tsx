@@ -50,6 +50,7 @@ const SymphonyOfMindsForm = () => {
           </Button>
         </form>
       </Form>
+      
       {/* Support Footer */}
       <footer className="mt-8 text-center text-xl md:text-2xl text-gray-500 border-t pt-2">
         Support: Dev Team – Yatharth Jain <a href="tel:6264007981" className="underline">6264007981</a>, 
