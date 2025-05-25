@@ -54,7 +54,7 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
               2025
             </h2>
             {/* Decorative underline matching poster */}
-            <div className="w-full h-2 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 rounded-full mt-2 transform -rotate-1"></div>
+            <div className="w-full h-2 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 rounded-full mt-2 transform"></div>
           </div>
           
           <p className="text-sm md:text-xl text-amber-800 font-semibold font-['K2D'] text-center mb-2 md:mb-4 px-2 animate-fade-in">
