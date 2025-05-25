@@ -1,52 +1,38 @@
 
 import { z } from "zod";
 
-// Semester options
-export const semesterOptions = [
-  "1st Semester",
-  "2nd Semester", 
-  "3rd Semester",
-  "4th Semester",
-  "5th Semester",
-  "6th Semester",
-  "7th Semester",
-  "8th Semester",
-  "Other"
-] as const;
-
-// Branch options
+// Lists for dropdowns
+export const semesterOptions = ["2nd", "4th", "6th", "8th"];
 export const branchOptions = [
-  "Computer Science Engineering",
-  "Information Technology",
-  "Electronics and Communication Engineering",
-  "Electrical Engineering", 
-  "Mechanical Engineering",
-  "Civil Engineering",
-  "Chemical Engineering",
-  "Biotechnology",
-  "Aerospace Engineering",
-  "Other"
-] as const;
-
-// Event options
+  "CSE", "AIML", "CSBS", "CSD", "CSDS", "AIR", "IOT", 
+  "AIDS", "EE", "EX", "EC", "CIVIL", "MECHANICAL", "Other"
+];
 export const eventOptions = [
-  "Parliamentary Debate",
-  "Treasure Hunt", 
-  "Spell Bee",
+  "Parliamentary Debate", 
+  "Treasure Hunt on Books", 
+  "Spell Bee", 
   "Open Mic",
-  "Creative Writing Workshop",
-  "Poetry Slam",
-  "Storytelling Session"
-] as const;
+  "Poster Making"
+];
 
 // Form schema
 export const symphonyOfMindsFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  semester: z.string().min(1, "Please select your semester"),
-  branch: z.string().min(1, "Please select your branch"),
-  eventsToParticipate: z.array(z.string()).min(1, "Please select at least one event"),
+  name: z.string()
+    .min(1, { message: "Name is required" }),
+  email: z.string()
+    .min(1, { message: "Email is required" })
+    .email("Please enter a valid email address"),
+  phone: z.string()
+    .min(1, { message: "Phone number is required" })
+    .regex(/^[6-9]\d{9}$/, {
+      message: "Please enter a valid 10-digit phone number"
+    }),
+  semester: z.string()
+    .min(1, { message: "Please select your current semester" }),
+  branch: z.string()
+    .min(1, { message: "Please select your branch" }),
+  eventsToParticipate: z.array(z.string())
+    .min(1, { message: "Please select at least one event to participate in" })
 });
 
 export type SymphonyOfMindsFormValues = z.infer<typeof symphonyOfMindsFormSchema>;

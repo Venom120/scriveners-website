@@ -1,7 +1,7 @@
 
 const SymphonyOfMindsHighlights = () => {
   return (
-    <div className="container mx-auto px-4 md:px-6 py-8 md:py-16 bg-gradient-to-r from-orange-100/80 to-amber-100/80 rounded-lg mx-4 my-8 shadow-lg border-2 border-orange-300">
+    <div className="container px-4 md:px-6 py-8 md:py-16 bg-gradient-to-r from-orange-100/80 to-amber-100/80 rounded-lg mx-4 my-8 shadow-lg border-2 border-orange-300">
       <h2 className="text-3xl md:text-5xl font-bold text-amber-900 font-['Playfair Display'] mb-4 md:mb-6 text-center drop-shadow-lg">Key Highlights</h2>
       <div className="text-xl md:text-3xl font-light text-amber-800 font-['K2D'] space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

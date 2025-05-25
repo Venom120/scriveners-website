@@ -32,7 +32,7 @@ export function ProfileFields({ form }: ProfileFieldsProps) {
           <FormItem>
             <FormLabel>Email Address</FormLabel>
             <FormControl>
-              <Input type="email" placeholder="Enter your email" {...field} />
+              <Input type="email" placeholder="Enter your College email" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -46,7 +46,7 @@ export function ProfileFields({ form }: ProfileFieldsProps) {
           <FormItem>
             <FormLabel>Phone Number</FormLabel>
             <FormControl>
-              <Input type="tel" placeholder="Enter your phone number" {...field} />
+              <Input type="tel" placeholder="Enter your Phone number" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>

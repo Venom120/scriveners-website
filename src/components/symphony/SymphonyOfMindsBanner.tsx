@@ -47,10 +47,10 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-8 z-10 bg-gradient-to-br from-amber-50/80 to-orange-100/80">
           {/* Word Art Title matching poster style */}
           <div className="relative mb-4">
-            <h1 className="text-4xl md:text-8xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-1 md:mb-2 drop-shadow-lg transform -rotate-1">
+            <h1 className="text-4xl md:text-8xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-1 md:mb-2 drop-shadow-lg transform">
               Symphony Of Minds
             </h1>
-            <h2 className="text-2xl md:text-4xl font-bold text-orange-800 font-['Playfair Display'] text-center transform rotate-1">
+            <h2 className="text-2xl md:text-4xl font-bold text-orange-800 font-['Playfair Display'] text-center transform ">
               2025
             </h2>
             {/* Decorative underline matching poster */}
