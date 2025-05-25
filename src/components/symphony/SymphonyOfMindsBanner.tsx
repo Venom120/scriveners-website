@@ -11,7 +11,7 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
   
   return (
     <div className="w-full relative overflow-hidden">
-      <AspectRatio ratio={isMobile ? 2.4/1 : 16/4.5} className="bg-gradient-to-br from-amber-50 to-orange-100 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+      <AspectRatio ratio={isMobile ? 1.8/1 : 16/4.5} className="bg-gradient-to-br from-amber-50 to-orange-100 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
         {/* Animated background elements matching poster theme */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating pencils */}
@@ -46,27 +46,27 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
         {/* Content overlay with poster-inspired styling */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-8 z-10 bg-gradient-to-br from-amber-50/80 to-orange-100/80">
           {/* Word Art Title matching poster style */}
-          <div className="relative mb-4">
-            <h1 className="text-4xl md:text-8xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-1 md:mb-2 drop-shadow-lg transform">
+          <div className="relative mb-2 md:mb-4">
+            <h1 className="text-2xl md:text-8xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-1 md:mb-2 drop-shadow-lg transform">
               Symphony Of Minds
             </h1>
-            <h2 className="text-2xl md:text-4xl font-bold text-orange-800 font-['Playfair Display'] text-center transform ">
+            <h2 className="text-xl md:text-4xl font-bold text-orange-800 font-['Playfair Display'] text-center transform">
               2025
             </h2>
             {/* Decorative underline matching poster */}
-            <div className="w-full h-2 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 rounded-full mt-2 transform"></div>
+            <div className="w-full h-1 md:h-2 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 rounded-full mt-1 md:mt-2 transform"></div>
           </div>
           
-          <p className="text-sm md:text-xl text-amber-800 font-semibold font-['K2D'] text-center mb-2 md:mb-4 px-2 animate-fade-in">
+          <p className="text-xs md:text-xl text-amber-800 font-semibold font-['K2D'] text-center mb-1 md:mb-4 px-2 animate-fade-in">
             Organized by English dept. and Scriveners club, GGITS
           </p>
-          <p className="text-sm md:text-lg text-amber-700 font-medium font-['K2D'] text-center mb-4 md:mb-8 px-2 animate-fade-in delay-500">
+          <p className="text-xs md:text-lg text-amber-700 font-medium font-['K2D'] text-center mb-3 md:mb-8 px-2 animate-fade-in delay-500">
             Join us for an immersive experience of creativity, expression, and literary excellence!
           </p>
           
           <button 
             onClick={onRegisterClick}
-            className="bg-gradient-to-r from-amber-600 to-orange-600 text-white text-base md:text-xl font-bold font-['Inter'] px-8 py-4 md:py-5 rounded-full w-48 md:w-60 h-14 md:h-18 inline-flex justify-center items-center mt-2 md:mt-4 hover:from-amber-700 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-amber-800 animate-pulse"
+            className="bg-gradient-to-r from-amber-600 to-orange-600 text-white text-sm md:text-xl font-bold font-['Inter'] px-6 md:px-8 py-3 md:py-5 rounded-full w-40 md:w-60 h-12 md:h-18 inline-flex justify-center items-center mt-1 md:mt-4 hover:from-amber-700 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-amber-800 animate-pulse"
           >
             Register Now
           </button>

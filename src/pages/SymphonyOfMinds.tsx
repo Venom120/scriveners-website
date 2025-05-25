@@ -67,11 +67,15 @@ const SymphonyOfMinds = () => {
           />
         </div>
         
-        {/* About section */}
-        <SymphonyOfMindsAbout />
+        {/* About section with proper mobile margins */}
+        <div className="mx-4 md:mx-0">
+          <SymphonyOfMindsAbout />
+        </div>
         
-        {/* Key Highlights section */}
-        <SymphonyOfMindsHighlights />
+        {/* Key Highlights section with proper mobile margins */}
+        <div className="mx-4 md:mx-0">
+          <SymphonyOfMindsHighlights />
+        </div>
       </main>
     </div>
   );
