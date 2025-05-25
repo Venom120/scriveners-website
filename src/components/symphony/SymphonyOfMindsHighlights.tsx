@@ -93,7 +93,7 @@ const SymphonyOfMindsHighlights = () => {
 
       {/* Event Details Dialog */}
       <Dialog open={!!selectedEvent} onOpenChange={handleCloseDialog}>
-        <DialogContent className="bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-amber-400 max-w-md mx-4 sm:max-w-lg rounded-lg shadow-xl">
+        <DialogContent className="bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-amber-400 max-w-md sm:max-w-lg rounded-lg shadow-xl">
           <DialogHeader>
             <DialogTitle className="text-2xl md:text-3xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-4">
               {selectedEvent && eventDetails[selectedEvent as keyof typeof eventDetails]?.title}
