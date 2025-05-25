@@ -44,7 +44,7 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
         </div>
         
         {/* Content overlay with poster-inspired styling */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-8 z-10 bg-gradient-to-br from-amber-50/80 to-orange-100/80">
+        <div className="absolute inset-1 flex flex-col items-center justify-center px-4 md:px-8 z-10 bg-gradient-to-br from-amber-50/80 to-orange-100/80">
           {/* Word Art Title matching poster style */}
           <div className="relative mb-2 md:mb-4">
             <h1 className="text-2xl md:text-8xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-1 md:mb-2 drop-shadow-lg transform">
@@ -57,10 +57,10 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
             <div className="w-full h-1 md:h-2 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 rounded-full mt-1 md:mt-2 transform"></div>
           </div>
           
-          <p className="text-xs md:text-xl text-amber-800 font-semibold font-['K2D'] text-center mb-1 md:mb-4 px-2 animate-fade-in">
+          <p className="md:text-xl text-amber-800 font-semibold font-['K2D'] text-center mb-1 md:mb-4 px-2 animate-fade-in">
             Organized by English dept. and Scriveners club, GGITS
           </p>
-          <p className="text-xs md:text-lg text-amber-700 font-medium font-['K2D'] text-center mb-3 md:mb-8 px-2 animate-fade-in delay-500">
+          <p className="md:text-lg text-amber-700 font-medium font-['K2D'] text-center mb-3 md:mb-8 px-2 animate-fade-in delay-500">
             Join us for an immersive experience of creativity, expression, and literary excellence!
           </p>
           

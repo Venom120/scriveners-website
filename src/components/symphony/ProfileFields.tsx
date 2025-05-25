@@ -30,7 +30,7 @@ export function ProfileFields({ form }: ProfileFieldsProps) {
         name="email"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Email Address</FormLabel>
+            <FormLabel>College Email</FormLabel>
             <FormControl>
               <Input type="email" placeholder="Enter your College email" {...field} />
             </FormControl>
