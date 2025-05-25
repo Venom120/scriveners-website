@@ -8,15 +8,14 @@ import { AdminProvider } from "@/contexts/AdminContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Leaderboard from "./pages/Leaderboard";
-import LitFest25 from "./pages/LitFest25";
+import SymphonyOfMinds from "./pages/SymphonyOfMinds";
 import Invitation from "./pages/InvitationPage";
 import Poems from "./pages/Poems";
-import { useState } from "react";
+
+// Create QueryClient outside of component to avoid recreation
+const queryClient = new QueryClient();
 
 const App = () => {
-  // Create a new QueryClient instance inside the component
-  const [queryClient] = useState(() => new QueryClient());
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -27,7 +26,8 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/litfest25" element={<LitFest25 />} />
+              <Route path="/symphony-of-minds" element={<SymphonyOfMinds />} />
+              <Route path="/litfest25" element={<SymphonyOfMinds />} />
               <Route path="/poems" element={<Poems />} />
               <Route path="/invitation" element={<Invitation />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
