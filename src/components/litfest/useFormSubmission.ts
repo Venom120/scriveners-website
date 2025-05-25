@@ -14,8 +14,8 @@ export function useFormSubmission(form: UseFormReturn<LitFestFormValues>) {
       const dataToSend = {
         ...values,
         email: values.email.toLowerCase(),
+        eventsToParticipate: values.eventsToParticipate.join(","),
       };
-      console.log("Submitting form data:", dataToSend);
       const response = await fetch("/api/litfest/submit", {
         method: "POST",
         headers: {

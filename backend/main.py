@@ -53,15 +53,6 @@ class UpdatePointsRequest(BaseModel):
     username: str
     points: int
 
-class LitFestFormRequest(BaseModel):
-    name: str
-    email: str
-    phone: str
-    semester: str
-    branch: str
-    eventsToAttend: str
-    eventsToParticipate: str
-
 # Helper function to verify admin token
 def verify_admin_token(token: str) -> bool:
     return token in active_sessions
@@ -186,7 +177,14 @@ async def add_user(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error adding user: {str(e)}"
         )
-
+class LitFestFormRequest(BaseModel):
+    name: str
+    email: str
+    phone: str
+    semester: str
+    branch: str
+    eventsToParticipate: str
+    
 class Event(str, Enum):
     DEBATE = "Parliamentary Debate"
     TREASURE_HUNT = "Treasure Hunt on Books"
