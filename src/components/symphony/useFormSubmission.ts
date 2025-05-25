@@ -14,12 +14,17 @@ export const useFormSubmission = (form: UseFormReturn<SymphonyOfMindsFormValues>
     console.log("Submitting Symphony of Minds registration:", values);
     
     try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/symphony-of-minds/submit", {
+      const dataToSend = {
+        ...values,
+        email: values.email.toLowerCase(),
+        eventsToParticipate: values.eventsToParticipate.join(","),
+      };
+      const response = await fetch("/api/symphony-of-minds/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
@@ -31,9 +36,9 @@ export const useFormSubmission = (form: UseFormReturn<SymphonyOfMindsFormValues>
           description: "You have been registered for Symphony of Minds. We'll contact you soon with more details.",
         });
         
-        // Reset the form
+        // Reset form and force re-render
         form.reset();
-        setFormKey(prev => prev + 1);
+        setFormKey(prevKey => prevKey + 1); // Increment key to force re-render
       } else {
         const errorData = await response.json();
         console.error("Registration failed:", errorData);
