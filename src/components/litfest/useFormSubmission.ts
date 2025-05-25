@@ -16,6 +16,7 @@ export function useFormSubmission(form: UseFormReturn<LitFestFormValues>) {
         email: values.email.toLowerCase(),
         eventsToParticipate: values.eventsToParticipate.join(","),
       };
+
       const response = await fetch("/api/litfest/submit", {
         method: "POST",
         headers: {
@@ -26,7 +27,7 @@ export function useFormSubmission(form: UseFormReturn<LitFestFormValues>) {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to submit form");
+        throw new Error(errorData.message || "Failed to submit form contact support.");
       }
       
       // Show success message
