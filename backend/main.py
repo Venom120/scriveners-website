@@ -64,7 +64,9 @@ def get_admin_token(request: Request) -> Optional[str]:
 @app.get("/api/poem")
 async def get_poem() -> Dict:
     collection = db["poem_points"]
-    return {"poem": list(collection.find({}, {"_id": 0}))}  # Exclude the MongoDB ObjectId from the response
+    # Sort by 'rank' in ascending order
+    results = list(collection.find({}, {"_id": 0}).sort("rank", 1))
+    return {"poem": results}
 
 @app.post("/api/login")
 async def login(login_data: LoginRequest, response: Response):
