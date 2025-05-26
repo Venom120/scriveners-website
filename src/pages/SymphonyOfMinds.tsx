@@ -58,6 +58,11 @@ const SymphonyOfMinds = () => {
           </div>
         )}
         
+        {/* Key Highlights section with proper mobile margins */}
+        <div className="mx-4 md:mx-0">
+          <SymphonyOfMindsEventDetails />
+        </div>
+
         {/* Poster section */}
         <div className="px-4 md:px-96 py-8 md:py-12">
           <img
@@ -72,10 +77,6 @@ const SymphonyOfMinds = () => {
           <SymphonyOfMindsAbout />
         </div>
         
-        {/* Key Highlights section with proper mobile margins */}
-        <div className="mx-4 md:mx-0">
-          <SymphonyOfMindsEventDetails />
-        </div>
       </main>
     </div>
   );

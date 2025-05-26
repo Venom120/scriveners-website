@@ -16,9 +16,9 @@ const SymphonyOfMindsEventDetails = () => {
     "Poster Design Competition": {
       title: "Poster Design Competition",
       description: "In this event, participants will create visually compelling posters that communicate powerful messages through artistic design. Contestants will showcase their creativity, design skills, and ability to convey complex ideas through visual storytelling.",
-      date: "31st MAY 2025",
+      date: "30st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "No Preliminary Round!!! Guidelines will be provided on the whatsapp group after you have registered. Participants are required to showcase their poster on the final day."
+      additionalInfo: "No Preliminary Round!!! Topics will be provided to the registered students by 28th May through whatsapp group. Participants are required to bring their poster on the final day."
     },
     "Treasure Hunt": {
       title: "Treasure Hunt on Books",
