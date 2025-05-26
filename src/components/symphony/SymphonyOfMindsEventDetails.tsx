@@ -39,7 +39,7 @@ const SymphonyOfMindsEventDetails = () => {
       description: "This Open Mic event is a celebration of artistic freedom and creative expression, bringing together a diverse blend of performances under one roof. From heartfelt poetry to compelling storytelling, dramatic monologues, soulful acoustic music, and light-hearted comedy (stand-up comedy), improvisation, mimicry—this platform is open to all.",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Time limit is 2 minutes per performance."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists, Further details will shared on whatsapp group. Time limit is 2 minutes per performance."
     }
   };
 
