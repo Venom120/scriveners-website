@@ -11,12 +11,12 @@ const SymphonyOfMindsEventDetails = () => {
       description: "Step into the House and let your voice shape the narrative! Join us for the British Parliamentary Debate at Symphony of the mind, where intellect meets oratory. Eight participants, four teams, and one thought-provoking motion—battle it out with logic, wit, and persuasive flair in the world’s most prestigious debate format. Whether you're defending a motion or tearing it down, every word counts. No prior experience needed—just passion and perspective. Certificates, and bragging rights await. Register now and prove your power in the Parliament of ideas!",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "A small workshop will be conducted on 29th MAY for this event. Details will be shared to you on the whatsapp group after you have registered."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY for this event. Details will be shared to you on the whatsapp group after you have registered."
     },
     "Poster Design Competition": {
       title: "Poster Design Competition",
       description: "In this event, participants will create visually compelling posters that communicate powerful messages through artistic design. Contestants will showcase their creativity, design skills, and ability to convey complex ideas through visual storytelling.",
-      date: "30st MAY 2025",
+      date: "31st MAY 2025",
       venue: "Spandan",
       additionalInfo: "No Preliminary Round!!! Topics will be provided to the registered students by 28th May through whatsapp group. Participants are required to bring their poster on the final day."
     },
@@ -24,14 +24,14 @@ const SymphonyOfMindsEventDetails = () => {
       title: "Treasure Hunt on Books",
       description: "Treasure Hunt, an immersive literary quest where stories come to life through a trail of hidden clues. Starting at the “Literary Portal,” participants will follow clues inspired by iconic books — from magical train platforms to golden tickets and mythological gods. Each clue reveals a digit, and together, they form the code to unlock the Vault of Words. You don’t need to be a book expert — just bring your curiosity, wit, and love for stories. Solve the clues, uncover the code, and you might just claim the treasure that awaits at the end.",
       date: "30th MAY 2025",
-      venue: "Spandan",
-      additionalInfo: "Individual participation!!. A preliminary round will be conducted on 29th MAY to select finalists. Clues will be based on popular books and literary references."
+      venue: "CL-11/12",
+      additionalInfo: "Individual participation!!. Clues will be based on popular books and literary references."
     },
     "Spell Bee Competition": {
       title: "Spell Bee Competition",
       description: "The Spell Bee is an exciting, multi-round word challenge designed to test not just spelling, but also vocabulary, and confidence. Participants will be given words. For each word, the contestant may ask for the meaning, pronunciation, language of origin, or use it in a sentence for better understanding. Once ready, the participant must spell the word correctly, letter by letter, within the given time. Points are awarded for correct spellings, clarity, confidence, time. So, if someone asks, “What happens in Spell Bee?” — the answer is simple: You listen, understand, and spell your way to victory!",
       date: "30th MAY 2025",
-      venue: "Spandan",
+      venue: "CL-11/12",
       additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Word lists will be based on standard dictionaries. More details will be shared on the whatsapp group after you have registered."
     },
     "Open Mic Sessions": {
@@ -39,7 +39,7 @@ const SymphonyOfMindsEventDetails = () => {
       description: "This Open Mic event is a celebration of artistic freedom and creative expression, bringing together a diverse blend of performances under one roof. From heartfelt poetry to compelling storytelling, dramatic monologues, soulful acoustic music, and light-hearted comedy (stand-up comedy), improvisation, mimicry—this platform is open to all.",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Time limit is 5 minutes per performance."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Time limit is 2 minutes per performance."
     }
   };
 
