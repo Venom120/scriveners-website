@@ -70,7 +70,7 @@ const SymphonyOfMindsEventDetails = () => {
               <p className="font-semibold text-orange-800">🗺️ Treasure Hunt</p>
             </div>
             <div 
-              className="bg-amber-50 p-4 rounded-lg shadow-md border border-amber-300 cursor-pointer hover:bg-amber-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="bg-amber-50 p-4 rounded-lg shadow-md border border-amber-300 cursor-pointer hover:bg-orange-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
               onClick={() => handleEventClick("Spell Bee Competition")}
             >
               <p className="font-semibold text-amber-800">🔤 Spell Bee Competition</p>
@@ -82,7 +82,7 @@ const SymphonyOfMindsEventDetails = () => {
               <p className="font-semibold text-amber-800">🎤 Open Mic</p>
             </div>
             <div 
-              className="bg-orange-50 p-4 rounded-lg shadow-md border border-orange-300 cursor-pointer hover:bg-orange-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="bg-orange-50 p-4 rounded-lg shadow-md border border-orange-300 cursor-pointer hover:bg-amber-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
               onClick={() => handleEventClick("Poster Design Competition")}
             >
               <p className="font-semibold text-amber-800">🎨 Poster Design Competition</p>
