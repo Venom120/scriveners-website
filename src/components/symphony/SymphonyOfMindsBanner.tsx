@@ -1,4 +1,3 @@
-
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -47,8 +46,8 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
         <div className="absolute inset-1 flex flex-col items-center justify-center px-4 md:px-8 z-10 bg-gradient-to-br from-amber-50/80 to-orange-100/80">
           {/* Word Art Title matching poster style */}
           <div className="relative mb-2 md:mb-4">
-            <h1 className="text-2xl md:text-8xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-1 md:mb-2 drop-shadow-lg transform">
-              Symphony Of Minds
+            <h1 className="text-2xl md:text-8xl font-bold text-amber-900 font-['Playfair Display'] text-center mb-1 md:mb-2 transform">
+              Symphony Of The Mind
             </h1>
             <h2 className="text-xl md:text-4xl font-bold text-orange-800 font-['Playfair Display'] text-center transform">
               2025
@@ -56,9 +55,10 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
             {/* Decorative underline matching poster */}
             <div className="w-full h-1 md:h-2 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 rounded-full mt-1 md:mt-2 transform"></div>
           </div>
+
           
           <p className="md:text-xl text-amber-800 font-semibold font-['K2D'] text-center mb-1 md:mb-4 px-2 animate-fade-in">
-            Organized by English dept. and Scriveners club, GGITS
+            Organized by English Dept. and Scriveners club, GGITS
           </p>
           <p className="md:text-lg text-amber-700 font-medium font-['K2D'] text-center mb-3 md:mb-8 px-2 animate-fade-in delay-500">
             Join us for an immersive experience of creativity, expression, and literary excellence!
@@ -70,6 +70,13 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
           >
             Register Now
           </button>
+
+          {/* Informational warning about last date */}
+          <div className="flex items-center justify-center mb-2 mt-2 md:mb-4 md:mt-4">
+            <span className="inline-block bg-gradient-to-r from-orange-200 via-amber-100 to-orange-200 border border-orange-400 text-orange-800 font-semibold font-['K2D'] rounded-full px-4 py-2 md:text-lg text-sm shadow animate-pulse">
+              ⚠️ Last date to register is <span className="font-bold text-orange-900">28th MAY 2025</span>
+            </span>
+          </div>
         </div>
       </AspectRatio>
     </div>

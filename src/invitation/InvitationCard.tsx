@@ -38,7 +38,7 @@ Show off your literary flair, challenge your mind, and enjoy a day filled with c
 
 Let the love for literature shine—see you there!
  
-To register visit our website : https://scriveners.pythonabc.org/litfest25
+To register visit our website : https://scriveners.pythonabc.org/symphony-of-minds
 
 *For any queries, please reach out to us:*
 Vedant Talankar (8839198566) 📞`;
@@ -47,7 +47,7 @@ Vedant Talankar (8839198566) 📞`;
     <Card className={`parchment w-full max-w-2xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
       <CardContent className="p-6 flex flex-col gap-6">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-[#8B4513] animate-glow">LitFest2025</h1>
+          <h1 className="text-4xl font-bold text-[#8B4513] animate-glow">SYMPHONY OF THE MIND</h1>
           <div className="h-0.5 w-24 bg-[#8B4513] mx-auto my-2"></div>
           <h2 className="text-2xl font-semibold text-[#8B4513] animate-quill-write">GGITS</h2>
         </div>
@@ -71,7 +71,7 @@ Vedant Talankar (8839198566) 📞`;
           
           <div className="flex items-center gap-3 animate-fade-in" style={{animationDelay: "0.9s"}}>
             <MapPin className="h-5 w-5" />
-            <span className="font-medium">MBA SEMINAR HALL</span>
+            <span className="font-medium">Spandan</span>
           </div>
         </div>
 

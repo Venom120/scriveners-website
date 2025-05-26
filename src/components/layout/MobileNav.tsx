@@ -51,7 +51,7 @@ const MobileNav = ({ onLoginClick }: MobileNavProps) => {
               POEMS
             </Link>
             <Link to="/symphony-of-minds" onClick={() => setIsMobileMenuOpen(false)} className="py-2 text-white text-lg font-semibold hover:text-sky-300">
-              SYMPHONY OF MINDS
+              SYMPHONY OF THE MIND
             </Link>
             <Link to="https://forms.gle/pwREpTgTVkmgUjVo7" onClick={() => setIsMobileMenuOpen(false)} className="py-2 text-white text-lg font-semibold hover:text-sky-300">
               JOIN NOW

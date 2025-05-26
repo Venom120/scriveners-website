@@ -5,7 +5,7 @@ const SymphonyOfMindsAbout = () => {
       <h2 className="text-3xl md:text-5xl font-bold text-amber-900 font-['Playfair Display'] mb-4 md:mb-6 text-center">About Symphony of Minds</h2>
       <div className="text-xl md:text-3xl font-light text-amber-800 font-['K2D'] space-y-4 md:space-y-6">
         <p>
-          Welcome to Symphony of Minds 2025, a literary festival celebrating creativity, 
+          Welcome to Symphony of the Mind 2025, a literary festival celebrating creativity, 
           expression, and the art of writing. Join us for an immersive experience featuring 
           discussions, and competitions that bring together writers, poets, and enthusiasts from all walks of life.
         </p>

@@ -31,7 +31,7 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
       <div className="flex items-center space-x-12 text-white font-['Inter']">
         <Link to="/leaderboard" className="hover:text-sky-300">LEADERBOARD</Link>
         <Link to="/poems" className="hover:text-sky-300">POEMS</Link>
-        <Link to="/symphony-of-minds" className="hover:text-sky-300">SYMPHONY OF MINDS</Link>
+        <Link to="/symphony-of-minds" className="hover:text-sky-300">SYMPHONY OF THE MIND</Link>
         <Link to="https://forms.gle/pwREpTgTVkmgUjVo7" className="hover:text-sky-300">JOIN NOW</Link>
       </div>
       

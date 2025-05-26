@@ -2,44 +2,44 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-const SymphonyOfMindsHighlights = () => {
+const SymphonyOfMindsEventDetails = () => {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
   const eventDetails = {
     "Parliamentary Debate": {
       title: "Parliamentary Debate",
-      description: "Step into the House and let your voice shape the narrative! Join us for the British Parliamentary Debate at Symphony of minds, where intellect meets oratory. Eight participants, four teams, and one thought-provoking motion—battle it out with logic, wit, and persuasive flair in the world’s most prestigious debate format. Whether you're defending a motion or tearing it down, every word counts. No prior experience needed—just passion and perspective. Certificates, and bragging rights await. Register now and prove your power in the Parliament of ideas!",
+      description: "Step into the House and let your voice shape the narrative! Join us for the British Parliamentary Debate at Symphony of the mind, where intellect meets oratory. Eight participants, four teams, and one thought-provoking motion—battle it out with logic, wit, and persuasive flair in the world’s most prestigious debate format. Whether you're defending a motion or tearing it down, every word counts. No prior experience needed—just passion and perspective. Certificates, and bragging rights await. Register now and prove your power in the Parliament of ideas!",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "A small workshop will be conducted on 29th MAY for this event. Details will be shared to you on 28th MAY."
+      additionalInfo: "A small workshop will be conducted on 29th MAY for this event. Details will be shared to you on the whatsapp group after you have registered."
     },
     "Poster Design Competition": {
       title: "Poster Design Competition",
       description: "In this event, participants will create visually compelling posters that communicate powerful messages through artistic design. Contestants will showcase their creativity, design skills, and ability to convey complex ideas through visual storytelling.",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Design materials and guidelines will be provided. Participants can bring their own art supplies for better results."
+      additionalInfo: "Guidelines will be provided on the whatsapp group after you have registered. Participants are required to showcase their poster on the final day."
     },
     "Treasure Hunt": {
-      title: "Treasure Hunt",
+      title: "Treasure Hunt on Books",
       description: "Treasure Hunt, an immersive literary quest where stories come to life through a trail of hidden clues. Starting at the “Literary Portal,” participants will follow clues inspired by iconic books — from magical train platforms to golden tickets and mythological gods. Each clue reveals a digit, and together, they form the code to unlock the Vault of Words. You don’t need to be a book expert — just bring your curiosity, wit, and love for stories. Solve the clues, uncover the code, and you might just claim the treasure that awaits at the end.",
-      date: "31st MAY 2025",
+      date: "30th MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Teams of 3-4 members will be formed. The hunt will cover various locations within the campus."
+      additionalInfo: "Individual participation!!. A preliminary round will be conducted on 29th MAY to select finalists. Clues will be based on popular books and literary references."
     },
     "Spell Bee Competition": {
       title: "Spell Bee Competition",
       description: "The Spell Bee is an exciting, multi-round word challenge designed to test not just spelling, but also vocabulary, and confidence. Participants will be given words. For each word, the contestant may ask for the meaning, pronunciation, language of origin, or use it in a sentence for better understanding. Once ready, the participant must spell the word correctly, letter by letter, within the given time. Points are awarded for correct spellings, clarity, confidence, time. So, if someone asks, “What happens in Spell Bee?” — the answer is simple: You listen, understand, and spell your way to victory!",
-      date: "31st MAY 2025",
+      date: "30th MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Preliminary rounds will be conducted to select finalists. Word lists will be based on standard dictionaries."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Word lists will be based on standard dictionaries."
     },
     "Open Mic Sessions": {
       title: "Open Mic Sessions",
-      description: "This Open Mic event is a celebration of artistic freedom and creative expression, bringing together a diverse blend of performances under one roof. From heartfelt poetry to compelling storytelling, dramatic monologues, soulful acoustic music, and light-hearted comed(stand-up comedy), improvisation, mimicry —this platform is open to all.",
+      description: "This Open Mic event is a celebration of artistic freedom and creative expression, bringing together a diverse blend of performances under one roof. From heartfelt poetry to compelling storytelling, dramatic monologues, soulful acoustic music, and light-hearted comedy (stand-up comedy), improvisation, mimicry—this platform is open to all.",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Participants can perform poetry, short stories, or spoken word pieces. Time limit is 5 minutes per performance."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Participants can perform poetry, short stories, or spoken word pieces. Time limit is 5 minutes per performance."
     }
   };
 
@@ -54,20 +54,14 @@ const SymphonyOfMindsHighlights = () => {
   return (
     <>
       <div className="container px-4 md:px-6 py-8 md:py-16 bg-gradient-to-r from-orange-100/80 to-amber-100/80 rounded-lg my-8 shadow-lg border-2 border-orange-300">
-        <h2 className="text-3xl md:text-5xl font-bold text-amber-900 font-['Playfair Display'] mb-4 md:mb-6 text-center">Key Highlights</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-amber-900 font-['Playfair Display'] mb-4 md:mb-6 text-center">Event Details</h2>
         <div className="text-xl md:text-3xl font-light text-amber-800 font-['K2D'] space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div 
-              className="bg-amber-50 p-4 rounded-lg shadow-md border border-amber-300 cursor-pointer hover:bg-amber-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="bg-amber-50 p-4 rounded-lg shadow-md border border-amber-300 cursor-pointer md:col-span-2 hover:bg-amber-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
               onClick={() => handleEventClick("Parliamentary Debate")}
             >
-              <p className="font-semibold text-orange-800">🎪 Parliamentary Debate</p>
-            </div>
-            <div 
-              className="bg-orange-50 p-4 rounded-lg shadow-md border border-orange-300 cursor-pointer hover:bg-orange-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
-              onClick={() => handleEventClick("Poster Design Competition")}
-            >
-              <p className="font-semibold text-amber-800">🎨 Poster Design Competition</p>
+              <p className="font-semibold text-orange-800 text-center">🎪 Parliamentary Debate</p>
             </div>
             <div 
               className="bg-yellow-50 p-4 rounded-lg shadow-md border border-yellow-300 cursor-pointer hover:bg-yellow-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
@@ -82,10 +76,16 @@ const SymphonyOfMindsHighlights = () => {
               <p className="font-semibold text-amber-800">🔤 Spell Bee Competition</p>
             </div>
             <div 
-              className="bg-orange-50 p-4 rounded-lg shadow-md border border-orange-300 md:col-span-2 cursor-pointer hover:bg-orange-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="bg-orange-50 p-4 rounded-lg shadow-md border border-orange-300 cursor-pointer hover:bg-orange-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
               onClick={() => handleEventClick("Open Mic Sessions")}
             >
-              <p className="font-semibold text-amber-800">🎤 Open Mic Sessions for poets and storytellers</p>
+              <p className="font-semibold text-amber-800">🎤 Open Mic</p>
+            </div>
+            <div 
+              className="bg-orange-50 p-4 rounded-lg shadow-md border border-orange-300 cursor-pointer hover:bg-orange-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
+              onClick={() => handleEventClick("Poster Design Competition")}
+            >
+              <p className="font-semibold text-amber-800">🎨 Poster Design Competition</p>
             </div>
           </div>
         </div>
@@ -132,4 +132,4 @@ const SymphonyOfMindsHighlights = () => {
   );
 };
 
-export default SymphonyOfMindsHighlights;
+export default SymphonyOfMindsEventDetails;

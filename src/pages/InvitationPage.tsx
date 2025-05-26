@@ -7,12 +7,12 @@ const Index = () => {
 
   const handleRegister = () => {
     // Redirect to registration page
-    window.location.href = "https://scriveners.pythonabc.org/litfest25";
+    window.location.href = "https://scriveners.pythonabc.org/symphony-of-minds";
   };
 
   const handleShare = () => {
     // Original message with emojis
-    const messageText = `*You're Invited to Literature Day 2025!*📚
+    const messageText = `*You're Invited to Symphony of the mind 2025!*📚
 
 Join us for a celebration of words, wit, and wonder on *31st May from 10:30 AM onwards*!
 
@@ -22,19 +22,20 @@ Join us for a celebration of words, wit, and wonder on *31st May from 10:30 AM o
 * Spelling Bee 🐝 
 * Bookish Treasure Hunt 🪙
 * Parliamentary Debate 💬 
+* Poster Making 🎨
 
 Show off your literary flair, challenge your mind, and enjoy a day filled with creativity and fun.
 *All students are welcome!*
 
 Let the love for literature shine—see you there!
  
-To register visit our website : https://scriveners.pythonabc.org/litfest25
+To register visit our website : https://scriveners.pythonabc.org/symphony-of-minds
 
 *For any queries, please reach out to us:*
 Vedant Talankar (8839198566) 📞`;
 
     // Function to strip emojis from text (simple regex)
-    const stripEmojis = `*You're Invited to Literature Day 2025!*
+    const stripEmojis = `*You're Invited to Symphony of the mind 2025!*
 
 Join us for a celebration of words, wit, and wonder on *31st May from 10:30 AM onwards*!
 
@@ -51,7 +52,7 @@ Show off your literary flair, challenge your mind, and enjoy a day filled with c
 
 Let the love for literature shine—see you there!
  
-To register visit our website : https://scriveners.pythonabc.org/litfest25
+To register visit our website : https://scriveners.pythonabc.org/symphony-of-minds
 
 *For any queries, please reach out to us:*
 Vedant Talankar (8839198566)`;
@@ -83,9 +84,9 @@ Vedant Talankar (8839198566)`;
       // On other platforms with Web Share API, share message without emojis
       const cleanText = stripEmojis;
       navigator.share({
-        title: 'LitFest2025 Invitation',
+        title: 'Symphony of the Mind Invitation',
         text: cleanText,
-        url: 'https://scriveners.pythonabc.org/litfest25',
+        url: 'https://scriveners.pythonabc.org/symphony-of-minds',
       }).catch(err => {
         console.log('Error sharing:', err);
         // fallback to WhatsApp URL without emojis
@@ -119,7 +120,7 @@ Vedant Talankar (8839198566)`;
 
       {/* Footer */}
       <footer className="text-center py-4 text-sm text-[#8B4513]/70 z-10">
-        <p>© 2025 LitFest - English Department, GGITS & Scriveners Club</p>
+        <p>© 2025 Symphony of the Mind - English Department, GGITS & Scriveners Club</p>
       </footer>
     </div>
   );

@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import SymphonyOfMindsForm from "@/components/symphony/SymphonyOfMindsForm";
 import SymphonyOfMindsBanner from "@/components/symphony/SymphonyOfMindsBanner";
 import SymphonyOfMindsAbout from "@/components/symphony/SymphonyOfMindsAbout";
-import SymphonyOfMindsHighlights from "@/components/symphony/SymphonyOfMindsHighlights";
+import SymphonyOfMindsEventDetails from "@/components/symphony/SymphonyOfMindsEventDetails";
 
 const SymphonyOfMinds = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
@@ -74,7 +74,7 @@ const SymphonyOfMinds = () => {
         
         {/* Key Highlights section with proper mobile margins */}
         <div className="mx-4 md:mx-0">
-          <SymphonyOfMindsHighlights />
+          <SymphonyOfMindsEventDetails />
         </div>
       </main>
     </div>
