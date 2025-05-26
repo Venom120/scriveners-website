@@ -11,7 +11,7 @@ const SymphonyOfMindsEventDetails = () => {
       description: "Step into the House and let your voice shape the narrative! Join us for the British Parliamentary Debate at Symphony of the mind, where intellect meets oratory. Eight participants, four teams, and one thought-provoking motion—battle it out with logic, wit, and persuasive flair in the world’s most prestigious debate format. Whether you're defending a motion or tearing it down, every word counts. No prior experience needed—just passion and perspective. Certificates, and bragging rights await. Register now and prove your power in the Parliament of ideas!",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Preliminary rounds will be conducted on 29th MAY for this event. Details will be shared to you on the whatsapp group after you have registered."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY for this event. Details will be shared to you on whatsapp group after you have registered."
     },
     "Poster Design Competition": {
       title: "Poster Design Competition",
