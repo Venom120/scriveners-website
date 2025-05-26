@@ -29,7 +29,7 @@ const SymphonyOfMindsHighlights = () => {
     },
     "Spell Bee Competition": {
       title: "Spell Bee Competition",
-      description: "In this event, participants will demonstrate their spelling prowess and vocabulary knowledge. Contestants will face increasingly challenging words, testing their linguistic skills and memory in a competitive yet supportive environment.",
+      description: "The Spell Bee is an exciting, multi-round word challenge designed to test not just spelling, but also vocabulary, and confidence. Participants will be given words. For each word, the contestant may ask for the meaning, pronunciation, language of origin, or use it in a sentence for better understanding. Once ready, the participant must spell the word correctly, letter by letter, within the given time. Points are awarded for correct spellings, clarity, confidence, time. So, if someone asks, “What happens in Spell Bee?” — the answer is simple: You listen, understand, and spell your way to victory!",
       date: "31st MAY 2025",
       venue: "Spandan",
       additionalInfo: "Preliminary rounds will be conducted to select finalists. Word lists will be based on standard dictionaries."
