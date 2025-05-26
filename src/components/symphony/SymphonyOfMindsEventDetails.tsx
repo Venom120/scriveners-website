@@ -61,7 +61,7 @@ const SymphonyOfMindsEventDetails = () => {
               className="bg-amber-50 p-4 rounded-lg shadow-md border border-amber-300 cursor-pointer md:col-span-2 hover:bg-amber-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
               onClick={() => handleEventClick("Parliamentary Debate")}
             >
-              <p className="font-semibold text-orange-800 text-center">🎪 Parliamentary Debate</p>
+              <p className="font-semibold text-orange-800 md:text-center">🎪 Parliamentary Debate</p>
             </div>
             <div 
               className="bg-yellow-50 p-4 rounded-lg shadow-md border border-yellow-300 cursor-pointer hover:bg-yellow-100 hover:shadow-lg transition-all duration-300 hover:scale-105"
