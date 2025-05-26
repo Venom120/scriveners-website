@@ -21,9 +21,9 @@ const InvitationCard: React.FC<InvitationCardProps> = ({ onRegisterClick, onShar
     return () => clearTimeout(timer);
   }, []);
 
-  const invitationText = `*You're Invited to Literature Day 2025!*📚
+  const invitationText = `*You're Invited to Symphony of the Mind 2025!*📚
 
-Join us for a celebration of words, wit, and wonder on *31st May from 10:30 AM onwards*!
+Join us for a celebration of words, wit, and wonder on *30-31st May from 10:30 AM onwards*!
 
 *Events include:*
 

@@ -37,7 +37,7 @@ Vedant Talankar (8839198566) 📞`;
     // Function to strip emojis from text (simple regex)
     const stripEmojis = `*You're Invited to Symphony of the mind 2025!*
 
-Join us for a celebration of words, wit, and wonder on *31st May from 10:30 AM onwards*!
+Join us for a celebration of words, wit, and wonder on *30-31st May from 10:30 AM onwards*!
 
 *Events include:*
 
