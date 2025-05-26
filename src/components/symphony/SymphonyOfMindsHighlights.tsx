@@ -8,7 +8,7 @@ const SymphonyOfMindsHighlights = () => {
   const eventDetails = {
     "Parliamentary Debate": {
       title: "Parliamentary Debate",
-      description: "In this event, participants engage in structured debates following parliamentary procedures. Teams will argue for and against various motions, showcasing their critical thinking, public speaking, and argumentation skills. This competitive format encourages research, quick thinking, and effective communication.",
+      description: "Step into the House and let your voice shape the narrative! Join us for the British Parliamentary Debate at Symphony of minds, where intellect meets oratory. Eight participants, four teams, and one thought-provoking motion—battle it out with logic, wit, and persuasive flair in the world’s most prestigious debate format. Whether you're defending a motion or tearing it down, every word counts. No prior experience needed—just passion and perspective. Certificates, and bragging rights await. Register now and prove your power in the Parliament of ideas!",
       date: "31st MAY 2025",
       venue: "Spandan",
       additionalInfo: "A small workshop will be conducted on 29th MAY for this event. Details will be shared to you on 28th MAY."
@@ -22,7 +22,7 @@ const SymphonyOfMindsHighlights = () => {
     },
     "Treasure Hunt": {
       title: "Treasure Hunt",
-      description: "In this event, teams will embark on an exciting literary treasure hunt, solving clues and riddles related to books, authors, and literary works. This engaging activity combines knowledge, teamwork, and problem-solving skills in a fun, interactive format.",
+      description: "Treasure Hunt, an immersive literary quest where stories come to life through a trail of hidden clues. Starting at the “Literary Portal,” participants will follow clues inspired by iconic books — from magical train platforms to golden tickets and mythological gods. Each clue reveals a digit, and together, they form the code to unlock the Vault of Words. You don’t need to be a book expert — just bring your curiosity, wit, and love for stories. Solve the clues, uncover the code, and you might just claim the treasure that awaits at the end.",
       date: "31st MAY 2025",
       venue: "Spandan",
       additionalInfo: "Teams of 3-4 members will be formed. The hunt will cover various locations within the campus."
@@ -36,7 +36,7 @@ const SymphonyOfMindsHighlights = () => {
     },
     "Open Mic Sessions": {
       title: "Open Mic Sessions",
-      description: "In this event, poets and storytellers will have the opportunity to share their original works with an appreciative audience. This platform celebrates creativity, self-expression, and the power of spoken word in all its forms.",
+      description: "This Open Mic event is a celebration of artistic freedom and creative expression, bringing together a diverse blend of performances under one roof. From heartfelt poetry to compelling storytelling, dramatic monologues, soulful acoustic music, and light-hearted comed(stand-up comedy), improvisation, mimicry —this platform is open to all.",
       date: "31st MAY 2025",
       venue: "Spandan",
       additionalInfo: "Participants can perform poetry, short stories, or spoken word pieces. Time limit is 5 minutes per performance."
