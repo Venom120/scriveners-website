@@ -18,7 +18,7 @@ const SymphonyOfMindsEventDetails = () => {
       description: "In this event, participants will create visually compelling posters that communicate powerful messages through artistic design. Contestants will showcase their creativity, design skills, and ability to convey complex ideas through visual storytelling.",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Guidelines will be provided on the whatsapp group after you have registered. Participants are required to showcase their poster on the final day."
+      additionalInfo: "No Preliminary Round!!! Guidelines will be provided on the whatsapp group after you have registered. Participants are required to showcase their poster on the final day."
     },
     "Treasure Hunt": {
       title: "Treasure Hunt on Books",
@@ -32,14 +32,14 @@ const SymphonyOfMindsEventDetails = () => {
       description: "The Spell Bee is an exciting, multi-round word challenge designed to test not just spelling, but also vocabulary, and confidence. Participants will be given words. For each word, the contestant may ask for the meaning, pronunciation, language of origin, or use it in a sentence for better understanding. Once ready, the participant must spell the word correctly, letter by letter, within the given time. Points are awarded for correct spellings, clarity, confidence, time. So, if someone asks, “What happens in Spell Bee?” — the answer is simple: You listen, understand, and spell your way to victory!",
       date: "30th MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Word lists will be based on standard dictionaries."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Word lists will be based on standard dictionaries. More details will be shared on the whatsapp group after you have registered."
     },
     "Open Mic Sessions": {
       title: "Open Mic Sessions",
       description: "This Open Mic event is a celebration of artistic freedom and creative expression, bringing together a diverse blend of performances under one roof. From heartfelt poetry to compelling storytelling, dramatic monologues, soulful acoustic music, and light-hearted comedy (stand-up comedy), improvisation, mimicry—this platform is open to all.",
       date: "31st MAY 2025",
       venue: "Spandan",
-      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Participants can perform poetry, short stories, or spoken word pieces. Time limit is 5 minutes per performance."
+      additionalInfo: "Preliminary rounds will be conducted on 29th MAY to select finalists. Time limit is 5 minutes per performance."
     }
   };
 
