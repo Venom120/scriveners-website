@@ -27,7 +27,7 @@ const SymphonyOfMindsForm = () => {
   const { isSubmitting, formKey, handleSubmit } = useFormSubmission(form);
 
   return (
-    <div className="bg-white m-18 p-4 rounded-lg shadow-lg">
+    <div className="bg-white m-18 p-4 rounded-lg shadow-lg md:mx-96">
       <h2 className="text-2xl font-bold mb-6 text-center">Register for Symphony of The Mind</h2>
       
       <Form {...form}>
