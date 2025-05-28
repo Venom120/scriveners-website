@@ -1,5 +1,6 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Superscript } from "lucide-react";
 
 interface SymphonyOfMindsBannerProps {
   onRegisterClick: () => void;
@@ -57,24 +58,28 @@ const SymphonyOfMindsBanner = ({ onRegisterClick }: SymphonyOfMindsBannerProps) 
           </div>
 
           
-          <p className="md:text-xl text-amber-800 font-semibold font-['K2D'] text-center mb-1 md:mb-4 px-2 animate-fade-in">
+          <p className="md:text-xl text-amber-800 font-semibold font-['K2D'] text-center md:mb-2 px-2 animate-fade-in">
             Organized by English Dept. and Scriveners club, GGITS
           </p>
           <p className="md:text-lg text-amber-700 font-medium font-['K2D'] text-center mb-3 md:mb-8 px-2 animate-fade-in delay-500">
             Join us for an immersive experience of creativity, expression, and literary excellence!
           </p>
           
-          <button 
+          {/* <button 
             onClick={onRegisterClick}
             className="bg-gradient-to-r from-amber-600 to-orange-600 text-white text-sm md:text-xl font-bold font-['Inter'] px-6 md:px-8 py-3 md:py-5 rounded-full w-40 md:w-60 h-12 md:h-18 inline-flex justify-center items-center mt-1 md:mt-4 hover:from-amber-700 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-amber-800 animate-pulse"
           >
             Register Now
-          </button>
+          </button> */}
 
           {/* Informational warning about last date */}
-          <div className="flex items-center justify-center mb-2 mt-2 md:mb-4 md:mt-4">
-            <span className="inline-block bg-gradient-to-r from-orange-200 via-amber-100 to-orange-200 border border-orange-400 text-orange-800 font-semibold font-['K2D'] rounded-full px-4 py-2 md:text-lg text-sm shadow animate-pulse">
+          <div className="flex items-center justify-center text-center mt-2 md:mt-4">
+            {/* <span className="inline-block bg-gradient-to-r from-orange-200 via-amber-100 to-orange-200 border border-orange-400 text-orange-800 font-semibold font-['K2D'] rounded-full px-4 py-2 md:text-lg text-sm shadow animate-pulse">
               ⚠️ Last date to register is <span className="font-bold text-orange-900">28th MAY 2025</span>
+            </span> */}
+            <span className="inline-block bg-gradient-to-r from-orange-200 via-amber-100 to-orange-200 border border-orange-400 text-orange-800 font-semibold font-['K2D'] rounded-full px-4 py-2 md:text-lg text-sm shadow animate-pulse">
+              ⚠️ Sorry, but the Registrations are CLOSED ⚠️
+              <br/>You still are welcome on 31<sup>st</sup> May for the event!
             </span>
           </div>
         </div>
