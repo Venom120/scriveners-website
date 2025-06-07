@@ -90,8 +90,7 @@ The project is live at [https://scriveners.pythonabc.org](https://scriveners.pyt
 ## Contact
 
 For event or technical queries, contact:
-- Vedant Talankar (8839198566)
-- Yatharth Jain
+- Yatharth Jain - yatharth3194@gmail.com
 
 ---
 
