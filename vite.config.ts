@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "0.0.0.0",
     port: 8080,
-    allowedHosts: ["scriveners.venoms.app", "localhost"],
+    allowedHosts: ["scriveners.venoms.app", "venoms.app", "localhost"],
   },
   plugins: [
     react(),
