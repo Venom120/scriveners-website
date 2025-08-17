@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,7 +27,7 @@ const AddUserForm = ({ onUserAdded }: AddUserFormProps) => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/add-user", {
+      const response = await fetch("/api/add-user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

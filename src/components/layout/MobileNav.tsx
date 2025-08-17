@@ -1,9 +1,6 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, User } from "lucide-react";
-import { useAdmin } from "@/contexts/AdminContext";
-import LogoutConfirmDialog from "./LogoutConfirmDialog";
+import { Menu } from "lucide-react";
 
 interface MobileNavProps {
   onLoginClick: () => void;
@@ -11,19 +8,6 @@ interface MobileNavProps {
 
 const MobileNav = ({ onLoginClick }: MobileNavProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isAdmin, setIsAdmin } = useAdmin();
-
-  const handleLogout = async () => {
-    try {
-      await fetch("https://scriveners.pythonabc.org/api/logout", {
-        credentials: "include",
-      });
-      setIsAdmin(false);
-      setIsMobileMenuOpen(false); // Close menu after logout
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  };
 
   return (
     <>

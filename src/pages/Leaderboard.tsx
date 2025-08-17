@@ -1,5 +1,3 @@
-
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import AddUserForm from "@/components/leaderboard/AddUserForm";
 import { useToast } from "@/hooks/use-toast";
@@ -17,7 +15,7 @@ const Leaderboard = () => {
 
   const fetchLeaderboardData = React.useCallback(async () => {
     try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/poem");
+      const response = await fetch("/api/poem");
       const data = await response.json();
       setLeaderboardEntries(data.poem);
     } catch (error) {

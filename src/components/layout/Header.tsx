@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -29,7 +28,7 @@ const HeaderContent = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://scriveners.pythonabc.org/api/logout", {
+      await fetch("/api/logout", {
         credentials: "include",
       });
       setIsAdmin(false);

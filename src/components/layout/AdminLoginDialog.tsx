@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -24,7 +23,7 @@ const AdminLoginDialog = ({ open, onOpenChange, onLoginSuccess }: AdminLoginDial
     setIsLoading(true);
     
     try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

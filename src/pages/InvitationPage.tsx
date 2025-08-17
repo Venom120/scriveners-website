@@ -7,7 +7,7 @@ const Index = () => {
 
   const handleRegister = () => {
     // Redirect to registration page
-    window.location.href = "https://scriveners.pythonabc.org/symphony-of-minds";
+    window.location.href = "/symphony-of-minds";
   };
 
   const handleShare = () => {
@@ -29,7 +29,7 @@ Show off your literary flair, challenge your mind, and enjoy a day filled with c
 
 Let the love for literature shine—see you there!
  
-To register visit our website : https://scriveners.pythonabc.org/symphony-of-minds
+To register visit our website : https://scrivener.venoms.app/symphony-of-minds
 
 *For any queries, please reach out to us:*
 Vedant Talankar (8839198566) 📞`;
@@ -52,7 +52,7 @@ Show off your literary flair, challenge your mind, and enjoy a day filled with c
 
 Let the love for literature shine—see you there!
  
-To register visit our website : https://scriveners.pythonabc.org/symphony-of-minds
+To register visit our website : https://scriveners.venom.app/symphony-of-minds
 
 *For any queries, please reach out to us:*
 Vedant Talankar (8839198566)`;
@@ -86,7 +86,7 @@ Vedant Talankar (8839198566)`;
       navigator.share({
         title: 'Symphony of the Mind Invitation',
         text: cleanText,
-        url: 'https://scriveners.pythonabc.org/symphony-of-minds',
+        url: 'https://scriveners.venoms.app/symphony-of-minds',
       }).catch(err => {
         console.log('Error sharing:', err);
         // fallback to WhatsApp URL without emojis

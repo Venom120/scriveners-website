@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 import { useAdmin } from "@/contexts/AdminContext";
@@ -13,7 +12,7 @@ const DesktopNav = ({ onLoginClick }: DesktopNavProps) => {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://scriveners.pythonabc.org/api/logout", {
+      await fetch("/api/logout", {
         credentials: "include",
       });
       setIsAdmin(false);

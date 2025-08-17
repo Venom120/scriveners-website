@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,7 +15,7 @@ const AdminPointsControls = ({ username, onPointsUpdated }: AdminPointsControlsP
 
   const updatePoints = async (pointsToAdd: number) => {
     try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/update-points", {
+      const response = await fetch("/api/update-points", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
