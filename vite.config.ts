@@ -7,8 +7,8 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   server: {
     host: "127.0.0.1",
-    port: 8080,
-    allowedHosts: ["scriveners.venoms.app", "venoms.app", "www.venoms.app", "localhost"],
+    port: 8000,
+    allowedHosts: ["scriveners.venoms.app"],
   },
   plugins: [
     react(),
