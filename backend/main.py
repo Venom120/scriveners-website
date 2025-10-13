@@ -1,13 +1,13 @@
 from fastapi import FastAPI, Depends, HTTPException, Request, status, Response
 from fastapi.middleware.cors import CORSMiddleware
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 import pymongo
+from pymongo.collection import Collection
 import json
 from pydantic import BaseModel
 import secrets
 from enum import Enum
 import gspread
-from google.oauth2.service_account import Credentials
 
 # Secret token for admin authentication
 secrets_path = "secrets.json" # Path to your secrets file
@@ -20,7 +20,7 @@ with open(secrets_path, "r") as secrets_file:
 
 
 app = FastAPI()
-origins = ["*"]  # Allow all origins
+origins = ["scriveners.venoms.app"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -31,17 +31,13 @@ app.add_middleware(
 )
 
 # Load MongoDB URI from secrets file
-db = None
-def load_mongodb_uri():
+def get_db():
     with open(secrets_path, "r") as secrets_file:
         secrets = json.load(secrets_file)
-
-    mongodb_uri = secrets.get("SCRIVENERS_URI")
-    client = pymongo.MongoClient(mongodb_uri)
-    global db
-    db = client["scriveners"]
-
-load_mongodb_uri()
+        mongodb_uri = secrets.get("SCRIVENERS_URI")
+        client = pymongo.MongoClient(mongodb_uri)
+        return client["scriveners"]
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Cannot setup database connection, Contact Developer")
 
 # Session storage (in-memory)
 active_sessions = {}
@@ -62,7 +58,7 @@ def get_admin_token(request: Request) -> Optional[str]:
     return request.cookies.get("admin_token")
 
 @app.get("/api/poem")
-async def get_poem() -> Dict:
+async def get_poem(db: Collection = Depends(get_db)) -> Dict:
     collection = db["poem_points"]
     # Sort by 'rank' in ascending order
     results = list(collection.find({}, {"_id": 0}).sort("rank", 1))
@@ -110,8 +106,8 @@ async def check_auth(token: str = Depends(get_admin_token)):
 @app.post("/api/update-points")
 async def update_points(
     data: UpdatePointsRequest, 
-    request: Request,
-    token: str = Depends(get_admin_token)
+    token: str = Depends(get_admin_token),
+    db: Collection = Depends(get_db)
 ):
     # Verify admin is logged in
     if not token or token not in active_sessions:
@@ -143,8 +139,8 @@ async def update_points(
 @app.post("/api/add-user")
 async def add_user(
     data: UpdatePointsRequest,
-    request: Request,
-    token: str = Depends(get_admin_token)
+    token: str = Depends(get_admin_token),
+    db: Collection = Depends(get_db)
 ):
     # Verify admin is logged in
     if not token or token not in active_sessions:
@@ -215,6 +211,15 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
         open_mic_sheet = sh.worksheet(OPEN_MIC_SHEET_NAME)
         open_poster_sheet = sh.worksheet(POSTER_MAKING_SHEET_NAME)
 
+        # Map Event enum to sheet objects
+        event_sheets = {
+            Event.DEBATE: debate_sheet,
+            Event.TREASURE_HUNT: treasure_hunt_sheet,
+            Event.SPELL_BEE: spell_bee_sheet,
+            Event.OPEN_MIC: open_mic_sheet,
+            Event.POSTER_MAKING: open_poster_sheet,
+        }
+
         # Prepare data
         data = [
             form_data.name,
@@ -251,21 +256,12 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
 
         if existing_row_index != -1:
             # Update existing row in the main sheet
-            main_sheet.update(f'A{existing_row_index}:H{existing_row_index}', [data])
+            main_sheet.update(range_name=f'A{existing_row_index}:H{existing_row_index}', values=[data])
 
             # Delete from other sheets
-            for event in Event:
+            for event_enum in Event:
                 try:
-                    if event == Event.DEBATE:
-                        sheet = debate_sheet
-                    elif event == Event.TREASURE_HUNT:
-                        sheet = treasure_hunt_sheet
-                    elif event == Event.SPELL_BEE:
-                        sheet = spell_bee_sheet
-                    elif event == Event.OPEN_MIC:
-                        sheet = open_mic_sheet
-                    elif event == Event.POSTER_MAKING:
-                        sheet = open_poster_sheet
+                    sheet = event_sheets[event_enum]
                     records = sheet.get_all_records()
                     for index, row in enumerate(records):
                         if row.get('email') == form_data.email:
@@ -285,17 +281,8 @@ async def submit_litfest_form(form_data: LitFestFormRequest):
             ])
 
         # Append to event-specific sheets
-        for event in event_categories:
-            if event == Event.DEBATE:
-                sheet = debate_sheet
-            elif event == Event.TREASURE_HUNT:
-                sheet = treasure_hunt_sheet
-            elif event == Event.SPELL_BEE:
-                sheet = spell_bee_sheet
-            elif event == Event.OPEN_MIC:
-                sheet = open_mic_sheet
-            elif event == Event.POSTER_MAKING:
-                sheet = open_poster_sheet
+        for event_enum in event_categories:
+            sheet = event_sheets[event_enum]
             sheet.append_row([
                 form_data.name,
                 form_data.email,
