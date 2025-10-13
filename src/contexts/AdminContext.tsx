@@ -18,7 +18,7 @@ export const AdminProvider = ({ children }: { children: React.ReactNode }) => {
 
   const checkAuthStatus = useCallback(async () => {
     try {
-      const response = await fetch("https://scriveners.pythonabc.org/api/check-auth", {
+      const response = await fetch("scriveners.venoms.app/api/check-auth", {
         credentials: "include", // Important for cookies
       });
       const data = await response.json();

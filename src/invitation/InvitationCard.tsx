@@ -38,7 +38,7 @@ Show off your literary flair, challenge your mind, and enjoy a day filled with c
 
 Let the love for literature shine—see you there!
  
-To register visit our website : https://scriveners.pythonabc.org/symphony-of-minds
+To register visit our website : scriveners.venoms.app/symphony-of-minds
 
 *For any queries, please reach out to us:*
 Vedant Talankar (8839198566) 📞`;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AddUserForm from "@/components/leaderboard/AddUserForm";
 import { useToast } from "@/hooks/use-toast";
 import { Header } from "@/components/layout/Header";

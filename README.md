@@ -2,7 +2,7 @@
 
 ## Project Info
 
-**Live URL:** https://scriveners.pythonabc.org
+**Live URL:** scriveners.venoms.app
 
 This is the official website for the Scriveners Club and LitFest events at GGITS, built to manage event registrations, leaderboards, and more.
 
@@ -83,7 +83,7 @@ npm run dev:all
 
 ## Custom Domain
 
-The project is live at [https://scriveners.pythonabc.org](https://scriveners.pythonabc.org) using a custom domain and SSL via Let's Encrypt.
+The project is live at [scriveners.venoms.app](scriveners.venoms.app) using a custom domain and SSL via Let's Encrypt.
 
 ---
 
