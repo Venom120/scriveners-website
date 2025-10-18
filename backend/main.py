@@ -190,7 +190,7 @@ POSTER_MAKING_SHEET_NAME = "postermaking"
 async def submit_litfest_form(form_data: LitFestFormRequest):
     try:
         gc = gspread.service_account(filename="LitFestSubmition.json")
-        sh = gc.open_by_key("1zzbf1kc25vC-nbO6kcehu9rR1lXoH96ozOlioCrbuEA")
+        sh = gc.open_by_key(os.getenv("SPREADSHEET_KEY", "your_doc_key"))
 
         # Access sheets
         main_sheet = sh.worksheet(MAIN_SHEET_NAME)
