@@ -1,9 +1,0 @@
-sudo apt install firewalld
-
-sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
-sudo firewall-cmd --permanent --zone=public --add-port=8080/udp
-sudo firewall-cmd --reload
-
-source .venv/bin/activate
-npm i --legacy-peer-deps
-npm run dev

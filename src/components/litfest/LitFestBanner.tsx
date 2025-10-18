@@ -1,5 +1,4 @@
 
-import { useState } from 'react';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useIsMobile } from "@/hooks/use-mobile";
 

@@ -1,10 +1,21 @@
 #!/bin/bash
 TARGET=~/scriveners  # Path to your working directory
 GIT_DIR=~/scriveners.git  # Path to your bare repository
+COMPOSE_DIR="/opt/docker-stack/"
 
 echo "Deploying latest changes..."
+
+# --- 1. Checkout latest code from the bare repo ---
 cd $TARGET || exit
 unset GIT_DIR
 git fetch origin main
 git reset --hard origin/main
+
+# --- 2. Rebuild and restart services using Docker Compose ---
+echo "Building and restarting Docker containers..."
+
+# Navigate to the directory with docker-compose.yml and run it
+cd "${COMPOSE_DIR}" || exit
+docker compose up -d --build --remove-orphans
+
 echo "Deployment complete."

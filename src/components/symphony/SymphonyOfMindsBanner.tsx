@@ -1,6 +1,5 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Superscript } from "lucide-react";
 
 interface SymphonyOfMindsBannerProps {
   onRegisterClick: () => void;

@@ -1,0 +1,29 @@
+# --------------------------
+# Stage 1: Frontend build
+# --------------------------
+FROM node:20 AS frontend-builder
+
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install
+
+COPY . .
+RUN npm run build
+
+# --------------------------
+# Stage 2: Backend
+# --------------------------
+FROM python:3.11-slim
+
+# Install dependencies
+WORKDIR /app
+COPY backend/req.txt ./backend/
+RUN pip install --no-cache-dir -r backend/req.txt
+COPY backend/ ./backend/
+COPY --from=frontend-builder /app/dist /usr/share/nginx/html
+
+# Load env file (optional)
+ENV PYTHONUNBUFFERED=1
+
+# Run FastAPI backend
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8100"]

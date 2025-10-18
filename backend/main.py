@@ -3,20 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, Optional
 import pymongo
 from pymongo.collection import Collection
-import json
 from pydantic import BaseModel
 import secrets
 from enum import Enum
-import gspread
+import gspread, os
 
-# Secret token for admin authentication
-secrets_path = "secrets.json" # Path to your secrets file
-
-ADMIN_PASSWORD = "1234"
-
-with open(secrets_path, "r") as secrets_file:
-        secret = json.load(secrets_file)
-        ADMIN_PASSWORD = secret["ADMIN_PASS"]
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "1234")
 
 
 app = FastAPI()
@@ -32,12 +24,9 @@ app.add_middleware(
 
 # Load MongoDB URI from secrets file
 def get_db():
-    with open(secrets_path, "r") as secrets_file:
-        secrets = json.load(secrets_file)
-        mongodb_uri = secrets.get("SCRIVENERS_URI")
-        client = pymongo.MongoClient(mongodb_uri)
-        return client["scriveners"]
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Cannot setup database connection, Contact Developer")
+    mongodb_uri = os.getenv("SCRIVENERS_URI", "localhost:27017")
+    client = pymongo.MongoClient(mongodb_uri)
+    return client["scriveners"]
 
 # Session storage (in-memory)
 active_sessions = {}
