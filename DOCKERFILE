@@ -1,32 +1,17 @@
-# --------------------------
-# Stage 1: Frontend build
-# --------------------------
-FROM node:18-alpine AS frontend-builder
-
-WORKDIR /app
-COPY package.json ./
-RUN yarn config set registry https://registry.npmmirror.com && \
-    yarn install --network-timeout 600000
-
-COPY . .
-RUN npm run build
-
-
-# --------------------------
-# Stage 2: Backend + Nginx runtime
-# --------------------------
 FROM python:3.11-slim
 
 # Install Nginx + Python deps
 RUN apt-get update && apt-get install -y nginx supervisor && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
+
 COPY backend/req.txt ./backend/
 RUN pip install --upgrade pip && pip install --no-cache-dir -r backend/req.txt
+
 COPY backend/ ./backend/
 
 # Copy built frontend from stage 1
-COPY --from=frontend-builder /app/dist /usr/share/nginx/html
+COPY ./dist /usr/share/nginx/html
 
 # --------------------------
 # Supervisor config (runs both processes)
