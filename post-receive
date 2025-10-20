@@ -12,8 +12,8 @@ git fetch origin main
 git reset --hard origin/main
 
 # --- 2. Rebuild and restart services using Docker Compose ---
-npm install --legacy-peer-deps
-npm run build
+yarn install
+yarn run build
 echo "Build complete for portfolio..."
 echo ""
 echo "Building and restarting Docker containers..."
