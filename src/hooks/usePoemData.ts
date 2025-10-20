@@ -21,7 +21,8 @@ export const usePoemData = () => {
         const poemAuthors: Record<string, string[]> = {};
         
         // Get all poem image files dynamically using import.meta
-        const modules = import.meta.glob('@/assets/poems/*.{jpg,jpeg,png}', { eager: true });
+        const modules = import.meta.glob('/src/assets/poems/*.{jpg,jpeg,png}', { eager: true });
+
         const poemFiles: string[] = Object.keys(modules).map(path => {
           // Extract the filename from the path
           return path.split('/').pop() || '';
@@ -38,7 +39,7 @@ export const usePoemData = () => {
           }
           
           // Create path to image
-          poemAuthors[name].push(`@/assets/poems/${file}`);
+          poemAuthors[name].push(`/src/assets/poems/${file}`);
         });
         
         // Convert to array and sort by poem count (descending)

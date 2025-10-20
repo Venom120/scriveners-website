@@ -1,7 +1,10 @@
 
+
 import { Instagram } from "lucide-react";
 import { AiOutlineDiscord } from "react-icons/ai";
 import { useIsMobile } from "@/hooks/use-mobile";
+import logo from '/src/assets/logo.png';
+import bookImage from '/src/assets/Image 1.png';
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
@@ -59,7 +62,7 @@ const HeroSection = () => {
             {/* Image */}
             <div className="w-[300px] h-[300px] md:w-[562px] md:h-[563px] rounded-full overflow-hidden shadow-md border border-black/10 z-10">
               <img 
-                src="@/assets/logo.png" 
+                src={logo}
                 alt="Scriveners Club" 
                 className="w-full h-full object-cover"
               />
@@ -94,7 +97,7 @@ const HeroSection = () => {
       <div className="w-full flex mt-8 md:mt-16 relative z-10">
         <div className="hidden md:block w-64 h-32 bg-stone-400 relative">
           <img 
-            src="@/assets/Image 1.png" 
+            src={bookImage}
             alt="Book" 
             className="w-48 h-32 absolute left-4 top-0 object-cover"
           />

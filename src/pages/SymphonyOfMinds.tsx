@@ -66,7 +66,7 @@ const SymphonyOfMinds = () => {
         {/* Poster section */}
         <div className="px-4 md:px-96 py-8 md:py-12">
           <img
-            src="src/components/images/SymphonyOfTheMindPoster.jpg"
+            src="/src/assets/SymphonyOfTheMindPoster.jpg"
             alt="Symphony of Minds 2025 Poster"
             className="w-full h-auto rounded-lg shadow-lg border-4 border-amber-600"
           />
