@@ -38,7 +38,7 @@ export const usePoemData = () => {
           }
           
           // Create path to image
-          poemAuthors[name].push(`/src/components/images/poems/${file}`);
+          poemAuthors[name].push(`@/assets/poems/${file}`);
         });
         
         // Convert to array and sort by poem count (descending)

@@ -15,7 +15,7 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
         {/* Left side image */}
         <div className="absolute left-0 top-0 h-full z-0 w-1/3 overflow-hidden">
           <img 
-            src="/src/components/images/litfest24left.svg"
+            src="@/assets/litfest24left.svg"
             alt="LitFest2k24"
             className="h-full w-full object-cover"
           />
@@ -24,7 +24,7 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
         {/* Center image */}
         <div className="absolute left-1/3 top-0 h-full z-0 w-1/3 overflow-hidden">
           <img 
-            src="/src/components/images/litfest24centre.svg"
+            src="@/assets/litfest24centre.svg"
             alt="LitFest2k24"
             className="h-full w-full object-cover"
           />
@@ -33,7 +33,7 @@ const LitFestBanner = ({ onRegisterClick }: LitFestBannerProps) => {
         {/* Right side image */}
         <div className="absolute right-0 top-0 h-full z-0 w-1/3 overflow-hidden">
           <img 
-            src="/src/components/images/litfest24right.svg"
+            src="@/assets/litfest24right.svg"
             alt="LitFest2k24"
             className="h-full w-full object-cover"
           />

@@ -59,7 +59,7 @@ const HeroSection = () => {
             {/* Image */}
             <div className="w-[300px] h-[300px] md:w-[562px] md:h-[563px] rounded-full overflow-hidden shadow-md border border-black/10 z-10">
               <img 
-                src="/src/components/images/logo.png" 
+                src="@/assets/logo.png" 
                 alt="Scriveners Club" 
                 className="w-full h-full object-cover"
               />
@@ -94,7 +94,7 @@ const HeroSection = () => {
       <div className="w-full flex mt-8 md:mt-16 relative z-10">
         <div className="hidden md:block w-64 h-32 bg-stone-400 relative">
           <img 
-            src="/src/components/images/Image 1.png" 
+            src="@/assets/Image 1.png" 
             alt="Book" 
             className="w-48 h-32 absolute left-4 top-0 object-cover"
           />
