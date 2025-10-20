@@ -1,10 +1,12 @@
 
+
 import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import SymphonyOfMindsForm from "@/components/symphony/SymphonyOfMindsForm";
 import SymphonyOfMindsBanner from "@/components/symphony/SymphonyOfMindsBanner";
 import SymphonyOfMindsAbout from "@/components/symphony/SymphonyOfMindsAbout";
 import SymphonyOfMindsEventDetails from "@/components/symphony/SymphonyOfMindsEventDetails";
+import posterImg from '/src/assets/SymphonyOfTheMindPoster.jpg';
 
 const SymphonyOfMinds = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
@@ -66,7 +68,7 @@ const SymphonyOfMinds = () => {
         {/* Poster section */}
         <div className="px-4 md:px-96 py-8 md:py-12">
           <img
-            src="/src/assets/SymphonyOfTheMindPoster.jpg"
+            src={posterImg}
             alt="Symphony of Minds 2025 Poster"
             className="w-full h-auto rounded-lg shadow-lg border-4 border-amber-600"
           />

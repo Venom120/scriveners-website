@@ -5,6 +5,7 @@ import LitFestForm from "@/components/litfest/LitFestForm";
 import LitFestBanner from "@/components/litfest/LitFestBanner";
 import LitFestAbout from "@/components/litfest/LitFestAbout";
 import LitFestHighlights from "@/components/litfest/LitFestHighlights";
+import litfestPoster from '/src/assets/SymphonyOfMinds.jpeg';
 
 const LitFest25 = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
@@ -37,7 +38,7 @@ const LitFest25 = () => {
         {/* Poster section */}
         <div className="px-4 md:px-96 py-8 md:py-12">
           <img
-            src="/src/assets/SymphonyOfMinds.jpeg"
+            src={litfestPoster}
             alt="LitFest25 Poster"
             className="w-full h-auto rounded-lg shadow-lg"
           />
