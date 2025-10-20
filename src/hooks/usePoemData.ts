@@ -23,23 +23,19 @@ export const usePoemData = () => {
         // Get all poem image files dynamically using import.meta
         const modules = import.meta.glob('/src/assets/poems/*.{jpg,jpeg,png}', { eager: true });
 
-        const poemFiles: string[] = Object.keys(modules).map(path => {
+        Object.entries(modules).forEach(([path, mod]) => {
           // Extract the filename from the path
-          return path.split('/').pop() || '';
-        });
-        
-        // Group poems by author
-        poemFiles.forEach(file => {
+          const file = path.split('/').pop() || '';
           // Extract author name from filename (e.g., "Abhiyanshu 1.jpg" -> "Abhiyanshu")
           const nameParts = file.split(' ');
-          const name = nameParts[0]; 
-          
+          const name = nameParts[0];
           if (!poemAuthors[name]) {
             poemAuthors[name] = [];
           }
-          
-          // Create path to image
-          poemAuthors[name].push(`/src/assets/poems/${file}`);
+          // Use the resolved URL from Vite
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const imageUrl = typeof mod === 'string' ? mod : (mod as any).default;
+          poemAuthors[name].push(imageUrl);
         });
         
         // Convert to array and sort by poem count (descending)
