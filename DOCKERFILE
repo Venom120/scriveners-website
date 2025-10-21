@@ -1,7 +1,29 @@
+# 1. Use a Node.js base image
+FROM node:18-alpine AS scriveners-frontend
+
+# 2. Set the working directory
+WORKDIR /app
+
+# 3. Copy ONLY the files needed for installing packages
+COPY package.json package-lock.json ./
+
+# 4. Install dependencies
+# Docker will cache this step. It will only re-run if package.json or yarn.lock changes.
+RUN npm install --legacy-peer-deps
+
+# 5. NOW copy the rest of your application code
+COPY . .
+
+# 6. Build your application
+RUN npm run build
+
+# --- SECOND STAGE ---
 FROM python:3.11-slim
 
-# Install Nginx + Python deps
-RUN apt-get update && apt-get install -y nginx supervisor && rm -rf /var/lib/apt/lists/*
+# Install Nginx + Python deps in a single layer to optimize image size and build time
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends nginx supervisor && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -11,13 +33,10 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r backend/req.txt
 COPY backend/ ./backend/
 
 # Copy built frontend from stage 1
-COPY ./dist /usr/share/nginx/html
+COPY --from=scriveners-frontend /app/dist /usr/share/nginx/html
 
 # Remove the default Nginx site that shows the "Welcome" page.
 RUN rm -f /etc/nginx/sites-enabled/default
-
-# Copy our custom Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # --------------------------
 # Supervisor config (runs both processes)

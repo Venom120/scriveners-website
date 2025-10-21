@@ -15,8 +15,6 @@ dist-ssr
 secrets.json
 LitFestSubmition.json
 .env
-yarn.lock
-package-lock.json
 
 # Editor directories and files
 .vscode/*
