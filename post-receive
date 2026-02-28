@@ -13,6 +13,7 @@ git reset --hard origin/main
 
 # Navigate to the directory with docker-compose.yml and run it
 cd "${COMPOSE_DIR}" || exit
-docker compose up scriveners -d --build
+docker compose build scriveners
+docker compose up -d --build --remove-orphans --force-recreate scriveners
 
 echo "Deployment complete."
